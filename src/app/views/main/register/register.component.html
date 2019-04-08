@@ -1,0 +1,16 @@
+<mat-vertical-stepper>
+
+  <mat-step label="Assignment name">
+    <form ngForm #assignmentsForm class="form">
+
+      <mat-form-field>
+        <input matInput #assignmentName
+               placeholder="enter assignment name"
+               name="name">
+      </mat-form-field>
+
+      <button mat-stroked-button color="primary" matStepperNext>Next</button>
+
+    </form>
+  </mat-step>
+</mat-vertical-stepper>
