@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Teacher} from '../../../models/teacher';
 
 @Component({
   selector: 'app-register',
@@ -6,7 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./register.component.sass']
 })
 export class RegisterComponent implements OnInit {
-
+name: string;
+username: string;
+password: string;
   constructor() { }
 
   ngOnInit() {
