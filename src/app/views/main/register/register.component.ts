@@ -14,9 +14,9 @@ password: string;
 
   ngOnInit() {
   }
-
-  register() {
-
+  onSubmit() {
+    console.log("You are registered!");
   }
+
 
 }
