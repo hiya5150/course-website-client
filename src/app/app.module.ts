@@ -1,34 +1,48 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HomeComponent } from './views/teachers/home/home.component';
+import {MatButtonModule, MatCheckboxModule, MatDialogModule} from '@angular/material';
 import { AssignmentsComponent } from './views/teachers/assignments/assignments.component';
 import { AnnouncementsComponent } from './views/teachers/announcements/announcements.component';
 import { GradesComponent } from './views/teachers/grades/grades.component';
 import { NavbarComponent } from './views/main/navbar/navbar.component';
 import { LoginComponent } from './views/main/login/login.component';
 import { RegisterComponent } from './views/main/register/register.component';
+import { MainHomepageComponent } from './views/main/main-homepage/main-homepage.component';
+import { TeachersHomepageComponent } from './views/teachers/teachers-homepage/teachers-homepage.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
     AssignmentsComponent,
     AnnouncementsComponent,
     GradesComponent,
     NavbarComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    MainHomepageComponent,
+    TeachersHomepageComponent,
+
+
+
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatCheckboxModule,
+    MatDialogModule,
+
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+
 })
 export class AppModule { }
