@@ -43,6 +43,6 @@ import { TeachersHomepageComponent } from './views/teachers/teachers-homepage/te
   ],
   providers: [],
   bootstrap: [AppComponent],
-
+  entryComponents: [LoginComponent]
 })
 export class AppModule { }
