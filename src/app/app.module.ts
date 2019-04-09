@@ -1,11 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule, MatCheckboxModule, MatDialogModule} from '@angular/material';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {MatFormFieldModule} from '@angular/material/form-field';
+
 import { AssignmentsComponent } from './views/teachers/assignments/assignments.component';
 import { AnnouncementsComponent } from './views/teachers/announcements/announcements.component';
 import { GradesComponent } from './views/teachers/grades/grades.component';
@@ -26,7 +27,7 @@ import { TeachersHomepageComponent } from './views/teachers/teachers-homepage/te
     LoginComponent,
     RegisterComponent,
     MainHomepageComponent,
-    TeachersHomepageComponent,
+    TeachersHomepageComponent
 
 
 
@@ -39,10 +40,14 @@ import { TeachersHomepageComponent } from './views/teachers/teachers-homepage/te
     MatButtonModule,
     MatCheckboxModule,
     MatDialogModule,
+    MatFormFieldModule,
+    FormsModule,
+    ReactiveFormsModule
+
 
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [LoginComponent]
+  entryComponents: [RegisterComponent]
 })
 export class AppModule { }

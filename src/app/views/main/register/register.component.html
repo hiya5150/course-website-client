@@ -1,8 +1,15 @@
-<!--<h2 mat-dialog-title>Register</h2>-->
-  <!--<mat-dialog-content [formGroup]="form">-->
-    <!--<mat-form-field>-->
-      <!--<input matInput-->
-             <!--placeholder="Name"-->
-             <!--formControlName="name" ngModel>-->
-    <!--</mat-form-field>-->
-  <!--</mat-dialog-content>-->
+
+  <h2 mat-dialog-title>Register</h2>
+    <mat-dialog-content>
+  <!--<mat-form-field>-->
+    Full Name <input matInput [(ngModel)]="name"><br>
+    Username <input matInput [(ngModel)]="username"><br>
+    Password <input matInput [(ngModel)]="password"><br>
+  <!--</mat-form-field>-->
+  </mat-dialog-content>
+
+  <mat-dialog-actions>
+    <button class="mat-flat-button"(click)="register()">Register</button>
+
+  </mat-dialog-actions>
+
