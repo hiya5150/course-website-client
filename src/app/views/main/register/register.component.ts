@@ -15,4 +15,8 @@ password: string;
   ngOnInit() {
   }
 
+  register() {
+
+  }
+
 }
