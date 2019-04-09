@@ -1,7 +1,7 @@
-<form>
+<form (ngSubmit)="onSubmit()">
   <h2 mat-dialog-title>Register</h2>
     <mat-dialog-content>
-      <label id="pick-user-type-label">Please choose your user type:  </label>
+      <label id="pick-user-type-label">Please choose your user type:  </label> <br>
         <mat-radio-group aria-label="pick-user-type-label">
           <mat-radio-button value="teacher">Teacher</mat-radio-button>
           <mat-radio-button value="student">Student</mat-radio-button>
@@ -27,7 +27,7 @@
         </mat-dialog-content>
 
         <mat-dialog-actions>
-          <button type="submit" class="mat-raised-button" (click)="register()">Register</button>
+          <button type="submit" class="mat-raised-button">Register</button>
           <button class="mat-raised-button" mat-button [mat-dialog-close]="true">Cancel</button>
         </mat-dialog-actions>
 </form>
