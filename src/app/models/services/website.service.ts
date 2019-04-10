@@ -35,11 +35,11 @@ export class WebsiteService {
       }));
   }
 
-  store(user: User): Observable<User[]> {
-    return this.http.post(`${this.baseUrl}/store`, { data: user })
+  store(assignment: Assignment): Observable<Assignment[]> {
+    return this.http.post(`${this.baseUrl}/store`, { data: assignment })
       .pipe(map((res) => {
-          this.users.push(res['data']);
-          return this.users;
+          this.assignments.push(res['data']);
+          return this.assignments;
         }),
         catchError(this.handleError));
   }
