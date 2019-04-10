@@ -3,7 +3,7 @@ import {Assignment} from '../../../models/assignment';
 import {WebsiteService} from '../../../models/services/website.service';
 
 @Component({
-  selector: 'app-assignments',
+  selector: 'app-submissions',
   templateUrl: './submissions.component.html',
   styleUrls: ['./submissions.component.scss']
 })

@@ -1,9 +1,21 @@
-<!--div *ngIf="error">{{error}}</div>
-<div *ngIf="success">{{success}}</div-->
+<div *ngIf="error">{{error}}</div>
+<div *ngIf="success">{{success}}</div>
 
 <div id="theList">
   <h2>Assignments</h2>
   <ul>
-    <li *ngFor="let item of assignments">{{item.asnTitle}} {{item.asnBody}} {{item.asnDateCreated}} {{item.asnDueDate}}</li>
+    <li *ngFor="let item of assignments"><p>{{item.asnTitle}}</p> <p>{{item.asnBody}}</p> <p> {{item.asnDateCreated}}</p> <p> {{item.asnDueDate}}</p></li>
   </ul>
 </div>
+
+<div id="submitForm">
+  <h2>The form</h2>
+  <form name="submitForm">
+
+    <a routerLink="submissions"> <button class="btn btn-primary btn-sm">Submit Assignment</button></a>
+  </form>
+
+
+</div>
+
+
