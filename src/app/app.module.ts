@@ -9,7 +9,6 @@ import {MatPaginatorModule, MatProgressSpinnerModule,
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatToolbarModule} from '@angular/material/toolbar';
-
 import { AssignmentsComponent } from './views/teachers/assignments/assignments.component';
 import { AnnouncementsComponent } from './views/teachers/announcements/announcements.component';
 import { GradesComponent } from './views/teachers/grades/grades.component';
@@ -18,6 +17,7 @@ import { RegisterComponent } from './views/main/register/register.component';
 import { MainHomepageComponent } from './views/main/main-homepage/main-homepage.component';
 import { TeachersHomepageComponent } from './views/teachers/teachers-homepage/teachers-homepage.component';
 import { NotFoundComponent } from './views/main/not-found/not-found.component';
+
 
 
 @NgModule({
@@ -49,7 +49,9 @@ import { NotFoundComponent } from './views/main/not-found/not-found.component';
     MatPaginatorModule,
     MatProgressSpinnerModule,
     MatSortModule,
-    MatTableModule
+    MatTableModule,
+
+
   ],
   providers: [],
   bootstrap: [AppComponent],

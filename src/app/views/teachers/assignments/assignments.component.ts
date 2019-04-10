@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {MatPaginator, MatTableDataSource} from '@angular/material';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-assignments',
@@ -7,8 +8,16 @@ import {MatPaginator, MatTableDataSource} from '@angular/material';
   styleUrls: ['./assignments.component.scss']
 })
 export class AssignmentsComponent implements OnInit {
+  createAsnForm = new FormGroup( {
+    asnSubject : new FormControl(''),
+    asnTitle: new FormControl(''),
+    asnDateCreated: new FormControl(''),
+    asnDueDate: new FormControl(''),
+
+  });
+
   // dataSource here is temporary, needs to be replaced
-  displayedColumns: string[] = ['asnTitle', 'asnDateCreated', 'asnDueDate'];
+  displayedColumns: string[] = ['asnTitle', 'asnSubject', 'asnDateCreated', 'asnDueDate'];
   dataSource = new MatTableDataSource<TempData>(TEMP_DATA);
   constructor() { }
 
@@ -28,18 +37,20 @@ export class AssignmentsComponent implements OnInit {
     console.log('Your date has been submitted');
   }
 
+
 }
 export interface TempData {
   // declares properties that go into assignments table
   asnTitle: string;
   asnDateCreated: any;
   asnDueDate: any;
+  asnSubject: string;
 
 }
 const TEMP_DATA: TempData[] = [
-  {asnTitle: 'Database', asnDateCreated: '4/5/2019', asnDueDate: '4/15/2019'},
-  {asnTitle: 'JavaScript', asnDateCreated: '3/27/2019', asnDueDate: '4/17/2019'},
-  {asnTitle: 'PHP', asnDateCreated: '4/1/2019', asnDueDate: '4/25/2019'}
+  {asnTitle: 'SQL basic Queries' , asnSubject: 'Database', asnDateCreated: '4/5/2019', asnDueDate: '4/15/2019'},
+  {asnTitle: 'DOM' , asnSubject: 'JavaScript', asnDateCreated: '3/27/2019', asnDueDate: '4/17/2019'},
+  {asnTitle: 'for loops', asnSubject: 'PHP', asnDateCreated: '4/1/2019', asnDueDate: '4/25/2019'}
 
 ];
 
