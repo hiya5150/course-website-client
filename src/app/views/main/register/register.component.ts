@@ -1,22 +1,22 @@
 import { Component, OnInit } from '@angular/core';
-import {Teacher} from '../../../models/teacher';
+import {MatDialogRef} from '@angular/material';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.sass']
+  styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
-name: string;
-username: string;
-password: string;
-  constructor() { }
+  private name: string;
+  private username: string;
+  private password: string;
+  public type: any;
+
+  constructor(public dialogRef: MatDialogRef<RegisterComponent>) { }
 
   ngOnInit() {
   }
+
   onSubmit() {
-    console.log('You are registered!');
   }
-
-
 }

@@ -6,6 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule, MatCheckboxModule, MatDialogModule, MatCardModule, MatInputModule, MatRadioModule} from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatToolbarModule} from '@angular/material/toolbar';
 
 import { AssignmentsComponent } from './views/teachers/assignments/assignments.component';
 import { AnnouncementsComponent } from './views/teachers/announcements/announcements.component';
@@ -27,11 +28,7 @@ import { TeachersHomepageComponent } from './views/teachers/teachers-homepage/te
     LoginComponent,
     RegisterComponent,
     MainHomepageComponent,
-    TeachersHomepageComponent
-
-
-
-
+    TeachersHomepageComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,12 +42,11 @@ import { TeachersHomepageComponent } from './views/teachers/teachers-homepage/te
     ReactiveFormsModule,
     MatCardModule,
     MatInputModule,
-    MatRadioModule
-
-
+    MatRadioModule,
+    MatToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [RegisterComponent]
+  entryComponents: [RegisterComponent, LoginComponent]
 })
 export class AppModule { }
