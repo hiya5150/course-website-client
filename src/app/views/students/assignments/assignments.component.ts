@@ -12,4 +12,7 @@ export class AssignmentsComponent implements OnInit {
   ngOnInit() {
   }
 
+  submitAssignment(f){
+
+  }
 }

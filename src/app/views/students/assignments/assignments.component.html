@@ -1,46 +1,15 @@
-<div class="example-container mat-elevation-z8">
-  <div class="example-loading-shade"
-       *ngIf="isLoadingResults || isRateLimitReached">
-    <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
-    <div class="example-rate-limit-reached" *ngIf="isRateLimitReached">
-      GitHub's API rate limit has been reached. It will be reset in one minute.
-    </div>
-  </div>
 
-  <div class="example-table-container">
 
-    <table mat-table [dataSource]="data" class="example-table"
-           matSort matSortActive="created" matSortDisableClear matSortDirection="desc">
-      <!-- Number Column -->
-      <ng-container matColumnDef="TeacherName">
-        <th mat-header-cell *matHeaderCellDef>#</th>
-        <td mat-cell *matCellDef="let row">{{row.TeacherName}}</td>
-      </ng-container>
+<div class="form-group">
+  <form #f="ngForm" name="theForm" (submit)="submitAssignment(f)">
+  <label>Assignment</label>
+  <mat-form-field>
+    <input matInput placeholder="Submit assignment" name="name" required [(ngModel)]="assignment.name" #assignmentName ="ngModel">
+  </mat-form-field>
 
-      <!-- Title Column -->
-      <ng-container matColumnDef="Date Created">
-        <th mat-header-cell *matHeaderCellDef>Title</th>
-        <td mat-cell *matCellDef="let row">{{row.DateCreated |date}}</td>
-      </ng-container>
-
-      <!-- State Column -->
-      <ng-container matColumnDef="title">
-        <th mat-header-cell *matHeaderCellDef>State</th>
-        <td mat-cell *matCellDef="let row">{{row.title}}</td>
-      </ng-container>
-
-      <!-- Created Column -->
-      <ng-container matColumnDef="created">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
-          Created
-        </th>
-        <td mat-cell *matCellDef="let row">{{row.Announcement}}</td>
-      </ng-container>
-
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
-  </div>
-
-  <mat-paginator [length]="resultsLength" [pageSize]="30"></mat-paginator>
+  <span *ngIf="assignmentName.errors?.required && assignmentName.touched">
+        The assignment name is required
+      </span>
+<button class="btn btn-primary btn-sm" [disabled]="f.invalid"></button>
+</form>
 </div>
