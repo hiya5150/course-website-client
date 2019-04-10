@@ -10,8 +10,6 @@ import {Announcement} from '../../../models/announcement';
 })
 export class AnnouncementsComponent implements OnInit {
   announcements: Announcement[];
-  error = '';
-  success = '';
 
   constructor(private websiteService: WebsiteService) {
 
@@ -23,9 +21,6 @@ export class AnnouncementsComponent implements OnInit {
     this.websiteService.getAnnouncements().subscribe(
       (res: Announcement[]) => {
         this.announcements = res;
-      },
-      (err) => {
-        this.error = err;
       }
     );
   }

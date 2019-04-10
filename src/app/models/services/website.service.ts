@@ -4,6 +4,7 @@ import {BehaviorSubject, config, Observable, throwError} from 'rxjs';
 import {catchError, map} from 'rxjs/operators';
 import {Assignment} from '../assignment';
 import {Announcement} from '../announcement';
+import {Grade} from '../grade';
 
 // import { User } from '@/_models';
 
@@ -14,6 +15,7 @@ export class WebsiteService {
   baseUrl = 'http://localhost/api';
   assignments: Assignment[];
   announcements: Announcement[];
+  grades: Grade[];
 
   constructor(private http: HttpClient) {
     this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
@@ -56,6 +58,15 @@ export class WebsiteService {
       map((res) => {
         this.announcements = res['data'];
         return this.announcements;
+      }),
+      catchError(this.handleError));
+  }
+
+  getGrades(): Observable<Grade[]> {
+    return this.http.get(`${this.baseUrl}/list`).pipe(
+      map((res) => {
+        this.grades = res['data'];
+        return this.grades;
       }),
       catchError(this.handleError));
   }
