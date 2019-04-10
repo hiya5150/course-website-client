@@ -1,3 +1,5 @@
+// this class handles assignments issued by teachers, and viewable by students
+
 export class Assignment {
   asnID: number;
   asnTitle: string;

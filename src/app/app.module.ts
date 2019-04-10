@@ -11,7 +11,6 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import { AssignmentsComponent } from './views/teachers/assignments/assignments.component';
 import { AnnouncementsComponent } from './views/teachers/announcements/announcements.component';
 import { GradesComponent } from './views/teachers/grades/grades.component';
-import { NavbarComponent } from './views/main/navbar/navbar.component';
 import { LoginComponent } from './views/main/login/login.component';
 import { RegisterComponent } from './views/main/register/register.component';
 import { MainHomepageComponent } from './views/main/main-homepage/main-homepage.component';
@@ -24,7 +23,6 @@ import { TeachersHomepageComponent } from './views/teachers/teachers-homepage/te
     AssignmentsComponent,
     AnnouncementsComponent,
     GradesComponent,
-    NavbarComponent,
     LoginComponent,
     RegisterComponent,
     MainHomepageComponent,
@@ -47,6 +45,7 @@ import { TeachersHomepageComponent } from './views/teachers/teachers-homepage/te
   ],
   providers: [],
   bootstrap: [AppComponent],
+  // For Mat Dialog to work, the components used need to be listed here
   entryComponents: [RegisterComponent, LoginComponent]
 })
 export class AppModule { }

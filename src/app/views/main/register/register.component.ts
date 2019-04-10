@@ -8,11 +8,13 @@ import {Router} from '@angular/router';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
+  // properties for name, username, password, and type(whather student or teacher)
   private name: string;
   private username: string;
   private password: string;
   public type: any;
 
+  // MatDialogRef refers to dialog box used for login. router is for using router to redirect page
   constructor(public dialogRef: MatDialogRef<RegisterComponent>, private router: Router) { }
 
   ngOnInit() {
@@ -20,12 +22,6 @@ export class RegisterComponent implements OnInit {
 
   onSubmit() {
     console.log('You are registered.');
-    // this belongs on login page
-    if (this.type === 'teacher') {
-      this.router.navigate(['teachers-homepage']);
-      console.log('You are a teacher.');
-    // } else {
-    //   this.router.navigate(['students-homepage']);
-    }
+
   }
 }

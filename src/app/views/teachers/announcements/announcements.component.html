@@ -1,3 +1,19 @@
+<mat-toolbar>
+  <h2>Welcome to the CMHS Course Website</h2>
+  <span class="toolbar-flex"></span>
+  <a routerLink="/" >Home</a>
+  <span class="toolbar-flex"></span>
+  <a routerLink='assignments'>Assignments</a>
+  <span class="toolbar-flex"></span>
+  <a routerLink='announcements'>Announcements</a>
+  <span class="toolbar-flex"></span>
+  <a routerLink='grades'>Grades</a>
+  <span class="toolbar-flex"></span>
+  <button mat-raised-button (click)="openLogin()">Login</button>
+  <button mat-raised-button (click)="openRegister()">Register</button>
+  <button mat-raised-button (click)="logout()">Logout</button>
+
+</mat-toolbar>
 <p>
   announcements works!
 </p>

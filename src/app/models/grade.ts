@@ -1,3 +1,6 @@
+// this class handles submissions and the grades associated with them
+
+
 export class Grade {
   gradeID: number;
   asnID: number;
