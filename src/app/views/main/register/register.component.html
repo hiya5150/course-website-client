@@ -3,25 +3,25 @@
     <mat-dialog-content>
       <label id="pick-user-type-label">Please choose your user type:  </label> <br>
         <mat-radio-group aria-label="pick-user-type-label">
-          <mat-radio-button value="teacher">Teacher</mat-radio-button>
-          <mat-radio-button value="student">Student</mat-radio-button>
+          <mat-radio-button value="teacher"name="user">Teacher</mat-radio-button> <!-- [(ngModel)]="user.name" -->
+          <mat-radio-button value="student" name="user">Student</mat-radio-button> <!-- [(ngModel)]="user.name" -->
         </mat-radio-group>
         <p>
         <mat-form-field appearance="outline">
         <mat-label>Full Name</mat-label>
-          <input matInput [(ngModel)]="name" name="name">
+          <input matInput [(ngModel)]="name" name="name" required>
         </mat-form-field>
         </p>
         <p>
         <mat-form-field appearance="outline">
         <mat-label>Username</mat-label>
-          <input matInput [(ngModel)]="username" name="username">
+          <input matInput [(ngModel)]="username" name="username" required>
         </mat-form-field>
         </p>
         <p>
         <mat-form-field appearance="outline">
         <mat-label>Password</mat-label>
-          <input matInput [(ngModel)]="password" name="password">
+          <input matInput [(ngModel)]="password" name="password" required>
         </mat-form-field>
         </p>
         </mat-dialog-content>

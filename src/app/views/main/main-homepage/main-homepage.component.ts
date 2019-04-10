@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {MatDialog, MatDialogConfig} from '@angular/material';
 import {RegisterComponent} from '../register/register.component';
+import {LoginComponent} from '../login/login.component';
 
 @Component({
   selector: 'app-main-homepage',
@@ -19,6 +20,7 @@ export class MainHomepageComponent implements OnInit {
 
     this.dialog.open(RegisterComponent, dialogConfig);
   }
+
 
   ngOnInit() {
   }

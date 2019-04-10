@@ -27,7 +27,7 @@ import { TeachersHomepageComponent } from './views/teachers/teachers-homepage/te
     LoginComponent,
     RegisterComponent,
     MainHomepageComponent,
-    TeachersHomepageComponent
+    TeachersHomepageComponent,
 
 
 
@@ -51,6 +51,6 @@ import { TeachersHomepageComponent } from './views/teachers/teachers-homepage/te
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [RegisterComponent]
+  entryComponents: [RegisterComponent, LoginComponent]
 })
 export class AppModule { }
