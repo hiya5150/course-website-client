@@ -9,8 +9,7 @@ import {WebsiteService} from '../../../models/services/website.service';
 })
 export class AssignmentsComponent implements OnInit {
   assignments: Assignment[];
-  error = '';
-  success = '';
+
   constructor(private websiteService: WebsiteService) { }
 
   ngOnInit() {
@@ -20,9 +19,6 @@ export class AssignmentsComponent implements OnInit {
     this.websiteService.getAssignments().subscribe(
       (res: Assignment[]) => {
         this.assignments = res;
-      },
-      (err) => {
-        this.error = err;
       }
     );
   }

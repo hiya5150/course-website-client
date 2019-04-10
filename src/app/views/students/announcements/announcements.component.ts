@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {Assignment} from '../../../models/assignment';
+import {WebsiteService} from '../../../models/services/website.service';
+import {Announcement} from '../../../models/announcement';
 
 @Component({
   selector: 'app-announcements',
@@ -6,10 +9,24 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./announcements.component.scss']
 })
 export class AnnouncementsComponent implements OnInit {
+  announcements: Announcement[];
+  error = '';
+  success = '';
 
-  constructor() { }
+  constructor(private websiteService: WebsiteService) {
+
+  }
 
   ngOnInit() {
   }
-
+  getAnnouncements(): void {
+    this.websiteService.getAnnouncements().subscribe(
+      (res: Announcement[]) => {
+        this.announcements = res;
+      },
+      (err) => {
+        this.error = err;
+      }
+    );
+  }
 }

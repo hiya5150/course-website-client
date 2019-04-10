@@ -3,6 +3,7 @@ import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import {BehaviorSubject, config, Observable, throwError} from 'rxjs';
 import {catchError, map} from 'rxjs/operators';
 import {Assignment} from '../assignment';
+import {Announcement} from '../announcement';
 
 // import { User } from '@/_models';
 
@@ -12,6 +13,7 @@ export class WebsiteService {
   public currentUser: Observable<User>;
   baseUrl = 'http://localhost/api';
   assignments: Assignment[];
+  announcements: Announcement[];
 
   constructor(private http: HttpClient) {
     this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
@@ -49,6 +51,14 @@ export class WebsiteService {
       catchError(this.handleError));
   }
 
+  getAnnouncements(): Observable<Announcement[]> {
+    return this.http.get(`${this.baseUrl}/list`).pipe(
+      map((res) => {
+        this.announcements = res['data'];
+        return this.announcements;
+      }),
+      catchError(this.handleError));
+  }
   logout() {
     // remove user from local storage to log user out
     localStorage.removeItem('currentUser');
