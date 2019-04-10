@@ -1,38 +1,22 @@
 import { Component, OnInit } from '@angular/core';
-import {Teacher} from '../../../models/teacher';
+import {MatDialogRef} from '@angular/material';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.sass']
+  styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
-name: string;
-username: string;
-password: string;
-// user: any;
-//   options = [
-//     {
-//       name: 'teacher',
-//       value: ''
-//     },
-//
-//     {
-//       name: 'teacher',
-//       value: ''
-//
-//     }];
+  private name: string;
+  private username: string;
+  private password: string;
+  public type: any;
 
-  constructor() { }
+  constructor(public dialogRef: MatDialogRef<RegisterComponent>) { }
 
   ngOnInit() {
   }
-    onSubmit() {
 
-   console.log('You are a teacher');
-
-
+  onSubmit() {
   }
-
-
 }
