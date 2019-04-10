@@ -2,22 +2,23 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import {BehaviorSubject, config, Observable, throwError} from 'rxjs';
 import {catchError, map} from 'rxjs/operators';
+import {Assignment} from '../assignment';
 
-import { User } from '@/_models';
+// import { User } from '@/_models';
 
 @Injectable({ providedIn: 'root' })
 export class WebsiteService {
   private currentUserSubject: BehaviorSubject<User>;
   public currentUser: Observable<User>;
   baseUrl = 'http://localhost/api';
-  users: User[];
+  assignments: Assignment[];
 
   constructor(private http: HttpClient) {
     this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
     this.currentUser = this.currentUserSubject.asObservable();
   }
   login(username: string, password: string) {
-    return this.http.post<any>(`${config.apiUrl}/users/authenticate`, { username, password })
+    return this.http.post<any>(`${config.baseUrl}/users/authenticate`, { username, password })
       .pipe(map(user => {
         // login successful if there's a jwt token in the response
         if (user && user.token) {
@@ -37,6 +38,15 @@ export class WebsiteService {
           return this.users;
         }),
         catchError(this.handleError));
+  }
+
+  getAssignments(): Observable<Assignment[]> {
+    return this.http.get(`${this.baseUrl}/list`).pipe(
+      map((res) => {
+        this.assignments = res['data'];
+        return this.assignments;
+      }),
+      catchError(this.handleError));
   }
 
   logout() {

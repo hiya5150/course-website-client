@@ -8,32 +8,23 @@ import {WebsiteService} from '../../../models/services/website.service';
   styleUrls: ['./assignments.component.scss']
 })
 export class AssignmentsComponent implements OnInit {
- assignments: Assignment[];
+  assignments: Assignment[];
   error = '';
   success = '';
-  assignment = new Assignment();
-
   constructor(private websiteService: WebsiteService) { }
 
   ngOnInit() {
-
   }
 
-  submitAssignment(f) {
-    this.error = '';
-    this.success = '';
-
-    this.websiteService.store(this.assignment).subscribe((res: Assignment[]) => {
-        // update the list of cars
+  getAssignments(): void {
+    this.websiteService.getAssignments().subscribe(
+      (res: Assignment[]) => {
         this.assignments = res;
-
-        // inform user
-        this.success = 'created successfully';
-
-        // reset the form
-        f.reset();
       },
-      (err) => this.error = err
+      (err) => {
+        this.error = err;
+      }
     );
   }
+
 }

@@ -16,8 +16,9 @@ import {
 import {FormsModule} from '@angular/forms';
 import { GradesComponent } from './views/students/grades/grades.component';
 import { StudentHomepageComponent } from './views/students/student-homepage/student-homepage.component';
+import { SubmissionsComponent } from './views/students/submissions/submissions.component';
+import { AnnouncementsComponent } from './views/students/announcements/announcements.component';
 import { AssignmentsComponent } from './views/students/assignments/assignments.component';
-import { AnnouncementsComponent } from './view/students/announcements/announcements.component';
 
 @NgModule({
   declarations: [
@@ -25,8 +26,9 @@ import { AnnouncementsComponent } from './view/students/announcements/announceme
     RegisterComponent,
     GradesComponent,
     StudentHomepageComponent,
-    AssignmentsComponent,
-    AnnouncementsComponent
+    SubmissionsComponent,
+    AnnouncementsComponent,
+    AssignmentsComponent
   ],
   imports: [
     BrowserModule,
