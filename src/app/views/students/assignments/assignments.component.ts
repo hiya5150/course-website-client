@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Assignment} from '../../../models/assignment';
+import {WebsiteService} from '../../../models/services/website.service';
 
 @Component({
   selector: 'app-assignments',
@@ -10,20 +11,21 @@ export class AssignmentsComponent implements OnInit {
  assignments: Assignment[];
   error = '';
   success = '';
-  assignment = new Assignment('', 0);
+  assignment = new Assignment();
 
-  constructor() { }
+  constructor(private websiteService: WebsiteService) { }
 
   ngOnInit() {
+
   }
 
-  submitAssignment(f){
+  submitAssignment(f) {
     this.error = '';
     this.success = '';
 
-    this.carService.store(this.car).subscribe((res: Car[]) => {
+    this.websiteService.store(this.assignment).subscribe((res: Assignment[]) => {
         // update the list of cars
-        this.cars = res;
+        this.assignments = res;
 
         // inform user
         this.success = 'created successfully';
