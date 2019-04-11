@@ -1,13 +1,13 @@
 <mat-toolbar>
   <h2>Welcome to the CMHS Course Website</h2>
   <span class="toolbar-flex"></span>
-  <a routerLink='/main-homepage' >Home</a>
+  <a routerLink='/teachers-homepage' >Home</a>
   <span class="toolbar-flex"></span>
-  <a routerLink='/assignments'>Assignments</a>
+  <a routerLink='/teachers-assignments'>Assignments</a>
   <span class="toolbar-flex"></span>
-  <a routerLink='/announcements'>Announcements</a>
+  <a routerLink='/teachers-announcements'>Announcements</a>
   <span class="toolbar-flex"></span>
-  <a routerLink='/grades'>Grades</a>
+  <a routerLink='/teachers-grades'>Grades</a>
   <span class="toolbar-flex"></span>
 </mat-toolbar>
 <div *ngFor="let asn of assignments">
@@ -18,17 +18,19 @@
   </p>
 </div>
 
+<button mat-stroked-button (click)="createAsn()">Create New Assignment</button>
+
 <div class="mat-elevation-z8">
   <h3 matColumnDef="title">List of Assignments</h3>
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" *ngIf="dataSource">
+  <table mat-table [dataSource]="dataSource">
     <ng-container matColumnDef="asnSubject">
       <th mat-header-cell *matHeaderCellDef> Subject </th>
       <td mat-cell *matCellDef="let data"> {{data.asnSubject}} </td>
     </ng-container>
-  <ng-container matColumnDef="asnTitle">
-    <th mat-header-cell *matHeaderCellDef> Title </th>
-    <td mat-cell *matCellDef="let data"> {{data.asnTitle}} </td>
-  </ng-container>
+    <ng-container matColumnDef="asnTitle">
+      <th mat-header-cell *matHeaderCellDef> Title </th>
+      <td mat-cell *matCellDef="let data"> {{data.asnTitle}} </td>
+    </ng-container>
     <ng-container matColumnDef="asnDateCreated">
       <th mat-header-cell *matHeaderCellDef> Date Created </th>
       <td mat-cell *matCellDef="let data"> {{data.asnDateCreated}} </td>
@@ -37,27 +39,44 @@
       <th mat-header-cell *matHeaderCellDef> Date Due </th>
       <td mat-cell *matCellDef="let data"> {{data.asnDueDate}} </td>
     </ng-container>
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
 
   <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
 
-  <button mat-stroked-button (click)="createAsn()">Create New Assignment</button>
+
 </div>
+<!--*ngIf="createAsn()"-->
+<div>
+  <form (ngSubmit)="onSubmit()">
+    <h2>Create Assignment</h2>
+    <p>
+      <mat-form-field appearance="fill">
+        <mat-label>Name of Subject</mat-label>
+        <input matInput [(ngModel)]="asnSubject" name="asnSubject" required>
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field appearance="fill">
+        <mat-label>Name of Assignment</mat-label>
+        <input matInput [(ngModel)]="asnTitle" name="asnTitle" required>
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field appearance="fill">
+        <mat-label>Date</mat-label>
+        <input matInput [(ngModel)]="asnDateCreated" name="asnDateCreated" required>
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field appearance="fill">
+        <mat-label>Due Date</mat-label>
+        <input matInput [(ngModel)]="asnDueDate" name="asnDueDate" required>
+      </mat-form-field>
+    </p>
 
-<!--<div *ngIf="createAsn()">-->
-<!--  <form [formGroup]="createAsn" (ngSubmit)="onSubmit()">-->
-<!--      <h2>Create Assignment</h2>-->
-<!--    <label>Name of Assignment</label>-->
-<!--    <input type="text" formControlname="asnTitle">-->
-<!--    <label>Name of Assignment</label>-->
-<!--    <input type="text" formControlname="asnSubject">-->
-
-<!--  </form>-->
-
-
-<!--</div>-->
-
+  </form>
+</div>
 
 
