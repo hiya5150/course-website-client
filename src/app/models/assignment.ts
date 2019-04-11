@@ -1,5 +1,8 @@
+<<<<<<< HEAD
+=======
 // this class handles assignments issued by teachers, and viewable by students
 
+>>>>>>> 031322f3bd6204525b6006ee346add7ca5f9c58a
 export class Assignment {
   asnID: number;
   asnTitle: string;
@@ -8,7 +11,10 @@ export class Assignment {
   asnDueDate: string;
   asnGrade: number;
   teacherID: number;
+<<<<<<< HEAD
+=======
   asnSubject: string;
+>>>>>>> 031322f3bd6204525b6006ee346add7ca5f9c58a
 
 
   constructor(args?) {
@@ -20,7 +26,10 @@ export class Assignment {
       this.asnDueDate = args.asn_due_date;
       this.asnGrade = args.asn_grade;
       this.teacherID = args.teacher_id;
+<<<<<<< HEAD
+=======
       this.asnSubject = args.asnSubject;
+>>>>>>> 031322f3bd6204525b6006ee346add7ca5f9c58a
     }
   }
 }
