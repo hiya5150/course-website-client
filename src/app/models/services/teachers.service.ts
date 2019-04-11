@@ -19,7 +19,7 @@ export class TeachersService {
   private httpOptions = {
     headers: new HttpHeaders({
       //  this is hardcoded for now going to need to replace
-      Authorization: '02c0d08e5fb6e221e497676ad902fdbb853dd578a1074337512fbd37204d8e56'
+      Authorization: '897d56cfa740aa39eb18f386f368a9b401af07a74df62eedae33b15a865244da'
     })
   };
   constructor(private http: HttpClient) { }
