@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {MatPaginator, MatTableDataSource} from '@angular/material';
-
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-assignments',
@@ -8,7 +8,14 @@ import {MatPaginator, MatTableDataSource} from '@angular/material';
   styleUrls: ['./teachers-assignments.component.scss']
 })
 export class TeachersAssignmentsComponent implements OnInit {
+  createAsnForm = new FormGroup( {
+    asnSubject : new FormControl(''),
+    asnTitle: new FormControl(''),
+    asnDateCreated: new FormControl(''),
+    asnDueDate: new FormControl(''),
 
+
+  });
 
   // dataSource here is temporary, needs to be replaced
   displayedColumns: string[] = ['asnTitle', 'asnSubject', 'asnDateCreated', 'asnDueDate'];
