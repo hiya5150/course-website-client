@@ -3,10 +3,10 @@ import {Assignment} from '../../../models/assignment';
 
 @Component({
   selector: 'app-submissions',
-  templateUrl: './submissions.component.html',
-  styleUrls: ['./submissions.component.scss']
+  templateUrl: './students-submissions.component.html',
+  styleUrls: ['./students-submissions.component.scss']
 })
-export class SubmissionsComponent implements OnInit {
+export class StudentsSubmissionsComponent implements OnInit {
  assignments: Assignment[];
   error = '';
   success = '';

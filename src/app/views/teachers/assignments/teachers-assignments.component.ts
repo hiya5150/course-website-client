@@ -4,10 +4,10 @@ import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-assignments',
-  templateUrl: './assignments.component.html',
-  styleUrls: ['./assignments.component.scss']
+  templateUrl: './teachers-assignments.component.html',
+  styleUrls: ['./teachers-assignments.component.scss']
 })
-export class AssignmentsComponent implements OnInit {
+export class TeachersAssignmentsComponent implements OnInit {
   createAsnForm = new FormGroup( {
     asnSubject : new FormControl(''),
     asnTitle: new FormControl(''),

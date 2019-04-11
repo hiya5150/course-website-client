@@ -3,10 +3,10 @@ import {Grade} from '../../../models/grade';
 
 @Component({
   selector: 'app-grades',
-  templateUrl: './grades.component.html',
-  styleUrls: ['./grades.component.scss']
+  templateUrl: './students-grades.component.html',
+  styleUrls: ['./students-grades.component.scss']
 })
-export class GradesComponent implements OnInit {
+export class StudentsGradesComponent implements OnInit {
   grades: Grade[];
   assignments: any;
   constructor() { }
