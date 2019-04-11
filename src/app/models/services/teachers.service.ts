@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
 
 import {Announcement} from '../announcement';
 import {Assignment} from '../assignment';
-import {Grade} from "../grade";
+import {Grade} from '../grade';
 
 @Injectable({
   providedIn: 'root'
@@ -23,11 +23,16 @@ export class TeachersService {
     })
   };
   constructor(private http: HttpClient) { }
-
+// Announcement http requests
   getAnnouncements(): Observable<Announcement[]> {
     return this.http.get<Announcement[]>(`${this.baseUrl}Announcements/viewAnnouncements`, this.httpOptions).pipe(
       map(result => (result as any[]).map(item => new Announcement(item)))
      );
+  }
+  deleteAnnouncement(annID: number): Observable<any> {
+    const params = new HttpParams().set('annID', annID.toString());
+
+    return this.http.delete(`${this.baseUrl}Announcements/deleteAnnouncement/${annID}`, this.httpOptions);
   }
 
   viewAssignments(): Observable<Assignment[]> {
