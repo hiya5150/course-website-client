@@ -29,6 +29,7 @@ import {NotFoundComponent} from './views/main/not-found/not-found.component';
 import {TeachersAnnouncementsComponent} from './views/teachers/announcements/teachers-announcements.component';
 import {TeachersAssignmentsComponent} from './views/teachers/assignments/teachers-assignments.component';
 import {TeachersGradesComponent} from './views/teachers/grades/teachers-grades.component';
+import {HttpClientModule} from '@angular/common/http';
 import { TeachersAssignmentComponent } from './views/teachers/assignment/teachers-assignment.component';
 
 @NgModule({
@@ -63,7 +64,8 @@ import { TeachersAssignmentComponent } from './views/teachers/assignment/teacher
     MatToolbarModule,
     MatRadioModule,
     MatDialogModule,
-    MatButtonModule
+    MatButtonModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -17,12 +17,19 @@ export class TeachersAssignmentsComponent implements OnInit {
     asnDateCreated: new FormControl(''),
     asnDueDate: new FormControl(''),
 
+
   });
 
   // dataSource here is temporary, needs to be replaced
   displayedColumns: string[] = ['asnTitle', 'asnSubject', 'asnDateCreated', 'asnDueDate'];
   dataSource = new MatTableDataSource<TempData>(TEMP_DATA);
   constructor(private teacherService: TeachersService) { }
+
+  // declares properties that go into assignments table
+  asnTitle: string;
+  asnDateCreated: any;
+  asnDueDate: any;
+  asnSubject: string;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
