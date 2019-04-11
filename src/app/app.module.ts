@@ -13,6 +13,7 @@ import {
   MatStepperModule,
   MatTableModule
 } from '@angular/material';
+import {MatToolbarModule} from '@angular/material/toolbar';
 import {FormsModule} from '@angular/forms';
 import { GradesComponent } from './views/students/grades/grades.component';
 import { StudentHomepageComponent } from './views/students/student-homepage/student-homepage.component';
@@ -40,7 +41,8 @@ import { AssignmentsComponent } from './views/students/assignments/assignments.c
     FormsModule,
     MatTableModule,
     MatProgressSpinnerModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

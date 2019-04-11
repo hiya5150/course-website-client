@@ -10,35 +10,35 @@ import {Grade} from '../grade';
 
 @Injectable({ providedIn: 'root' })
 export class WebsiteService {
-  private currentUserSubject: BehaviorSubject<User>;
-  public currentUser: Observable<User>;
+  private currentUserSubject: BehaviorSubject<any>;
+  public currentUser: Observable<any>;
   baseUrl = 'http://localhost/api';
   assignments: Assignment[];
   announcements: Announcement[];
   grades: Grade[];
 
   constructor(private http: HttpClient) {
-    this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
+    this.currentUserSubject = new BehaviorSubject<any>(JSON.parse(localStorage.getItem('currentUser')));
     this.currentUser = this.currentUserSubject.asObservable();
   }
   login(username: string, password: string) {
-    return this.http.post<any>(`${config.baseUrl}/users/authenticate`, { username, password })
-      .pipe(map(user => {
-        // login successful if there's a jwt token in the response
-        if (user && user.token) {
-          // store user details and jwt token in local storage to keep user logged in between page refreshes
-          localStorage.setItem('currentUser', JSON.stringify(user));
-          this.currentUserSubject.next(user);
-        }
-
-        return user;
-      }));
+    // return this.http.post<any>(`${config.baseUrl}/users/authenticate`, { username, password })
+    //   .pipe(map(user => {
+    //     // login successful if there's a jwt token in the response
+    //     if (user && user.token) {
+    //       // store user details and jwt token in local storage to keep user logged in between page refreshes
+    //       localStorage.setItem('currentUser', JSON.stringify(user));
+    //       this.currentUserSubject.next(user);
+    //     }
+    //
+    //     return user;
+    //   }));
   }
 
   store(assignment: Assignment): Observable<Assignment[]> {
     return this.http.post(`${this.baseUrl}/store`, { data: assignment })
       .pipe(map((res) => {
-          this.assignments.push(res['data']);
+         // this.assignments.push();
           return this.assignments;
         }),
         catchError(this.handleError));
@@ -47,7 +47,7 @@ export class WebsiteService {
   getAssignments(): Observable<Assignment[]> {
     return this.http.get(`${this.baseUrl}/list`).pipe(
       map((res) => {
-        this.assignments = res['data'];
+       // this.assignments = res['data'];
         return this.assignments;
       }),
       catchError(this.handleError));
@@ -56,7 +56,7 @@ export class WebsiteService {
   getAnnouncements(): Observable<Announcement[]> {
     return this.http.get(`${this.baseUrl}/list`).pipe(
       map((res) => {
-        this.announcements = res['data'];
+       // this.announcements = res['data'];
         return this.announcements;
       }),
       catchError(this.handleError));
@@ -65,7 +65,7 @@ export class WebsiteService {
   getGrades(): Observable<Grade[]> {
     return this.http.get(`${this.baseUrl}/list`).pipe(
       map((res) => {
-        this.grades = res['data'];
+      //  this.grades = res['data'];
         return this.grades;
       }),
       catchError(this.handleError));

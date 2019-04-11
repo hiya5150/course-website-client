@@ -13,3 +13,4 @@ export class Teacher {
       this.teacherPassword = args.teacher_password;
     }
   }
+}

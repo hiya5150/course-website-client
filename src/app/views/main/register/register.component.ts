@@ -3,8 +3,6 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 
-import { AlertService, UserService, AuthenticationService } from '../../../models/services/website.service';
-
 @Component({templateUrl: 'register.component.html'})
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
@@ -14,14 +12,12 @@ export class RegisterComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private authenticationService: AuthenticationService,
-    private userService: UserService,
-    private alertService: AlertService
+
   ) {
     // redirect to home if already logged in
-    if (this.authenticationService.currentUserValue) {
-      this.router.navigate(['/']);
-    }
+    // if (this.authenticationService.currentUserValue) {
+    //   this.router.navigate(['/']);
+    // }
   }
 
   ngOnInit() {
@@ -45,16 +41,17 @@ export class RegisterComponent implements OnInit {
     }
 
     this.loading = true;
-    this.userService.register(this.registerForm.value)
-      .pipe(first())
-      .subscribe(
-        data => {
-          this.alertService.success('Registration successful', true);
-          this.router.navigate(['/login']);
-        },
-        error => {
-          this.alertService.error(error);
-          this.loading = false;
-        });
+    // this.userService.register(this.registerForm.value)
+    //   .pipe(first())
+    //   .subscribe(
+    //     data => {
+    //       this.alertService.success('Registration successful', true);
+    //       this.router.navigate(['/login']);
+    //     },
+    //     error => {
+    //       this.alertService.error(error);
+    //       this.loading = false;
+    //     });
+    //
   }
 }
