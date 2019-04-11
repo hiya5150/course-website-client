@@ -15,7 +15,7 @@
 <button mat-stroked-button (click)="createAsn()">Create New Assignment</button>
 
 <div class="mat-elevation-z8">
-  <h3 matColumnDef="title">List of Assignments</h3>
+  <h3 matColumnDef="title">Assignments</h3>
   <table mat-table [dataSource]="assignments">
     <ng-container matColumnDef="asnSubject">
       <th mat-header-cell *matHeaderCellDef> Subject </th>
@@ -27,7 +27,7 @@
     </ng-container>
     <ng-container matColumnDef="asnDateCreated">
       <th mat-header-cell *matHeaderCellDef> Date Created </th>
-      <td mat-cell *matCellDef="let asn"> {{asnDateCreated}} </td>
+      <td mat-cell *matCellDef="let asn"> {{asn.asnDateCreated}} </td>
     </ng-container>
     <ng-container matColumnDef="asnDueDate">
       <th mat-header-cell *matHeaderCellDef> Date Due </th>
@@ -70,6 +70,9 @@
         <input matInput [(ngModel)]="asnDueDate" name="asnDueDate" required>
       </mat-form-field>
     </p>
+
+    <button mat-stroked-button (click)="submitAsn()">Submit Assignment</button>
+
 
   </form>
 </div>

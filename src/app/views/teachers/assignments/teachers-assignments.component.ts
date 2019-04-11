@@ -35,6 +35,10 @@ export class TeachersAssignmentsComponent implements OnInit {
 
   }
 
+  submitAsn(): void {
+
+  }
+
   onSubmit() {
 
     console.log('Your date has been submitted');
