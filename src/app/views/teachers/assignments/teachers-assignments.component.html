@@ -10,6 +10,13 @@
   <a routerLink='/teachers-grades'>Grades</a>
   <span class="toolbar-flex"></span>
 </mat-toolbar>
+<div *ngFor="let asn of assignments">
+  <p>
+    {{asn.asnTitle}}<br>
+    {{asn.asnBody}}<br>
+    {{asn.teacherName}}
+  </p>
+</div>
 
 <button mat-stroked-button (click)="createAsn()">Create New Assignment</button>
 
