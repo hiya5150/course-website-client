@@ -5,7 +5,8 @@ import {map} from 'rxjs/operators';
 
 
 import {Announcement} from '../announcement';
-import {Teacher} from '../teacher';
+import {Assignment} from '../assignment';
+import {Grade} from "../grade";
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,8 @@ import {Teacher} from '../teacher';
 export class TeachersService {
   baseUrl = 'http://localhost/course-website-server/teachers/';
   announcements: Announcement[];
+  assignments: Assignment[];
+  submissions: Grade[];
   private httpOptions = {
     headers: new HttpHeaders({
       //  this is hardcoded for now going to need to replace
@@ -25,5 +28,17 @@ export class TeachersService {
     return this.http.get<Announcement[]>(`${this.baseUrl}Announcements/viewAnnouncements`, this.httpOptions).pipe(
       map(result => (result as any[]).map(item => new Announcement(item)))
      );
+  }
+
+  viewAssignments(): Observable<Assignment[]> {
+    return this.http.get<Assignment[]>(`${this.baseUrl}Assignments/viewAssignments`, this.httpOptions).pipe(
+      map(result => (result as any[]).map(item => new Assignment(item)))
+    );
+  }
+
+  viewSubmissions(): Observable<Grade[]> {
+    return this.http.get<Grade[]>(`${this.baseUrl}Grades/viewAllSubmissionsOneAssignment`, this.httpOptions).pipe(
+      map(result => (result as any[]).map(item => new Grade(item)))
+    );
   }
 }
