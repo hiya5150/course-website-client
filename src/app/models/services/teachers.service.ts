@@ -19,7 +19,7 @@ export class TeachersService {
   private httpOptions = {
     headers: new HttpHeaders({
       //  this is hardcoded for now going to need to replace
-      Authorization: '0157e20065113aedf64f06e03a3084e5e3a678000fc1a401c30e454dfb2660d6'
+      Authorization: '02c0d08e5fb6e221e497676ad902fdbb853dd578a1074337512fbd37204d8e56'
     })
   };
   constructor(private http: HttpClient) { }
@@ -41,8 +41,9 @@ export class TeachersService {
     );
   }
 
-  viewSubmissions(): Observable<Grade[]> {
-    return this.http.get<Grade[]>(`${this.baseUrl}Grades/viewAllSubmissionsOneAssignment`, this.httpOptions).pipe(
+  viewSubmissions(asnID: number): Observable<Grade[]> {
+    const params = new HttpParams().set('asnID', asnID.toString());
+    return this.http.get<Grade[]>(`${this.baseUrl}Grades/viewAllSubmissionsOneAssignment/${asnID}`, this.httpOptions).pipe(
       map(result => (result as any[]).map(item => new Grade(item)))
     );
   }

@@ -11,6 +11,8 @@
   <span class="toolbar-flex"></span>
 
 </mat-toolbar>
-<p>
-  grades works!
-</p>
+<div *ngFor="let sub of submissions">
+  <p>
+    {{sub.submission}}
+  </p>
+</div>

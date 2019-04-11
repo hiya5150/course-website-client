@@ -18,7 +18,7 @@ export class TeachersAnnouncementsComponent implements OnInit {
   }
   getAnnouncements(): void {
     this.teacherService.getAnnouncements().subscribe(
-      (res: Announcement[]) => {
+      (res) => {
         this.announcements = res;
       }
     );

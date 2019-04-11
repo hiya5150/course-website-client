@@ -49,7 +49,7 @@ export class TeachersAssignmentsComponent implements OnInit {
   }
   getAssignments(): void {
     this.teacherService.viewAssignments().subscribe(
-      (res: Assignment[]) => {
+      (res) => {
         this.assignments = res;
       }
     );
