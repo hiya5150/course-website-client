@@ -7,10 +7,12 @@ import {AnnouncementsComponent} from './views/students/announcements/announcemen
 import {GradesComponent} from './views/students/grades/grades.component';
 import {StudentHomepageComponent} from './views/students/student-homepage/student-homepage.component';
 import {TeachersHomepageComponent} from './views/teachers/teachers-homepage/teachers-homepage.component';
+import {MainHomepageComponent} from './views/main/main-homepage/main-homepage.component';
 
 
 
 const routes: Routes = [
+  { path: '', pathMatch: 'full', component: MainHomepageComponent},
   {path: 'teachers-homepage', component: TeachersHomepageComponent},
   {path: 'teachers-homepage', component: TeachersHomepageComponent},
   {path: 'assignments', component: AssignmentsComponent},

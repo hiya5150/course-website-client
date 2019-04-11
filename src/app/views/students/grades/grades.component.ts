@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Announcement} from '../../../models/announcement';
 import {Grade} from '../../../models/grade';
-import {WebsiteService} from '../../../models/services/website.service';
 
 @Component({
   selector: 'app-grades',
@@ -10,15 +8,12 @@ import {WebsiteService} from '../../../models/services/website.service';
 })
 export class GradesComponent implements OnInit {
   grades: Grade[];
-  constructor(private websiteService: WebsiteService) { }
+  assignments: any;
+  constructor() { }
 
   ngOnInit() {
   }
   getAnnouncements(): void {
-    this.websiteService.getGrades().subscribe(
-      (res: Grade[]) => {
-        this.grades = res;
-      }
-    );
+
   }
 }

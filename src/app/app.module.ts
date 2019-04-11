@@ -5,9 +5,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
+  MatButtonModule,
+  MatDialogModule,
   MatInputModule,
   MatPaginatorModule,
-  MatProgressSpinnerModule,
+  MatProgressSpinnerModule, MatRadioModule,
   MatSelectModule,
   MatStepperModule,
   MatTableModule
@@ -19,15 +21,25 @@ import { StudentHomepageComponent } from './views/students/student-homepage/stud
 import { SubmissionsComponent } from './views/students/submissions/submissions.component';
 import { AnnouncementsComponent } from './views/students/announcements/announcements.component';
 import { AssignmentsComponent } from './views/students/assignments/assignments.component';
+import {TeachersHomepageComponent} from './views/teachers/teachers-homepage/teachers-homepage.component';
+import {MainHomepageComponent} from './views/main/main-homepage/main-homepage.component';
+import {LoginComponent} from './views/main/login/login.component';
+import {RegisterComponent} from './views/main/register/register.component';
+import {NotFoundComponent} from './views/main/not-found/not-found.component';
 
 @NgModule({
   declarations: [
+    MainHomepageComponent,
+    LoginComponent,
+    RegisterComponent,
+    NotFoundComponent,
     AppComponent,
     GradesComponent,
     StudentHomepageComponent,
     SubmissionsComponent,
     AnnouncementsComponent,
-    AssignmentsComponent
+    AssignmentsComponent,
+    TeachersHomepageComponent
   ],
   imports: [
     BrowserModule,
@@ -40,9 +52,13 @@ import { AssignmentsComponent } from './views/students/assignments/assignments.c
     MatTableModule,
     MatProgressSpinnerModule,
     MatPaginatorModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatRadioModule,
+    MatDialogModule,
+    MatButtonModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [RegisterComponent, LoginComponent]
 })
 export class AppModule { }
