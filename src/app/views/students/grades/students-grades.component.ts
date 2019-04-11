@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Grade} from '../../../models/grade';
+import {StudentsService} from '../../../models/services/students.service';
 
 @Component({
   selector: 'app-grades',
@@ -9,11 +10,11 @@ import {Grade} from '../../../models/grade';
 export class StudentsGradesComponent implements OnInit {
   grades: Grade[];
   assignments: any;
-  constructor() { }
+  constructor(private studentsService: StudentsService) { }
 
   ngOnInit() {
   }
-  getAnnouncements(): void {
-
+  getGrades(): void {
+    this.studentsService.getAssignments().subscribe((res) => console.log(res) );
   }
 }

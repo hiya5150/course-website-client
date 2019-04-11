@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Assignment} from '../../../models/assignment';
+import {StudentsService} from '../../../models/services/students.service';
 
 @Component({
   selector: 'app-assignments',
@@ -7,15 +8,16 @@ import {Assignment} from '../../../models/assignment';
   styleUrls: ['./students-assignments.component.scss']
 })
 export class StudentsAssignmentsComponent implements OnInit {
-  assignments: Assignment[];
+  assignment: any;
 
-  constructor() { }
+  constructor(private studentsService: StudentsService) { }
 
   ngOnInit() {
+    this.getAssignments();
   }
 
   getAssignments(): void {
-
+    this.studentsService.getAssignments().subscribe((res) => console.log(res) );
   }
 
 }
