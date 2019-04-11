@@ -1,34 +1,34 @@
-<form>
-  <h2 mat-dialog-title>Register</h2>
+<form (ngSubmit)="onSubmit()">
     <mat-dialog-content>
-      <label id="pick-user-type-label">Please choose your user type:  </label>
-        <mat-radio-group aria-label="pick-user-type-label">
+      <h2 mat-dialog-title>Register</h2>
+      <label id="pick-user-type-label">Please choose your user type: </label>
+        <mat-radio-group aria-label="pick-user-type-label" [(ngModel)]="type" name="type">
           <mat-radio-button value="teacher">Teacher</mat-radio-button>
           <mat-radio-button value="student">Student</mat-radio-button>
         </mat-radio-group>
         <p>
         <mat-form-field appearance="outline">
         <mat-label>Full Name</mat-label>
-          <input matInput [(ngModel)]="name" name="name">
+          <input matInput [(ngModel)]="name" name="name" required>
         </mat-form-field>
         </p>
         <p>
         <mat-form-field appearance="outline">
         <mat-label>Username</mat-label>
-          <input matInput [(ngModel)]="username" name="username">
+          <input matInput [(ngModel)]="username" name="username" required>
         </mat-form-field>
         </p>
         <p>
         <mat-form-field appearance="outline">
         <mat-label>Password</mat-label>
-          <input matInput [(ngModel)]="password" name="password">
+          <input matInput [(ngModel)]="password" name="password" required>
         </mat-form-field>
         </p>
-        </mat-dialog-content>
+      </mat-dialog-content>
 
         <mat-dialog-actions>
-          <button type="submit" class="mat-raised-button" (click)="register()">Register</button>
-          <button class="mat-raised-button" mat-button [mat-dialog-close]="true">Cancel</button>
+          <button mat-raised-button [mat-dialog-close]="true">Cancel</button>
+          <button type="submit" mat-raised-button color="accent">Register</button>
         </mat-dialog-actions>
 </form>
 

@@ -1,22 +1,27 @@
 import { Component, OnInit } from '@angular/core';
-import {Teacher} from '../../../models/teacher';
+import {MatDialogRef} from '@angular/material';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.sass']
+  styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
-name: string;
-username: string;
-password: string;
-  constructor() { }
+  // properties for name, username, password, and type(whather student or teacher)
+  private name: string;
+  private username: string;
+  private password: string;
+  public type: any;
+
+  // MatDialogRef refers to dialog box used for login. router is for using router to redirect page
+  constructor(public dialogRef: MatDialogRef<RegisterComponent>, private router: Router) { }
 
   ngOnInit() {
   }
 
-  register() {
+  onSubmit() {
+    console.log('You are registered.');
 
   }
-
 }
