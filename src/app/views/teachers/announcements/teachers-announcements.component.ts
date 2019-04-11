@@ -5,10 +5,10 @@ import {TeachersService} from '../../../models/services/teachers.service';
 
 @Component({
   selector: 'app-announcements',
-  templateUrl: './announcements.component.html',
-  styleUrls: ['./announcements.component.scss']
+  templateUrl: './teachers-announcements.component.html',
+  styleUrls: ['./teachers-announcements.component.scss']
 })
-export class AnnouncementsComponent implements OnInit {
+export class TeachersAnnouncementsComponent implements OnInit {
   announcements: Announcement[];
 
   constructor(private announcementService: TeachersService) { }

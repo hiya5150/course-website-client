@@ -16,30 +16,36 @@ import {
 } from '@angular/material';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {FormsModule} from '@angular/forms';
-import { GradesComponent } from './views/students/grades/grades.component';
-import { StudentHomepageComponent } from './views/students/student-homepage/student-homepage.component';
-import { SubmissionsComponent } from './views/students/submissions/submissions.component';
-import { AnnouncementsComponent } from './views/students/announcements/announcements.component';
-import { AssignmentsComponent } from './views/students/assignments/assignments.component';
+import { StudentsGradesComponent } from './views/students/grades/students-grades.component';
+import { StudentsHomepageComponent } from './views/students/student-homepage/students-homepage.component';
+import { StudentsSubmissionsComponent } from './views/students/submissions/students-submissions.component';
+import { StudentsAnnouncementsComponent } from './views/students/announcements/students-announcements.component';
+import { StudentsAssignmentsComponent } from './views/students/assignments/students-assignments.component';
 import {TeachersHomepageComponent} from './views/teachers/teachers-homepage/teachers-homepage.component';
 import {MainHomepageComponent} from './views/main/main-homepage/main-homepage.component';
 import {LoginComponent} from './views/main/login/login.component';
 import {RegisterComponent} from './views/main/register/register.component';
 import {NotFoundComponent} from './views/main/not-found/not-found.component';
+import {TeachersAnnouncementsComponent} from './views/teachers/announcements/teachers-announcements.component';
+import {TeachersAssignmentsComponent} from './views/teachers/assignments/teachers-assignments.component';
+import {TeachersGradesComponent} from './views/teachers/grades/teachers-grades.component';
 
 @NgModule({
   declarations: [
+    AppComponent,
     MainHomepageComponent,
     LoginComponent,
     RegisterComponent,
     NotFoundComponent,
-    AppComponent,
-    GradesComponent,
-    StudentHomepageComponent,
-    SubmissionsComponent,
-    AnnouncementsComponent,
-    AssignmentsComponent,
-    TeachersHomepageComponent
+    StudentsHomepageComponent,
+    StudentsAnnouncementsComponent,
+    StudentsAssignmentsComponent,
+    StudentsSubmissionsComponent,
+    StudentsGradesComponent,
+    TeachersHomepageComponent,
+    TeachersAnnouncementsComponent,
+    TeachersAssignmentsComponent,
+    TeachersGradesComponent
   ],
   imports: [
     BrowserModule,

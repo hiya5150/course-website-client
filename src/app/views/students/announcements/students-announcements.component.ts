@@ -4,10 +4,10 @@ import {Announcement} from '../../../models/announcement';
 
 @Component({
   selector: 'app-announcements',
-  templateUrl: './announcements.component.html',
-  styleUrls: ['./announcements.component.scss']
+  templateUrl: './students-announcements.component.html',
+  styleUrls: ['./students-announcements.component.scss']
 })
-export class AnnouncementsComponent implements OnInit {
+export class StudentsAnnouncementsComponent implements OnInit {
   announcements: Announcement[];
 
   constructor() {

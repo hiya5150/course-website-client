@@ -13,7 +13,7 @@
 
 <div class="mat-elevation-z8">
   <h3 matColumnDef="title">List of Assignments</h3>
-  <table mat-table [dataSource]="dataSource">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" *ngIf="dataSource">
     <ng-container matColumnDef="asnSubject">
       <th mat-header-cell *matHeaderCellDef> Subject </th>
       <td mat-cell *matCellDef="let data"> {{data.asnSubject}} </td>
@@ -39,18 +39,18 @@
   <button mat-stroked-button (click)="createAsn()">Create New Assignment</button>
 </div>
 
-<div *ngIf="createAsn()">
-  <form [formGroup]="createAsn"(ngSubmit)="onSubmit()">
-      <h2>Create Assignment</h2>
-    <label>Name of Assignment</label>
-    <input type="text" formControlname="asnTitle">
-    <label>Name of Assignment</label>
-    <input type="text" formControlname="asnSubject">
+<!--<div *ngIf="createAsn()">-->
+<!--  <form [formGroup]="createAsn" (ngSubmit)="onSubmit()">-->
+<!--      <h2>Create Assignment</h2>-->
+<!--    <label>Name of Assignment</label>-->
+<!--    <input type="text" formControlname="asnTitle">-->
+<!--    <label>Name of Assignment</label>-->
+<!--    <input type="text" formControlname="asnSubject">-->
 
-  </form>
+<!--  </form>-->
 
 
-</div>
+<!--</div>-->
 
 
 
