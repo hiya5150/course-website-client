@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Grade} from '../../../models/grade';
+import {TeachersService} from '../../../models/services/teachers.service';
 
 @Component({
   selector: 'app-grades',
@@ -6,10 +8,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./teachers-grades.component.scss']
 })
 export class TeachersGradesComponent implements OnInit {
-
-  constructor() { }
+submissions: Grade[];
+  constructor(private teacherService: TeachersService) { }
 
   ngOnInit() {
+    this.getSubmissions();
+  }
+  getSubmissions(): void {
+    this.teacherService.viewSubmissions(11).subscribe(
+      (res) => {
+        this.submissions = res;
+      }
+    );
   }
 
 }
