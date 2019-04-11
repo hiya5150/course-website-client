@@ -11,15 +11,14 @@ import {TeachersService} from '../../../models/services/teachers.service';
 export class TeachersAnnouncementsComponent implements OnInit {
   announcements: Announcement[];
 
-  constructor(private announcementService: TeachersService) { }
+  constructor(private teacherService: TeachersService) { }
 
   ngOnInit() {
     this.getAnnouncements();
   }
   getAnnouncements(): void {
-    this.announcementService.getAnnouncements().subscribe(
+    this.teacherService.getAnnouncements().subscribe(
       (res: Announcement[]) => {
-        console.log('This Works');
         this.announcements = res;
       }
     );

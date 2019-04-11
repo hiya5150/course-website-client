@@ -10,6 +10,13 @@
   <a routerLink='/grades'>Grades</a>
   <span class="toolbar-flex"></span>
 </mat-toolbar>
+<div *ngFor="let asn of assignments">
+  <p>
+    {{asn.asnTitle}}<br>
+    {{asn.asnBody}}<br>
+    {{asn.teacherName}}
+  </p>
+</div>
 
 <div class="mat-elevation-z8">
   <h3 matColumnDef="title">List of Assignments</h3>

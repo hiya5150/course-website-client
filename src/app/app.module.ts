@@ -29,6 +29,7 @@ import {NotFoundComponent} from './views/main/not-found/not-found.component';
 import {TeachersAnnouncementsComponent} from './views/teachers/announcements/teachers-announcements.component';
 import {TeachersAssignmentsComponent} from './views/teachers/assignments/teachers-assignments.component';
 import {TeachersGradesComponent} from './views/teachers/grades/teachers-grades.component';
+import { TeachersAssignmentComponent } from './views/teachers/assignment/teachers-assignment.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import {TeachersGradesComponent} from './views/teachers/grades/teachers-grades.c
     TeachersHomepageComponent,
     TeachersAnnouncementsComponent,
     TeachersAssignmentsComponent,
-    TeachersGradesComponent
+    TeachersGradesComponent,
+    TeachersAssignmentComponent
   ],
   imports: [
     BrowserModule,
