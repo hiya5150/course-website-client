@@ -1,3 +1,5 @@
+// this class handles students
+
 export class Student {
   studentID: number;
   studentName: string;

@@ -1,3 +1,5 @@
+// this class handles announcements issued by teachers, and viewable by students
+
 export class Announcement {
   annID: number;
   annTitle: string;

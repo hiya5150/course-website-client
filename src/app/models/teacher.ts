@@ -1,3 +1,4 @@
+// this class handles teachers
 
 export class Teacher {
   teacherID: number;

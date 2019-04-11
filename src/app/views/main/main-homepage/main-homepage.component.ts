@@ -25,13 +25,16 @@ export class MainHomepageComponent implements OnInit {
     this.dialog.open(RegisterComponent, dialogConfig);
   }
 
-  openLogin() {
+  openLogin(): void {
     const dialogConfig = new MatDialogConfig();
 
-   // dialogConfig.disableClose = true;
+    dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.width = '600px';
 
     this.dialog.open(LoginComponent, dialogConfig);
+  }
+  logout(): void {
+
   }
 }
