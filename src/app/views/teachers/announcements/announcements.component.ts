@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {Assignment} from '../../../models/assignment';
 import {Announcement} from '../../../models/announcement';
+import {TeachersService} from '../../../models/services/teachers.service';
+
 
 @Component({
   selector: 'app-announcements',
@@ -10,13 +11,18 @@ import {Announcement} from '../../../models/announcement';
 export class AnnouncementsComponent implements OnInit {
   announcements: Announcement[];
 
-  constructor() {
-
-  }
+  constructor(private announcementService: TeachersService) { }
 
   ngOnInit() {
+    this.getAnnouncements();
   }
   getAnnouncements(): void {
-
+    this.announcementService.getAnnouncements().subscribe(
+      (res: Announcement[]) => {
+        console.log('This Works');
+        this.announcements = res;
+      }
+    );
   }
+
 }

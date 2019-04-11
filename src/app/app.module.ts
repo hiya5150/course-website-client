@@ -4,7 +4,6 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { RegisterComponent } from './views/main/register/register.component';
 import {
   MatInputModule,
   MatPaginatorModule,
@@ -24,7 +23,6 @@ import { AssignmentsComponent } from './views/students/assignments/assignments.c
 @NgModule({
   declarations: [
     AppComponent,
-    RegisterComponent,
     GradesComponent,
     StudentHomepageComponent,
     SubmissionsComponent,

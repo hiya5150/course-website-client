@@ -1,0 +1,20 @@
+<mat-toolbar>
+  <h2>Welcome to the CMHS Course Website</h2>
+  <span class="toolbar-flex"></span>
+  <a routerLink='/main-homepage' >Home</a>
+  <span class="toolbar-flex"></span>
+  <a routerLink='/assignments'>Assignments</a>
+  <span class="toolbar-flex"></span>
+  <a routerLink='/announcements'>Announcements</a>
+  <span class="toolbar-flex"></span>
+  <a routerLink='/grades'>Grades</a>
+  <span class="toolbar-flex"></span>
+
+</mat-toolbar>
+
+<div *ngFor="let ann of announcements">
+  <p>
+    {{ann.annTitle}}
+    {{ann.annBody}}
+  </p>
+</div>
