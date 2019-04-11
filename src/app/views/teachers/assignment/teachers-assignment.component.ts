@@ -15,7 +15,7 @@ export class TeachersAssignmentComponent implements OnInit {
     this.viewSubmissions();
   }
   viewSubmissions(): void {
-    this.teacherService.viewSubmissions().subscribe(
+    this.teacherService.viewSubmissions(11).subscribe(
       (res) => {
         this.submissions = res;
       }
