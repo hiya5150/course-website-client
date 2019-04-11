@@ -11,6 +11,10 @@
   <span class="toolbar-flex"></span>
 
 </mat-toolbar>
-<p>
-  announcements works!
-</p>
+
+<div *ngFor="let ann of announcements">
+  <p>
+    {{ann.annTitle}}
+    {{ann.annBody}}
+  </p>
+</div>

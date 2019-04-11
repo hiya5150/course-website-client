@@ -17,7 +17,7 @@ import { RegisterComponent } from './views/main/register/register.component';
 import { MainHomepageComponent } from './views/main/main-homepage/main-homepage.component';
 import { TeachersHomepageComponent } from './views/teachers/teachers-homepage/teachers-homepage.component';
 import { NotFoundComponent } from './views/main/not-found/not-found.component';
-
+import {HttpClientModule} from '@angular/common/http';
 
 
 @NgModule({
@@ -50,7 +50,7 @@ import { NotFoundComponent } from './views/main/not-found/not-found.component';
     MatProgressSpinnerModule,
     MatSortModule,
     MatTableModule,
-
+    HttpClientModule
 
   ],
   providers: [],
