@@ -36,6 +36,4 @@ export class MainHomepageComponent implements OnInit {
 
     this.dialog.open(LoginComponent, dialogConfig);
   }
-  logout(): void {
-  }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {MatDialogRef} from '@angular/material';
 import {Router} from '@angular/router';
 import {UserService} from '../../../models/services/user.service';
@@ -18,8 +18,8 @@ export class LoginComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<LoginComponent>,
     private router: Router,
-    private userService: UserService
-    ) { }
+    private userService: UserService,
+    ) {}
 
   ngOnInit() {
   }
