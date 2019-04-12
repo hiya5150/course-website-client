@@ -12,7 +12,7 @@
 </mat-toolbar>
 
 
-<button mat-stroked-button (click)="createAsn()">Create New Assignment</button>
+<button mat-stroked-button (click)="showAsnForm()">Create New Assignment</button>
 
 <div class="mat-elevation-z8">
   <h3 matColumnDef="title">Assignments</h3>
@@ -25,6 +25,10 @@
       <th mat-header-cell *matHeaderCellDef> Title </th>
       <td mat-cell *matCellDef="let asn"> {{asn.asnTitle}} </td>
     </ng-container>
+    <ng-container matColumnDef="asnBody">
+      <th mat-header-cell *matHeaderCellDef> Assignment </th>
+      <td mat-cell *matCellDef="let asn"> {{asn.asnBody}} </td>
+    </ng-container>
     <ng-container matColumnDef="asnDateCreated">
       <th mat-header-cell *matHeaderCellDef> Date Created </th>
       <td mat-cell *matCellDef="let asn"> {{asn.asnDateCreated}} </td>
@@ -32,6 +36,10 @@
     <ng-container matColumnDef="asnDueDate">
       <th mat-header-cell *matHeaderCellDef> Date Due </th>
       <td mat-cell *matCellDef="let asn"> {{asn.asnDueDate}} </td>
+    </ng-container>
+    <ng-container matColumnDef="asnGrade">
+      <th mat-header-cell *matHeaderCellDef> Grade </th>
+      <td mat-cell *matCellDef="let asn"> {{asn.asnGrade}} </td>
     </ng-container>
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
@@ -49,14 +57,14 @@
 
 
 <div>
-  <form (ngSubmit)="onSubmit()">
+  <form id="createForm" (ngSubmit)="createAsn()" style="display: none">
     <h2>Create Assignment</h2>
-    <p>
-      <mat-form-field appearance="fill">
-        <mat-label>Name of Subject</mat-label>
-        <input matInput [(ngModel)]="asnSubject" name="asnSubject" required>
-      </mat-form-field>
-    </p>
+    <!--<p>-->
+      <!--<mat-form-field appearance="fill">-->
+        <!--<mat-label>Name of Subject</mat-label>-->
+        <!--<input matInput [(ngModel)]="asnSubject" name="asnSubject" required>-->
+      <!--</mat-form-field>-->
+    <!--</p>-->
     <p>
       <mat-form-field appearance="fill">
         <mat-label>Name of Assignment</mat-label>
@@ -65,8 +73,8 @@
     </p>
     <p>
       <mat-form-field appearance="fill">
-        <mat-label>Date</mat-label>
-        <input matInput [(ngModel)]="asnDateCreated" name="asnDateCreated" required>
+        <mat-label>Assignment</mat-label>
+        <input matInput [(ngModel)]="asnBody" name="asnBody" required>
       </mat-form-field>
     </p>
     <p>
@@ -75,8 +83,14 @@
         <input matInput [(ngModel)]="asnDueDate" name="asnDueDate" required>
       </mat-form-field>
     </p>
+    <p>
+      <mat-form-field appearance="fill">
+        <mat-label>Grade</mat-label>
+        <input matInput [(ngModel)]="asnGrade" name="asnGrade" required>
+      </mat-form-field>
+    </p>
 
-    <button mat-stroked-button (click)="submitAsn()">Submit Assignment</button>
+    <button mat-stroked-button>Submit Assignment</button>
 
 
   </form>
