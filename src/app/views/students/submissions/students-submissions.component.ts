@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Assignment} from '../../../models/assignment';
+import {StudentsService} from '../../../models/services/students.service';
 
 @Component({
   selector: 'app-submissions',
@@ -12,15 +13,17 @@ export class StudentsSubmissionsComponent implements OnInit {
   success = '';
   assignment = new Assignment();
 
-  constructor() { }
+  constructor(private studentsService: StudentsService) { }
 
   ngOnInit() {
 
   }
 
-  submitAssignment() {
-    this.error = '';
-    this.success = '';
+  submitAssignment(f) {
+   this.studentsService.submit().subscribe((res: Assignment[]) => {
+     // update the list of submissions
+     this.assignments = res;
+   });
 
   }
 }

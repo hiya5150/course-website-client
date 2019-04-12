@@ -8,7 +8,7 @@ import {StudentsService} from '../../../models/services/students.service';
   styleUrls: ['./students-assignments.component.scss']
 })
 export class StudentsAssignmentsComponent implements OnInit {
-  assignment: any;
+  assignment: Assignment[];
 
   constructor(private studentsService: StudentsService) { }
 

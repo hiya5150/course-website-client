@@ -9,7 +9,7 @@ import {StudentsService} from '../../../models/services/students.service';
   styleUrls: ['./students-announcements.component.scss']
 })
 export class StudentsAnnouncementsComponent implements OnInit {
-  announcements: any;
+  announcements: Announcement[];
 
   constructor(private studentsService: StudentsService) {
 

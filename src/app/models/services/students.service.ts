@@ -25,4 +25,8 @@ export class StudentsService {
   public getGrades(): Observable<any> {
     return this.http.get<any>(this.baseUrl + 'assignments/viewAssignments', this.httpOptions);
   }
+
+  public submit(): Observable<any> {
+    return this.http.post<any>(this.baseUrl + 'assignments/submitAssignments', this.httpOptions);
+  }
 }
