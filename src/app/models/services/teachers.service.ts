@@ -29,7 +29,7 @@ export class TeachersService {
      );
   }
 
-  createAnnouncements(annTitle: string, annBody: string): Observable<any> {
+  createAnnouncement(annTitle: string, annBody: string): Observable<any> {
     const body = `annTitle=${annTitle}&annBody=${annBody}`;
     return this.http.post(`${this.baseUrl}Announcements/createAnnouncement`, body, this.httpOptions);
   }
@@ -38,6 +38,11 @@ export class TeachersService {
     const params = new HttpParams().set('annID', annID.toString());
 
     return this.http.delete(`${this.baseUrl}Announcements/deleteAnnouncement/${annID}`, this.httpOptions);
+  }
+
+  editAnnouncement(annID: number, annTitle: string, annBody: string): Observable<any> {
+    const body = `annTitle=${annTitle}&annBody=${annBody}`;
+    return this.http.post(`${this.baseUrl}Announcements/editAnnouncement/${annID}`, body, this.httpOptions);
   }
 
   viewAssignments(): Observable<Assignment[]> {
