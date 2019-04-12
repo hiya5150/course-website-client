@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 
 @Injectable({
@@ -7,21 +7,29 @@ import {Observable} from 'rxjs';
 })
 export class UserService {
   private baseUrl = 'http://localhost/course-website-server/main/';
+  private httpOptions = {
+    headers: new HttpHeaders()
+      .set('Content-Type', 'application/x-www-form-urlencoded')
+  };
   constructor(private http: HttpClient) { }
 
-  public teacherLogin(): Observable<boolean> {
-    return this.http.post<boolean>(this.baseUrl + 'login/teacherLogin', this.baseUrl);
+  teacherLogin(username: string, password: string): Observable<any> {
+    const body = `username=${username}&password=${password}`;
+    return this.http.post(this.baseUrl + 'login/teacherLogin', body, this.httpOptions);
   }
 
-  public studentLogin(): Observable<boolean> {
-    return this.http.post<boolean>(this.baseUrl + 'login/teacherLogin', this.baseUrl);
+  studentLogin(username: string, password: string): Observable<any> {
+    const body = `username=${username}&password=${password}`;
+    return this.http.post(this.baseUrl + 'login/studentLogin', body, this.httpOptions);
   }
 
-  public teacherRegister(): Observable<boolean> {
-    return this.http.post<boolean>(this.baseUrl + 'login/teacherLogin', this.baseUrl);
+  teacherRegister(name: string, username: string, password: string): Observable<any> {
+    const body = `name=${name}&username=${username}&password=${password}`;
+    return this.http.post(this.baseUrl + 'register/teacherRegister', body, this.httpOptions);
   }
 
-  public studentRegister(): Observable<boolean> {
-    return this.http.post<boolean>(this.baseUrl + 'login/teacherLogin', this.baseUrl);
+  studentRegister(name: string, username: string, password: string): Observable<any> {
+    const body = `name=${name}&username=${username}&password=${password}`;
+    return this.http.post(this.baseUrl + 'register/studentRegister', body, this.httpOptions);
   }
 }

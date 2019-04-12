@@ -16,9 +16,8 @@ export class TeachersService {
   private httpOptions = {
     headers: new HttpHeaders({
       //  this is hardcoded for now going to need to replace
+      Authorization: localStorage.getItem('token')
 
-
-      Authorization: 'c17ca4f85efb4366da2fe3b4b6481361c56ca7258375b6e8c3493d35d198cbec'
     })
       .set('Content-Type', 'application/x-www-form-urlencoded')
   };
