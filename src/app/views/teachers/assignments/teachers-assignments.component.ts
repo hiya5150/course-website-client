@@ -23,10 +23,10 @@ export class TeachersAssignmentsComponent implements OnInit {
   asnDueDate: any;
   asnSubject: string;
 
+  // allows user to set number of items per "page", and to navigate between pages
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   ngOnInit() {
-    // allows user to set number of items per "page", and to navigate between pages
     this.getAssignments();
 
   }
