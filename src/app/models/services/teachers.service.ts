@@ -50,9 +50,27 @@ export class TeachersService {
       map(result => (result as any[]).map(item => new Assignment(item)))
     );
   }
-  deleteAssignments(asnID: number): Observable<any> {
+
+  viewOneAssignment(asnID): Observable<Assignment[]> {
+    const params = new HttpParams().set('asnID', asnID.toLocaleString());
+    return this.http.get<Assignment[]>(`${this.baseUrl}Assignments/viewOneAssignment/${asnID}`, this.httpOptions).pipe(
+      map(result => (result as any[]))
+    );
+  }
+
+  createAssignment(asnTitle: string, asnBody: string, asnDueDate: any, asnGrade: number): Observable<any> {
+    const body = `asnTitle=${asnTitle}&asnBody=${asnBody}&asnDueDate=${asnDueDate}&asnGrade=${asnGrade}`;
+    return this.http.post(`${this.baseUrl}Assignments/createAssignment`, body, this.httpOptions);
+  }
+
+  deleteAssignment(asnID: number): Observable<any> {
     const params = new HttpParams().set('asnID', asnID.toString());
     return this.http.delete(`${this.baseUrl}Assignments/deleteAssignment/${asnID}`, this.httpOptions);
+  }
+
+  editAssignment(asnID: number, asnTitle: string, asnBody: string, asnDueDate: any, asnGrade: number): Observable<any> {
+    const body = `asnTitle=${asnTitle}&asnBody=${asnBody}&asnDueDate=${asnDueDate}&asnGrade=${asnGrade}`;
+    return this.http.post(`${this.baseUrl}Assignments/editAssignment/${asnID}`, body, this.httpOptions);
   }
 
   viewSubmissions(asnID: number): Observable<Grade[]> {
