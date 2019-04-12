@@ -14,16 +14,18 @@ export class TeachersAssignmentsComponent implements OnInit {
 
 
   // columns to be displayed in table
-  displayedColumns: string[] = ['asnTitle', 'asnSubject', 'asnDateCreated', 'asnDueDate'];
+  displayedColumns: string[] = ['asnTitle', 'asnBody', 'asnSubject', 'asnDateCreated', 'asnDueDate', 'asnGrade'];
 
   constructor(private teacherService: TeachersService) {
   }
 
   // declares properties that go into assignments table
   asnTitle: string;
+  asnBody: string;
   asnDateCreated: any;
   asnDueDate: any;
   asnSubject: string;
+  asnGrade: number;
 
   // allows user to set number of items per "page", and to navigate between pages
   // this sets input MatPaginator Input properties
@@ -39,23 +41,11 @@ export class TeachersAssignmentsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getAssignments();
+    this.viewAssignments();
 
   }
 
-  createAsn(): void {
-
-  }
-
-  submitAsn(): void {
-
-  }
-
-  onSubmit() {
-
-    console.log('Your date has been submitted');
-  }
-  getAssignments(): void {
+  viewAssignments(): void {
     this.teacherService.viewAssignments().subscribe(
       (res) => {
         this.assignments = res;
@@ -63,6 +53,18 @@ export class TeachersAssignmentsComponent implements OnInit {
     );
   }
 
+  createAsn() {
+    if (this.asnTitle && this.asnBody && this.asnDueDate && this.asnGrade){
+      if (this.teacherService.createAssignment(this.asnTitle, this.asnBody, this.asnDueDate, this.asnGrade).subscribe(
+        () => this.viewAssignments()
+      )) {
+        document.getElementById('createForm').style.display = 'none';
+      }
+    }
+  }
+  showAsnForm() {
+    document.getElementById('createForm').style.display = 'block';
+  }
 
 }
 
