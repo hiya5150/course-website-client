@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {MatDialog, MatDialogConfig} from '@angular/material';
 import {RegisterComponent} from '../register/register.component';
 import {LoginComponent} from '../login/login.component';
-import {UserService} from '../../../models/services/user.service';
 
 @Component({
   selector: 'app-main-homepage',
@@ -12,19 +11,10 @@ import {UserService} from '../../../models/services/user.service';
 export class MainHomepageComponent implements OnInit {
 
   constructor(
-    private dialog: MatDialog,
-    private userService: UserService
+    private dialog: MatDialog
     ) { }
 
   ngOnInit() {
-    this.userService.teacherLogin('malkie', '12345')
-      .subscribe((res) => {
-        console.log(res);
-        if (res.token) {
-          localStorage.setItem('token', res.token);
-          console.log(localStorage.getItem('token'));
-        }
-      });
   }
 
   openRegister(): void {
