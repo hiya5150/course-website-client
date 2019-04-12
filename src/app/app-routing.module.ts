@@ -11,6 +11,8 @@ import {TeachersAssignmentsComponent} from './views/teachers/assignments/teacher
 import {RegisterComponent} from './views/main/register/register.component';
 import {NotFoundComponent} from './views/main/not-found/not-found.component';
 import {TeachersGradesComponent} from './views/teachers/grades/teachers-grades.component';
+import {TeacherAuthGuard} from './controllers/teacher-auth.guard';
+import {StudentAuthGuard} from './controllers/student-auth.guard';
 import {TeachersAnnouncementsComponent} from './views/teachers/announcements/teachers-announcements.component';
 import {LoginComponent} from './views/main/login/login.component';
 import {StudentsHomepageComponent} from './views/students/student-homepage/students-homepage.component';
@@ -18,14 +20,14 @@ import {StudentsHomepageComponent} from './views/students/student-homepage/stude
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: MainHomepageComponent},
-  {path: 'main-homepage', component: MainHomepageComponent},
-  {path: 'teachers-homepage', component: TeachersHomepageComponent},
-  {path: 'teachers-assignments', component: TeachersAssignmentsComponent},
-  {path: 'teachers-announcements', component: TeachersAnnouncementsComponent},
-  {path: 'teachers-grades', component: TeachersGradesComponent},
-  {path: 'assignments', component: StudentsAssignmentsComponent},
-  {path: 'announcements', component: StudentsAnnouncementsComponent},
-  {path: 'grades', component: StudentsGradesComponent},
+  {path: 'home', component: MainHomepageComponent},
+  {path: 'teachers/homepage', component: TeachersHomepageComponent, canActivate: [TeacherAuthGuard]},
+  {path: 'teachers/assignments', component: TeachersAssignmentsComponent, canActivate: [TeacherAuthGuard]},
+  {path: 'teachers/announcements', component: TeachersAnnouncementsComponent, canActivate: [TeacherAuthGuard]},
+  {path: 'teachers/grades', component: TeachersGradesComponent, canActivate: [TeacherAuthGuard]},
+  {path: 'students/assignments', component: StudentsAssignmentsComponent, canActivate: [StudentAuthGuard]},
+  {path: 'students/announcements', component: StudentsAnnouncementsComponent, canActivate: [StudentAuthGuard]},
+  {path: 'students/grades', component: StudentsGradesComponent, canActivate: [StudentAuthGuard]},
   {path: 'register', component: RegisterComponent},
   {path: 'login', component: LoginComponent},
   {path: '**', component: NotFoundComponent}
