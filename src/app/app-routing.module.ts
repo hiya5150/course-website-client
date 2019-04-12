@@ -13,7 +13,7 @@ import {RegisterComponent} from './views/main/register/register.component';
 import {NotFoundComponent} from './views/main/not-found/not-found.component';
 import {TeachersGradesComponent} from './views/teachers/grades/teachers-grades.component';
 
-
+1
 
 
 const routes: Routes = [
