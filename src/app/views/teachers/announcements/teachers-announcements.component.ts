@@ -45,6 +45,7 @@ export class TeachersAnnouncementsComponent implements OnInit {
         () => this.getAnnouncements()
       );
     }
+    document.getElementById('trial').style.display = 'hidden';
   }
   editAnn() {
     console.log('edit button works');

@@ -17,8 +17,6 @@ export class TeachersService {
     headers: new HttpHeaders({
       //  this is hardcoded for now going to need to replace
 
-
-      Authorization: 'c17ca4f85efb4366da2fe3b4b6481361c56ca7258375b6e8c3493d35d198cbec'
     })
       .set('Content-Type', 'application/x-www-form-urlencoded')
   };
@@ -39,6 +37,11 @@ export class TeachersService {
     const params = new HttpParams().set('annID', annID.toString());
 
     return this.http.delete(`${this.baseUrl}Announcements/deleteAnnouncement/${annID}`, this.httpOptions);
+  }
+
+  editAnnouncement(annID: number, annTitle: string, annBody: string): Observable<any> {
+    const body = `annTitle=${annTitle}&annBody=${annBody}`;
+    return this.http.post(`${this.baseUrl}Announcements/editAnnouncement/${annID}`, body, this.httpOptions);
   }
 
   viewAssignments(): Observable<Assignment[]> {
