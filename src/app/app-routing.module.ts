@@ -13,8 +13,7 @@ import {NotFoundComponent} from './views/main/not-found/not-found.component';
 import {TeachersGradesComponent} from './views/teachers/grades/teachers-grades.component';
 import {TeachersAnnouncementsComponent} from './views/teachers/announcements/teachers-announcements.component';
 import {LoginComponent} from './views/main/login/login.component';
-
-1
+import {StudentsHomepageComponent} from './views/students/student-homepage/students-homepage.component';
 
 
 const routes: Routes = [
@@ -24,14 +23,13 @@ const routes: Routes = [
   {path: 'teachers-assignments', component: TeachersAssignmentsComponent},
   {path: 'teachers-announcements', component: TeachersAnnouncementsComponent},
   {path: 'teachers-grades', component: TeachersGradesComponent},
+  {path: 'assignments', component: StudentsAssignmentsComponent},
+  {path: 'announcements', component: StudentsAnnouncementsComponent},
+  {path: 'grades', component: StudentsGradesComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'student-assignments', component: StudentsAssignmentsComponent},
-  {path: 'student-announcements', component: StudentsAnnouncementsComponent},
-  {path: 'student-grades', component: StudentsGradesComponent},
-  {path: 'student-submissions', component: StudentsSubmissionsComponent},
-  {path: '**', component: NotFoundComponent},
-  ];
+  {path: '**', component: NotFoundComponent}
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
