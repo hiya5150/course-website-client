@@ -9,16 +9,12 @@
   <span class="toolbar-flex"></span>
   <a routerLink='/teachers-grades'>Grades</a>
   <span class="toolbar-flex"></span>
-
 </mat-toolbar>
 
 <button mat-stroked-button (click)="createAnn()">Create New Announcement</button>
 
-<div *ngFor="let ann of announcements">
-  <p>
-    {{ann.annTitle}}
-    {{ann.annBody}}
-  </p>
+<!--<div *ngFor="let ann of announcements">-->
+
 
   <div class="mat-elevation-z8">
     <h3 matColumnDef="title">Announcements</h3>
@@ -34,9 +30,9 @@
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
+    <button  mat-stroked-button id="delete" (click)="deleteAnn(ann.annID)">Delete Announcement</button>
 
     <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
   </div>
 
-  <button  mat-stroked-button id="delete" (click)="deleteAnn(ann.annID)">Delete</button>
-</div>
+
