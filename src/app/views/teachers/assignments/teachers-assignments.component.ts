@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {MatPaginator, MatTableDataSource} from '@angular/material';
-import { FormGroup, FormControl } from '@angular/forms';
+import {Assignment} from '../../../models/assignment';
+import {TeachersService} from '../../../models/services/teachers.service';
 
 @Component({
   selector: 'app-assignments',
@@ -8,27 +9,33 @@ import { FormGroup, FormControl } from '@angular/forms';
   styleUrls: ['./teachers-assignments.component.scss']
 })
 export class TeachersAssignmentsComponent implements OnInit {
-  createAsnForm = new FormGroup( {
-    asnSubject : new FormControl(''),
-    asnTitle: new FormControl(''),
-    asnDateCreated: new FormControl(''),
-    asnDueDate: new FormControl(''),
+     assignments: Assignment[];
 
-  });
 
-  // dataSource here is temporary, needs to be replaced
+  // columns to be displayed in table
   displayedColumns: string[] = ['asnTitle', 'asnSubject', 'asnDateCreated', 'asnDueDate'];
-  dataSource = new MatTableDataSource<TempData>(TEMP_DATA);
-  constructor() { }
 
+  constructor(private teacherService: TeachersService) { }
+
+  // declares properties that go into assignments table
+  asnTitle: string;
+  asnDateCreated: any;
+  asnDueDate: any;
+  asnSubject: string;
+
+  // allows user to set number of items per "page", and to navigate between pages
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   ngOnInit() {
-    // allows user to set number of items per "page", and to navigate between pages
-    this.dataSource.paginator = this.paginator;
+    this.getAssignments();
+
   }
 
   createAsn(): void {
+
+  }
+
+  submitAsn(): void {
 
   }
 
@@ -36,23 +43,18 @@ export class TeachersAssignmentsComponent implements OnInit {
 
     console.log('Your date has been submitted');
   }
+  getAssignments(): void {
+    this.teacherService.viewAssignments().subscribe(
+      (res) => {
+        this.assignments = res;
+      }
+    );
+  }
 
 
 }
-export interface TempData {
-  // declares properties that go into assignments table
-  asnTitle: string;
-  asnDateCreated: any;
-  asnDueDate: any;
-  asnSubject: string;
 
-}
-const TEMP_DATA: TempData[] = [
-  {asnTitle: 'SQL basic Queries' , asnSubject: 'Database', asnDateCreated: '4/5/2019', asnDueDate: '4/15/2019'},
-  {asnTitle: 'DOM' , asnSubject: 'JavaScript', asnDateCreated: '3/27/2019', asnDueDate: '4/17/2019'},
-  {asnTitle: 'for loops', asnSubject: 'PHP', asnDateCreated: '4/1/2019', asnDueDate: '4/25/2019'}
 
-];
 
 
 

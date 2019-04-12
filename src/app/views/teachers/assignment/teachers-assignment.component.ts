@@ -1,20 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import { Grade} from '../../../models/grade';
+import {Grade} from '../../../models/grade';
 import {TeachersService} from '../../../models/services/teachers.service';
 
 @Component({
-  selector: 'app-grades',
-  templateUrl: './teachers-grades.component.html',
-  styleUrls: ['./teachers-grades.component.scss']
+  selector: 'app-teachers-assignment',
+  templateUrl: './teachers-assignment.component.html',
+  styleUrls: ['./teachers-assignment.component.scss']
 })
-export class TeachersGradesComponent implements OnInit {
-submissions: Grade[];
+export class TeachersAssignmentComponent implements OnInit {
+  submissions: Grade[];
   constructor(private teacherService: TeachersService) { }
 
   ngOnInit() {
-    this.getSubmissions();
+    this.viewSubmissions();
   }
-  getSubmissions(): void {
+  viewSubmissions(): void {
     this.teacherService.viewSubmissions(11).subscribe(
       (res) => {
         this.submissions = res;
