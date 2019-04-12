@@ -5,15 +5,15 @@ import {StudentsAnnouncementsComponent} from './views/students/announcements/stu
 import {StudentsGradesComponent} from './views/students/grades/students-grades.component';
 import {TeachersHomepageComponent} from './views/teachers/teachers-homepage/teachers-homepage.component';
 import {MainHomepageComponent} from './views/main/main-homepage/main-homepage.component';
-import {LoginComponent} from './views/main/login/login.component';
+import {StudentsSubmissionsComponent} from './views/students/submissions/students-submissions.component';
 import {from} from 'rxjs';
 import {TeachersAssignmentsComponent} from './views/teachers/assignments/teachers-assignments.component';
-import {TeachersAnnouncementsComponent} from './views/teachers/announcements/teachers-announcements.component';
 import {RegisterComponent} from './views/main/register/register.component';
 import {NotFoundComponent} from './views/main/not-found/not-found.component';
 import {TeachersGradesComponent} from './views/teachers/grades/teachers-grades.component';
-
-1
+import {TeachersAnnouncementsComponent} from './views/teachers/announcements/teachers-announcements.component';
+import {LoginComponent} from './views/main/login/login.component';
+import {StudentsHomepageComponent} from './views/students/student-homepage/students-homepage.component';
 
 
 const routes: Routes = [
@@ -29,7 +29,7 @@ const routes: Routes = [
   {path: 'register', component: RegisterComponent},
   {path: 'login', component: LoginComponent},
   {path: '**', component: NotFoundComponent}
-  ];
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
