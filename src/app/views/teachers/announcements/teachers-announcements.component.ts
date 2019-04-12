@@ -1,7 +1,7 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {Announcement} from '../../../models/announcement';
 import {TeachersService} from '../../../models/services/teachers.service';
-import {MatPaginator} from '@angular/material';
+import {MatPaginator, MatSnackBar} from '@angular/material';
 
 
 @Component({
@@ -15,10 +15,10 @@ currentAnnID: number;
 currentAnnTitle: string;
 currentAnnBody: string;
   // columns to be displayed in table
-  displayedColumns: string[] = ['annTitle', 'annBody', 'annDelete', 'annEdit'];
+  displayedColumns: string[] = ['annTitle', 'annBody', 'annTeacher', 'annDateCreated', 'annDelete', 'annEdit'];
 
 
-  constructor(private teacherService: TeachersService) { }
+  constructor(private teacherService: TeachersService, private snackBar: MatSnackBar) { }
 
   // declares properties that go into announcements table
      annTitle: string;
@@ -42,10 +42,14 @@ currentAnnBody: string;
 // this will create an announcement redisplay the list and make the create account form disappear, want to make a pop up to say added
   createAnn() {
     if (this.annTitle && this.annBody) {
-      this.teacherService.createAnnouncement(this.annTitle, this.annBody).subscribe(
+      if (this.teacherService.createAnnouncement(this.annTitle, this.annBody).subscribe(
         () => this.getAnnouncements()
-      );
-      document.getElementById('createForm').style.display = 'none';
+      )) {
+        this.openSnackBar('announcement created', 'close');
+        document.getElementById('createForm').style.display = 'none';
+      } else {
+        this.openSnackBar('announcement could not be created', 'close');
+      }
     }
   }
 // this will delete an announcement and redisplay the page
@@ -54,10 +58,14 @@ currentAnnBody: string;
   }
 // this will edit an announcement reload the page and want to make a pop up appear that says edited
   editAnn() {
-    this.teacherService.editAnnouncement(this.currentAnnID, this.currentAnnTitle, this.currentAnnBody).subscribe(
+    if (this.teacherService.editAnnouncement(this.currentAnnID, this.currentAnnTitle, this.currentAnnBody).subscribe(
       () => this.getAnnouncements()
-    );
-    document.getElementById('editForm').style.display = 'none';
+    )) {
+      this.openSnackBar('announcement edited', 'close');
+      document.getElementById('editForm').style.display = 'none';
+    } else {
+      this.openSnackBar('announcement could not be edited', 'close');
+    }
   }
 
   // this is used to display the forms
@@ -69,5 +77,11 @@ currentAnnBody: string;
     this.currentAnnTitle = annTitle;
     this.currentAnnBody = annBody;
     document.getElementById('editForm').style.display = 'block';
+  }
+
+  openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      duration: 2000,
+    });
   }
 }
