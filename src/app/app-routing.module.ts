@@ -26,11 +26,11 @@ const routes: Routes = [
   {path: 'teachers-grades', component: TeachersGradesComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'login', component: LoginComponent},
-  {path: '**', component: NotFoundComponent}
   {path: 'student-assignments', component: StudentsAssignmentsComponent},
   {path: 'student-announcements', component: StudentsAnnouncementsComponent},
   {path: 'student-grades', component: StudentsGradesComponent},
   {path: 'student-submissions', component: StudentsSubmissionsComponent},
+  {path: '**', component: NotFoundComponent},
   ];
 
 @NgModule({

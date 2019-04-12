@@ -2,7 +2,7 @@
   <form #f="ngForm" name="theForm" (submit)="submitAssignment(f)">
   <label>Assignment</label>
   <mat-form-field>
-    <input matInput placeholder="Submit assignment" name="name" required [(ngModel)]="assignment.name" #assignmentName ="ngModel">
+    <input matInput placeholder="Submit assignment" name="name" required [(ngModel)]="assignment.asnTitle" #assignmentName ="ngModel">
   </mat-form-field>
 
   <span *ngIf="assignmentName.errors?.required && assignmentName.touched">
