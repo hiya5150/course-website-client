@@ -31,6 +31,8 @@ import {TeachersAssignmentsComponent} from './views/teachers/assignments/teacher
 import {TeachersGradesComponent} from './views/teachers/grades/teachers-grades.component';
 import { TeachersAssignmentComponent } from './views/teachers/assignment/teachers-assignment.component';
 import {HttpClientModule} from '@angular/common/http';
+import {MatSnackBarModule} from '@angular/material';
+
 
 @NgModule({
   declarations: [
@@ -65,7 +67,8 @@ import {HttpClientModule} from '@angular/common/http';
     MatRadioModule,
     MatDialogModule,
     MatButtonModule,
-    HttpClientModule
+    HttpClientModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent],
