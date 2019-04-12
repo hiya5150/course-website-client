@@ -13,7 +13,7 @@ export class TeachersAnnouncementsComponent implements OnInit {
   announcements: Announcement[];
 
   // columns to be displayed in table
-  displayedColumns: string[] = ['annTitle', 'annBody'];
+  displayedColumns: string[] = ['annTitle', 'annBody', 'annDelete', 'annEdit'];
 
 
   constructor(private teacherService: TeachersService) { }
@@ -37,12 +37,19 @@ export class TeachersAnnouncementsComponent implements OnInit {
     );
   }
   deleteAnn(annID): void {
-    this.getAnnouncements();
-    this.teacherService.deleteAnnouncement(annID).subscribe();
+    this.teacherService.deleteAnnouncement(annID).subscribe(() => this.getAnnouncements());
   }
-
   createAnn() {
-
+    if (this.annTitle && this.annBody) {
+      this.teacherService.createAnnouncements(this.annTitle, this.annBody).subscribe(
+        () => this.getAnnouncements()
+      );
+    }
   }
-
+  editAnn() {
+    console.log('edit button works');
+  }
+  showAnnForm() {
+    document.getElementById('trial').style.display = 'block';
+  }
 }

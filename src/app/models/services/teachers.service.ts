@@ -17,8 +17,9 @@ export class TeachersService {
     headers: new HttpHeaders({
       //  this is hardcoded for now going to need to replace
 
-      Authorization: '71ca89f3ece135fc47326b84b1fecde62343461bed8c8f4f74997d3f6cf4675b'
+      Authorization: '138a29c57ce171ece82bf9c25f4693a1065482fc96c14777fc04332e967d3312'
     })
+      .set('Content-Type', 'application/x-www-form-urlencoded')
   };
   constructor(private http: HttpClient) { }
 // Announcement http requests
@@ -27,6 +28,12 @@ export class TeachersService {
       map(result => (result as any[]).map(item => new Announcement(item)))
      );
   }
+
+  createAnnouncements(annTitle: string, annBody: string): Observable<any> {
+    const body = `annTitle=${annTitle}&annBody=${annBody}`;
+    return this.http.post(`${this.baseUrl}Announcements/createAnnouncement`, body, this.httpOptions);
+  }
+
   deleteAnnouncement(annID: number): Observable<any> {
     const params = new HttpParams().set('annID', annID.toString());
 
@@ -37,6 +44,10 @@ export class TeachersService {
     return this.http.get<Assignment[]>(`${this.baseUrl}Assignments/viewAssignments`, this.httpOptions).pipe(
       map(result => (result as any[]).map(item => new Assignment(item)))
     );
+  }
+  deleteAssignments(asnID: number): Observable<any> {
+    const params = new HttpParams().set('asnID', asnID.toString());
+    return this.http.delete(`${this.baseUrl}Assignments/deleteAssignment/${asnID}`, this.httpOptions);
   }
 
   viewSubmissions(asnID: number): Observable<Grade[]> {
