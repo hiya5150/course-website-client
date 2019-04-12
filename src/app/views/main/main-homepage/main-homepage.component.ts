@@ -10,7 +10,9 @@ import {LoginComponent} from '../login/login.component';
 })
 export class MainHomepageComponent implements OnInit {
 
-  constructor(private dialog: MatDialog) { }
+  constructor(
+    private dialog: MatDialog
+    ) { }
 
   ngOnInit() {
   }
@@ -35,6 +37,5 @@ export class MainHomepageComponent implements OnInit {
     this.dialog.open(LoginComponent, dialogConfig);
   }
   logout(): void {
-
   }
 }
