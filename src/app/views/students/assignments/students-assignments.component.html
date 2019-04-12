@@ -19,25 +19,43 @@
 
     <ng-container matColumnDef="asnTitle">
       <th mat-header-cell *matHeaderCellDef> No. </th>
-      <td mat-cell *matCellDef="let element"> {{element.annTitle}} </td>
+      <td mat-cell *matCellDef="let element"> {{element.asnTitle}} </td>
     </ng-container>
 
-    <!-- Name Column -->
+    <!-- Assignment body -->
     <ng-container matColumnDef="asnBody">
       <th mat-header-cell *matHeaderCellDef> Name </th>
-      <td mat-cell *matCellDef="let element"> {{element.body}} </td>
+      <td mat-cell *matCellDef="let element"> {{element.asnBody}} </td>
     </ng-container>
 
-    <!-- Weight Column -->
+    <!-- Assignment Date created -->
     <ng-container matColumnDef="asnDateCreated">
       <th mat-header-cell *matHeaderCellDef> Weight </th>
-      <td mat-cell *matCellDef="let element"> {{element.annDateCreated}} </td>
+      <td mat-cell *matCellDef="let element"> {{element.asnDateCreated}} </td>
     </ng-container>
 
-    <!-- Symbol Column -->
+    <!-- Assignment Due date -->
+    <ng-container matColumnDef="asnDueDate">
+      <th mat-header-cell *matHeaderCellDef> Weight </th>
+      <td mat-cell *matCellDef="let element"> {{element.asnDateDue}} </td>
+    </ng-container>
+
+    <!-- Assignment grade -->
+    <ng-container matColumnDef="asnGrade">
+      <th mat-header-cell *matHeaderCellDef> Weight </th>
+      <td mat-cell *matCellDef="let element"> {{element.asnGrade}} </td>
+    </ng-container>
+
+    <!-- Teacher name -->
     <ng-container matColumnDef="teacherName">
       <th mat-header-cell *matHeaderCellDef> Symbol </th>
       <td mat-cell *matCellDef="let element"> {{element.teacherName}} </td>
+    </ng-container>
+
+    <!-- Assignment subject-->
+    <ng-container matColumnDef="asnSubject">
+      <th mat-header-cell *matHeaderCellDef> Symbol </th>
+      <td mat-cell *matCellDef="let element"> {{element.asnSubject}} </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

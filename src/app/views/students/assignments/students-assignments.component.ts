@@ -9,7 +9,7 @@ import {StudentsService} from '../../../models/services/students.service';
 })
 export class StudentsAssignmentsComponent implements OnInit {
   assignments: Assignment[];
-  displayedColumns: string[] = ['annTitle', 'annBody', 'teacherName', 'annDateCreated'];
+  displayedColumns: string[] = ['asnSubject', 'asnTitle', 'asnBody', 'teacherName', 'asnDateCreated', 'asnDateDue'];
   constructor(private studentsService: StudentsService) { }
 
   ngOnInit() {
