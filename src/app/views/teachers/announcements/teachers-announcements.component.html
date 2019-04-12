@@ -12,10 +12,31 @@
 
 </mat-toolbar>
 
+<button mat-stroked-button (click)="createAnn()">Create New Announcement</button>
+
 <div *ngFor="let ann of announcements">
   <p>
     {{ann.annTitle}}
     {{ann.annBody}}
   </p>
-  <button id="delete" (click)="deleteAnn(ann.annID)">Delete</button>
+
+  <div class="mat-elevation-z8">
+    <h3 matColumnDef="title">Announcements</h3>
+    <table mat-table [dataSource]="announcements">
+      <ng-container matColumnDef="annTitle">
+        <th mat-header-cell *matHeaderCellDef> Title </th>
+        <td mat-cell *matCellDef="let ann"> {{ann.annTitle}} </td>
+      </ng-container>
+      <ng-container matColumnDef="annBody">
+        <th mat-header-cell *matHeaderCellDef> Description </th>
+        <td mat-cell *matCellDef="let ann"> {{ann.annBody}} </td>
+      </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+  </div>
+
+  <button  mat-stroked-button id="delete" (click)="deleteAnn(ann.annID)">Delete</button>
 </div>
