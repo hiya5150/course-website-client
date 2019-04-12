@@ -29,8 +29,8 @@ import {NotFoundComponent} from './views/main/not-found/not-found.component';
 import {TeachersAnnouncementsComponent} from './views/teachers/announcements/teachers-announcements.component';
 import {TeachersAssignmentsComponent} from './views/teachers/assignments/teachers-assignments.component';
 import {TeachersGradesComponent} from './views/teachers/grades/teachers-grades.component';
-import {HttpClientModule} from '@angular/common/http';
 import { TeachersAssignmentComponent } from './views/teachers/assignment/teachers-assignment.component';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
