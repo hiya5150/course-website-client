@@ -28,9 +28,9 @@ export class LoginComponent implements OnInit {
       case 'teacher':
         this.userService.teacherLogin(this.username, this.password).subscribe((res) => {
           if (res.token) {
-            localStorage.setItem('token', res.token);
+            window.localStorage.setItem('token', res.token);
             this.dialogRef.close();
-            this.router.navigateByUrl('teachers-homepage');
+            this.router.navigateByUrl('teachers/homepage');
           }
         });
         break;
@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
           if (res.token) {
             localStorage.setItem('token', res.token);
             this.dialogRef.close();
-            this.router.navigateByUrl('teachers-homepage');
+            this.router.navigateByUrl('teachers/homepage');
           }
         });
         break;

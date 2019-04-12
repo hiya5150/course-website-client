@@ -11,7 +11,7 @@
   <span class="toolbar-flex"></span>
 </mat-toolbar>
 
-<button mat-stroked-button (click)="createAnn()">Create New Announcement</button>
+<button mat-stroked-button (click)="showAnnForm()">Create New Announcement</button>
 
 <!--<div *ngFor="let ann of announcements">-->
 
@@ -27,12 +27,43 @@
         <th mat-header-cell *matHeaderCellDef> Description </th>
         <td mat-cell *matCellDef="let ann"> {{ann.annBody}} </td>
       </ng-container>
+      <ng-container matColumnDef="annDelete">
+        <th mat-header-cell *matHeaderCellDef>Delete</th>
+        <td mat-cell *matCellDef="let ann">
+          <button mat-stroked-button (click)="deleteAnn(ann.annID)">Delete</button>
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="annEdit">
+        <th mat-header-cell *matHeaderCellDef>Edit</th>
+        <td mat-cell *matCellDef="let ann">
+          <button mat-stroked-button (click)="editAnn(ann.ann)">Edit</button>
+        </td>
+      </ng-container>
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
-    <button  mat-stroked-button id="delete" (click)="deleteAnn(ann.annID)">Delete Announcement</button>
+
 
     <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
   </div>
+
+
+  <form  id="trial" (ngSubmit)="createAnn()" style="display: none">
+    <h2>Create Announcement</h2>
+    <p>
+      <mat-form-field appearance="fill">
+        <mat-label>Name of Announcement</mat-label>
+        <input matInput [(ngModel)]="annTitle" name="annTitle" required>
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field appearance="fill">
+        <mat-label>Announcement</mat-label>
+        <input matInput [(ngModel)]="annBody" name="annBody" required>
+      </mat-form-field>
+    </p>
+    <button mat-stroked-button>Submit Assignment</button>
+  </form>
+
 
 
