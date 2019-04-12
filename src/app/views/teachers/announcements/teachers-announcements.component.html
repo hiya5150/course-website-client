@@ -52,8 +52,12 @@
     </table>
 
 
-    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
-  </div>
+    <mat-paginator [length]="length"
+                   [pageSize]="pageSize"
+                   [pageSizeOptions]="pageSizeOptions"
+                   (page)="pageEvent = $event">
+
+    </mat-paginator>  </div>
 
 
   <form  id="createForm" (ngSubmit)="createAnn()" style="display: none">

@@ -1,7 +1,7 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Announcement} from '../../../models/announcement';
 import {TeachersService} from '../../../models/services/teachers.service';
-import {MatPaginator, MatSnackBar} from '@angular/material';
+import {MatPaginator, MatSnackBar, PageEvent} from '@angular/material';
 
 
 @Component({
@@ -26,8 +26,18 @@ currentAnnBody: string;
   teacherName: string;
   // allows user to set number of items per "page", and to navigate between pages
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+  // allows user to set number of items per "page", and to navigate between pages
+  // this sets input MatPaginator Input properties
+  length = 100;
+  pageSize = 5;
+  pageSizeOptions: number[] = [5, 10, 25];
 
+  // MatPaginator Output
+  pageEvent: PageEvent;
+
+  setPageSizeOptions(setPageSizeOptionsInput: string) {
+    this.pageSizeOptions = setPageSizeOptionsInput.split(',').map(str => +str);
+  }
 
   ngOnInit() {
     this.getAnnouncements();
