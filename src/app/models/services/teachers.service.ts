@@ -13,12 +13,10 @@ import {Grade} from '../grade';
 })
 export class TeachersService {
   baseUrl = 'http://localhost/course-website-server/teachers/';
-  announcements: Announcement[];
-  assignments: Assignment[];
-  submissions: Grade[];
   private httpOptions = {
     headers: new HttpHeaders({
       //  this is hardcoded for now going to need to replace
+
       Authorization: '897d56cfa740aa39eb18f386f368a9b401af07a74df62eedae33b15a865244da'
     })
   };

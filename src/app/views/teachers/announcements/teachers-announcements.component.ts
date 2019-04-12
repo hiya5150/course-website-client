@@ -24,6 +24,7 @@ export class TeachersAnnouncementsComponent implements OnInit {
     );
   }
   deleteAnn(annID): void {
+    this.getAnnouncements();
     this.teacherService.deleteAnnouncement(annID).subscribe();
   }
 
