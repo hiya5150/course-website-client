@@ -1,7 +1,8 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import {MatPaginator, MatTableDataSource} from '@angular/material';
+import { Component, OnInit } from '@angular/core';
+import {MatPaginator, MatTableDataSource, PageEvent} from '@angular/material';
 import {Assignment} from '../../../models/assignment';
 import {TeachersService} from '../../../models/services/teachers.service';
+
 
 @Component({
   selector: 'app-assignments',
@@ -9,13 +10,14 @@ import {TeachersService} from '../../../models/services/teachers.service';
   styleUrls: ['./teachers-assignments.component.scss']
 })
 export class TeachersAssignmentsComponent implements OnInit {
-     assignments: Assignment[];
+  assignments: Assignment[];
 
 
   // columns to be displayed in table
   displayedColumns: string[] = ['asnTitle', 'asnSubject', 'asnDateCreated', 'asnDueDate'];
 
-  constructor(private teacherService: TeachersService) { }
+  constructor(private teacherService: TeachersService) {
+  }
 
   // declares properties that go into assignments table
   asnTitle: string;
@@ -24,7 +26,17 @@ export class TeachersAssignmentsComponent implements OnInit {
   asnSubject: string;
 
   // allows user to set number of items per "page", and to navigate between pages
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+  // this sets input MatPaginator Input properties
+  length = 100;
+  pageSize = 5;
+  pageSizeOptions: number[] = [5, 10, 25];
+
+  // MatPaginator Output
+  pageEvent: PageEvent;
+
+  setPageSizeOptions(setPageSizeOptionsInput: string) {
+    this.pageSizeOptions = setPageSizeOptionsInput.split(',').map(str => +str);
+  }
 
   ngOnInit() {
     this.getAssignments();
