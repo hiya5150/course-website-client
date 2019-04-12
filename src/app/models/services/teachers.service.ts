@@ -29,7 +29,7 @@ export class TeachersService {
      );
   }
 
-  createAnnouncements(annTitle: string, annBody: string): Observable<any> {
+  createAnnouncement(annTitle: string, annBody: string): Observable<any> {
     const body = `annTitle=${annTitle}&annBody=${annBody}`;
     return this.http.post(`${this.baseUrl}Announcements/createAnnouncement`, body, this.httpOptions);
   }
