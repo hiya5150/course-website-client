@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {Assignment} from '../../../models/assignment';
 import {Announcement} from '../../../models/announcement';
 import {StudentsService} from '../../../models/services/students.service';
+import {MatPaginator} from '@angular/material';
 
 @Component({
   selector: 'app-announcements',
@@ -11,14 +12,17 @@ import {StudentsService} from '../../../models/services/students.service';
 export class StudentsAnnouncementsComponent implements OnInit {
   announcements: Announcement[];
   displayedColumns: string[] = ['annTitle', 'annBody', 'teacherName', 'annDateCreated'];
-  constructor(private studentsService: StudentsService) {
-
-  }
+  constructor(private studentsService: StudentsService) {}
+    annTitle: string;
+    annBody: string;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
   ngOnInit() {
     this.getAnnouncements();
   }
   getAnnouncements(): void {
-      this.studentsService.getAnnouncements().subscribe((res) => console.log(res) );
+      this.studentsService.getAnnouncements().subscribe((res) => {this.announcements = res;
+      }
+      );
   }
 }
