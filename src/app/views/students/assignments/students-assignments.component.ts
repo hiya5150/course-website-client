@@ -8,8 +8,8 @@ import {StudentsService} from '../../../models/services/students.service';
   styleUrls: ['./students-assignments.component.scss']
 })
 export class StudentsAssignmentsComponent implements OnInit {
-  assignment: Assignment[];
-
+  assignments: Assignment[];
+  displayedColumns: string[] = ['teacherName', 'annDateCreated', 'annTitle', 'annBody'];
   constructor(private studentsService: StudentsService) { }
 
   ngOnInit() {

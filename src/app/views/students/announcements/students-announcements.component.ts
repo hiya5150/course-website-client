@@ -10,7 +10,7 @@ import {StudentsService} from '../../../models/services/students.service';
 })
 export class StudentsAnnouncementsComponent implements OnInit {
   announcements: Announcement[];
-
+  displayedColumns: string[] = ['annTitle', 'annBody', 'teacherName', 'annDateCreated'];
   constructor(private studentsService: StudentsService) {
 
   }
