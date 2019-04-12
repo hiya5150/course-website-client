@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {Assignment} from '../../../models/assignment';
+import {StudentsService} from '../../../models/services/students.service';
+import {MatPaginator} from '@angular/material';
 
 @Component({
   selector: 'app-submissions',
@@ -12,15 +14,32 @@ export class StudentsSubmissionsComponent implements OnInit {
   success = '';
   assignment = new Assignment();
 
-  constructor() { }
+  constructor(private studentsService: StudentsService) { }
+
+  asnTitle: string;
+
+
+  // Set number of items per page, and navigate between pages
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
   ngOnInit() {
+    this.submitAssignment();
 
   }
 
-  submitAssignment() {
-    this.error = '';
-    this.success = '';
+
+
+  onSubmit() {
+
 
   }
+  submitAssignment(): void {
+    this.studentsService.submit().subscribe(
+      (res) => {
+        this.assignments = res;
+      }
+    );
+  }
+
+
 }
