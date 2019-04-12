@@ -15,14 +15,15 @@ currentAnnID: number;
 currentAnnTitle: string;
 currentAnnBody: string;
   // columns to be displayed in table
-  displayedColumns: string[] = ['annTitle', 'annBody', 'annTeacher', 'annDateCreated', 'annDelete', 'annEdit'];
+  displayedColumns: string[] = ['annTitle', 'annBody', 'teacherName', 'annDateCreated', 'annDelete', 'annEdit'];
 
 
   constructor(private teacherService: TeachersService, private snackBar: MatSnackBar) { }
 
   // declares properties that go into announcements table
-     annTitle: string;
-     annBody: string;
+  annTitle: string;
+  annBody: string;
+  teacherName: string;
   // allows user to set number of items per "page", and to navigate between pages
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
