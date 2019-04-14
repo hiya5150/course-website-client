@@ -22,7 +22,6 @@ export class StudentsService {
     return this.http.get<Announcement[]>(this.baseUrl + 'announcements/loadAnnouncements', this.httpOptions);
   }
 
-
   public getAssignments(): Observable<Assignment[]> {
     return this.http.get<Assignment[]>(this.baseUrl + 'assignments/viewAssignments', this.httpOptions);
   }
