@@ -1,15 +1,4 @@
-<mat-toolbar>
-  <h2>Welcome to the CMHS Course Website</h2>
-  <span class="toolbar-flex"></span>
-  <a routerLink='/main-homepage' >Home</a>
-  <span class="toolbar-flex"></span>
-  <a routerLink='/student-assignments'>Assignments</a>
-  <span class="toolbar-flex"></span>
-  <a routerLink='/student-announcements'>Announcements</a>
-  <span class="toolbar-flex"></span>
-  <a routerLink='/student-grades'>Grades</a>
-  <span class="toolbar-flex"></span>
-</mat-toolbar>
+<app-students-nav></app-students-nav>
 
 <div id="announcementsList" *ngIf="announcements">
 
