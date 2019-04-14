@@ -15,8 +15,9 @@ import {TeacherAuthGuard} from './controllers/teacher-auth.guard';
 import {StudentAuthGuard} from './controllers/student-auth.guard';
 import {TeachersAnnouncementsComponent} from './views/teachers/announcements/teachers-announcements.component';
 import {LoginComponent} from './views/main/login/login.component';
-import {StudentsHomepageComponent} from './views/students/student-homepage/students-homepage.component';
 import {TeachersAssignmentComponent} from './views/teachers/assignment/teachers-assignment.component';
+import {StudentsAssignmentComponent} from './views/students/students-assignment/students-assignment.component';
+import {StudentsHomepageComponent} from './views/students/student-homepage/students-homepage.component';
 
 
 const routes: Routes = [
@@ -29,8 +30,10 @@ const routes: Routes = [
   {path: 'teachers/assignment/:asnID', component: TeachersAssignmentComponent, canActivate: [TeacherAuthGuard]},
   {path: 'students/home', component: StudentsHomepageComponent, canActivate: [StudentAuthGuard]},
   {path: 'students/assignments', component: StudentsAssignmentsComponent, canActivate: [StudentAuthGuard]},
+  {path: 'students/assignment/:asnID', component: StudentsAssignmentComponent, canActivate: [StudentAuthGuard]},
   {path: 'students/announcements', component: StudentsAnnouncementsComponent, canActivate: [StudentAuthGuard]},
   {path: 'students/grades', component: StudentsGradesComponent, canActivate: [StudentAuthGuard]},
+  {path: 'students/submissions', component: StudentsSubmissionsComponent, canActivate: [StudentAuthGuard]},
   {path: 'register', component: RegisterComponent},
   {path: 'login', component: LoginComponent},
   {path: '**', component: NotFoundComponent}

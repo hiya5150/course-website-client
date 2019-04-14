@@ -1,32 +1,40 @@
 <app-students-nav></app-students-nav>
-<div class="form-group">
-  <form #f="ngForm" name="theForm" (submit)="submitAssignment()">
-  <label>Assignment</label>
-  <mat-form-field>
-    <input matInput placeholder="Submit assignment" name="name" required [(ngModel)]="assignment.asnTitle" #assignmentName ="ngModel">
-  </mat-form-field>
-
-  <span *ngIf="assignmentName.errors?.required && assignmentName.touched">
-        The assignment name is required
-      </span>
-<button class="btn btn-primary btn-sm" [disabled]="f.invalid"></button>
-</form>
-</div>
-
-<div>
-  <form (ngSubmit)="submitAssignment()">
-    <h2>Submit Assignment</h2>
+<form (ngSubmit)="submitAssignment()">
+  <mat-dialog-content>
+    <h2 mat-dialog-title>Submit assignment</h2>
 
     <p>
-      <mat-form-field appearance="fill">
-        <mat-label>Name of Assignment</mat-label>
-        <input matInput [(ngModel)]="asnTitle" name="asnTitle" required>
+      <mat-form-field appearance="outline">
+        <mat-label>Assignment</mat-label>
+        <input type="text" matInput [(ngModel)]="teacherId" name="title" required>
       </mat-form-field>
     </p>
 
+    <p>
+      <mat-form-field appearance="outline">
+        <mat-label>Assignment</mat-label>
+        <input type="text" matInput [(ngModel)]="title" name="title" required>
+      </mat-form-field>
+    </p>
 
-    <button mat-stroked-button (click)="submitAsn()">Submit Assignment</button>
+    <p>
+      <mat-form-field appearance="outline">
+        <mat-label>Assignment</mat-label>
+        <input type="text" matInput [(ngModel)]="title" name="title" required>
+      </mat-form-field>
+    </p>
 
+    <p>
+      <mat-form-field appearance="outline">
+        <mat-label>Assignment</mat-label>
+        <input type="text" matInput [(ngModel)]="title" name="title" required>
+      </mat-form-field>
+    </p>
 
-  </form>
-</div>
+  </mat-dialog-content>
+
+  <mat-dialog-actions>
+
+    <button type="submit" mat-raised-button color="accent">Login</button>
+  </mat-dialog-actions>
+</form>
