@@ -46,7 +46,7 @@ export class TeachersAssignmentsComponent implements OnInit {
   }
 
   viewAssignments(): void {
-    this.teacherService.viewAssignments().subscribe(
+    this.teacherService.viewPrivateAssignments().subscribe(
       (res) => {
         this.assignments = res;
       }
