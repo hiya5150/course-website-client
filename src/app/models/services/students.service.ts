@@ -19,7 +19,7 @@ export class StudentsService {
   };
 
 
-  public getAnnouncements(): Observable<Announcement> {
+  public getAnnouncements(): Observable<Announcement[]> {
     return this.http.get<any>(this.baseUrl + 'announcements/loadAnnouncements', this.httpOptions);
   }
 

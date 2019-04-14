@@ -22,7 +22,7 @@ export class StudentsAssignmentsComponent implements OnInit {
   getAssignments(): void {
     this.studentsService.getAssignments().subscribe((res) => {
       this.assignments = [];
-      console.log(res);
+
       res.forEach((item) => {
         item = new Assignment(item);
         this.assignments.push(item);

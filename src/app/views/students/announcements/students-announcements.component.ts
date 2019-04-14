@@ -22,12 +22,13 @@ export class StudentsAnnouncementsComponent implements OnInit {
   getAnnouncements(): void {
     this.studentsService.getAnnouncements().subscribe((res) => {
       this.announcements = [];
-      console.log(res);
+
       res.forEach((item) => {
-        item = new Announcement(item);
-        this.announcements.push(item);
-      });
-      console.log(this.announcements);
-    });
+      item = new Announcement(item);
+      this.announcements.push(item);
+     });
+
+   });
   }
+
 }

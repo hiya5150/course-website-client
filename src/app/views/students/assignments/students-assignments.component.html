@@ -1,15 +1,4 @@
-<mat-toolbar>
-  <h2>Welcome to the CMHS Course Website</h2>
-  <span class="toolbar-flex"></span>
-  <a routerLink='/home' >Home</a>
-  <span class="toolbar-flex"></span>
-  <a routerLink='/students/assignments'>Assignments</a>
-  <span class="toolbar-flex"></span>
-  <a routerLink='/students/announcements'>Announcements</a>
-  <span class="toolbar-flex"></span>
-  <a routerLink='/students/grades'>Grades</a>
-  <span class="toolbar-flex"></span>
-</mat-toolbar>
+<app-students-nav></app-students-nav>
 
 <div *ngIf="assignments">
 
@@ -60,10 +49,10 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 
-    <!--Submit assignment-->
-    <form id=""submit">
-
-    </form>
-    <button type=submit" value=""submit">Submit</form></form>
   </table>
+</div>
+  <!--Submit assignment-->
+  <form>
 
+<!--  <button type=submit" value=submit">Submit</button>-->
+  </form>
