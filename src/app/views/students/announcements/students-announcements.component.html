@@ -1,8 +1,8 @@
 <app-students-nav></app-students-nav>
 
-<div id="announcementsList" *ngIf="announcements">
+<div *ngIf="announcements" class="table">
 
-  <table mat-table [dataSource]="announcements" class="mat-elevation-z8">
+  <table mat-table [dataSource]="announcements">
 
 
     <ng-container matColumnDef="annTitle">
