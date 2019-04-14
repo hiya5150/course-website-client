@@ -39,9 +39,17 @@ export class TeachersAnnouncementsComponent implements OnInit {
   }
   // this is used to show the total list of assignments
   getAnnouncements(): void {
-    this.teacherService.getAnnouncements().subscribe(
+    this.teacherService.getPrivateAnnouncements().subscribe(
       (res) => {
-        this.announcements = res;
+        if (res[0]) {
+          this.announcements = [];
+          res.forEach((item) => {
+            item = new Announcement(item);
+            this.announcements.push(item);
+          });
+        } else {
+          console.warn(res);
+        }
       }
     );
   }

@@ -40,9 +40,17 @@ export class TeachersAssignmentsComponent implements OnInit {
   }
 
   viewAssignments(): void {
-    this.teacherService.viewPrivateAssignments().subscribe(
+    this.teacherService.viewAssignments().subscribe(
       (res) => {
-        this.assignments = res;
+        if (res[0]) {
+          this.assignments = [];
+          res.forEach((item) => {
+            item = new Assignment(item);
+            this.assignments.push(item);
+          });
+        } else {
+          console.warn(res);
+        }
         // this.dataSource = new MatTableDataSource<Assignment>(this.assignments);
         // this.length = this.assignments.length;
       }

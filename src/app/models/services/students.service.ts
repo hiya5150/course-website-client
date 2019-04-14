@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {map} from 'rxjs/operators';
 import {Announcement} from '../announcement';
 import {Assignment} from '../assignment';
 
@@ -15,12 +14,12 @@ export class StudentsService {
     headers: new HttpHeaders({
       Authorization:  localStorage.getItem('token')
     })
-      // .set('Content-Type', 'application/x-www-form-urlencoded')
+      .set('Content-Type', 'application/x-www-form-urlencoded')
   };
 
 
   public getAnnouncements(): Observable<Announcement[]> {
-    return this.http.get<any>(this.baseUrl + 'announcements/loadAnnouncements', this.httpOptions);
+    return this.http.get<Announcement[]>(this.baseUrl + 'announcements/loadAnnouncements', this.httpOptions);
   }
 
 
@@ -33,12 +32,11 @@ export class StudentsService {
   }
 
   public submit(): Observable<any> {
-    return this.http.post<any>(this.baseUrl + 'students/assignments/submitAssignment', this.httpOptions);
+    const body = '';
+    return this.http.post(this.baseUrl + 'students/assignments/submitAssignment', body, this.httpOptions);
   }
 
   viewOneAssignment(asnID: number): Observable<Assignment[]> {
-    return this.http.get<Assignment[]>(`${this.baseUrl}Assignments/viewOneAssignment/${asnID}`, this.httpOptions).pipe(
-      map(result => (result as any[]))
-    );
+    return this.http.get<Assignment[]>(`${this.baseUrl}Assignments/viewOneAssignment/${asnID}`, this.httpOptions);
   }
 }

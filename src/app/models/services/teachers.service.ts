@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {map} from 'rxjs/operators';
 
 
 import {Announcement} from '../announcement';
@@ -23,15 +22,11 @@ export class TeachersService {
   constructor(private http: HttpClient) { }
 // Announcement http requests
   getAnnouncements(): Observable<Announcement[]> {
-      map(result => (result as any[]).map(item => new Announcement(item)))
-    return this.http.get<Announcement[]>(`${this.baseUrl}Announcements/viewAnnouncements`, this.httpOptions).pipe(
-    );
+    return this.http.get<Announcement[]>(`${this.baseUrl}Announcements/viewAnnouncements`, this.httpOptions);
   }
-  getPrivateAnnouncements(): Observable<Announcement[]> {
-    return this.http.get<Announcement[]>(`${this.baseUrl}Announcements/viewPrivateAnnouncements`, this.httpOptions).pipe(
 
-      map(result => (result as any[]).map(item => new Announcement(item)))
-     );
+  getPrivateAnnouncements(): Observable<Announcement[]> {
+    return this.http.get<Announcement[]>(`${this.baseUrl}Announcements/viewPrivateAnnouncements`, this.httpOptions);
   }
 
   createAnnouncement(annTitle: string, annBody: string): Observable<any> {
@@ -40,8 +35,6 @@ export class TeachersService {
   }
 
   deleteAnnouncement(annID: number): Observable<any> {
-    const params = new HttpParams().set('annID', annID.toString());
-
     return this.http.delete(`${this.baseUrl}Announcements/deleteAnnouncement/${annID}`, this.httpOptions);
   }
 
@@ -51,15 +44,11 @@ export class TeachersService {
   }
 
   viewAssignments(): Observable<Assignment[]> {
-    return this.http.get<Assignment[]>(`${this.baseUrl}Assignments/viewAssignments`, this.httpOptions).pipe(
-      map(result => (result as any[]).map(item => new Assignment(item)))
-    );
+    return this.http.get<Assignment[]>(`${this.baseUrl}Assignments/viewAssignments`, this.httpOptions);
   }
 
   viewPrivateAssignments(): Observable<Assignment[]> {
-    return this.http.get<Assignment[]>(`${this.baseUrl}Assignments/viewPrivateAssignments`, this.httpOptions).pipe(
-      map(result => (result as any[]).map(item => new Assignment(item)))
-    );
+    return this.http.get<Assignment[]>(`${this.baseUrl}Assignments/viewPrivateAssignments`, this.httpOptions);
   }
 
   viewOneAssignment(asnID: number): Observable<Assignment> {
@@ -72,7 +61,6 @@ export class TeachersService {
   }
 
   deleteAssignment(asnID: number): Observable<any> {
-    const params = new HttpParams().set('asnID', asnID.toString());
     return this.http.delete(`${this.baseUrl}Assignments/deleteAssignment/${asnID}`, this.httpOptions);
   }
 
@@ -82,10 +70,9 @@ export class TeachersService {
   }
 
   viewSubmissions(asnID: number): Observable<Grade[]> {
-    return this.http.get<Grade[]>(`${this.baseUrl}Grades/viewAllSubmissionsOneAssignment/${asnID}`, this.httpOptions).pipe(
-      map(result => (result as any[]).map(item => new Grade(item)))
-    );
+    return this.http.get<Grade[]>(`${this.baseUrl}Grades/viewAllSubmissionsOneAssignment/${asnID}`, this.httpOptions);
   }
+
   editGrade(studentID: number, asnID: number, grade: number): Observable<any> {
     const body = `grade=${grade}`;
     return this.http.post(`${this.baseUrl}Grades/editGrade/${studentID}/${asnID}`, body, this.httpOptions);
