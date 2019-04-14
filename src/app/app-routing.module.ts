@@ -33,6 +33,7 @@ const routes: Routes = [
   {path: 'students/assignment/:asnID', component: StudentsAssignmentComponent, canActivate: [StudentAuthGuard]},
   {path: 'students/announcements', component: StudentsAnnouncementsComponent, canActivate: [StudentAuthGuard]},
   {path: 'students/grades', component: StudentsGradesComponent, canActivate: [StudentAuthGuard]},
+  {path: 'students/submissions', component: StudentsSubmissionsComponent, canActivate: [StudentAuthGuard]},
   {path: 'register', component: RegisterComponent},
   {path: 'login', component: LoginComponent},
   {path: '**', component: NotFoundComponent}

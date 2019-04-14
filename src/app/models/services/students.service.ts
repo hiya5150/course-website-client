@@ -33,7 +33,7 @@ export class StudentsService {
   }
 
   public submit(): Observable<any> {
-    return this.http.post<any>(this.baseUrl + 'assignments/submitAssignments', this.httpOptions);
+    return this.http.post<any>(this.baseUrl + 'students/assignments/submitAssignment', this.httpOptions);
   }
 
   viewOneAssignment(asnID: number): Observable<Assignment[]> {
