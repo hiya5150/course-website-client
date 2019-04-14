@@ -27,7 +27,7 @@ const routes: Routes = [
   {path: 'teachers/announcements', component: TeachersAnnouncementsComponent, canActivate: [TeacherAuthGuard]},
   {path: 'teachers/grades', component: TeachersGradesComponent, canActivate: [TeacherAuthGuard]},
   {path: 'teachers/assignment/:asnID', component: TeachersAssignmentComponent, canActivate: [TeacherAuthGuard]},
-  {path: 'students/home', component: TeachersHomepageComponent, canActivate: [StudentAuthGuard]},
+  {path: 'students/home', component: StudentsHomepageComponent, canActivate: [StudentAuthGuard]},
   {path: 'students/assignments', component: StudentsAssignmentsComponent, canActivate: [StudentAuthGuard]},
   {path: 'students/announcements', component: StudentsAnnouncementsComponent, canActivate: [StudentAuthGuard]},
   {path: 'students/grades', component: StudentsGradesComponent, canActivate: [StudentAuthGuard]},
