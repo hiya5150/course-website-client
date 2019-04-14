@@ -7,36 +7,37 @@
     {{assignment.asnGrade}}
     {{assignment.teacherName}}
     <button (click)="editAsnForm()">Edit Assignment</button>
-  </div>
 
-  <form id="editForm" (ngSubmit)="editForm(assignment.asnTitle)" style="display:none;">
+
+  <form id="editForm" (ngSubmit)="editAsn()" style="display:none;">
     <h2>Edit Assignment</h2>
     <p>
       <mat-form-field appearance="fill">
         <mat-label>Title of assignment</mat-label>
-        <input matInput [(ngModel)]="currentAsnTitle" name="asnTitle" required>
+        <input matInput name="asnTitle" value="{{assignment.asnTitle}}" required>
       </mat-form-field>
     </p>
     <p>
       <mat-form-field appearance="fill">
         <mat-label>Assignment</mat-label>
-        <input matInput [(ngModel)]="asnBody" name="asnBody" required>
+        <input matInput value="{{assignment.asnBody}}" name="asnBody" required>
       </mat-form-field>
     </p>
     <p>
       <mat-form-field appearance="fill">
         <mat-label>Due Date</mat-label>
-        <input matInput [(ngModel)]="asnDueDate" name="asnDueDate" required>
+        <input matInput value="{{assignment.asnDueDate}}" name="asnDueDate" required>
       </mat-form-field>
     </p>
     <p>
       <mat-form-field appearance="fill">
         <mat-label>Grade</mat-label>
-        <input matInput [(ngModel)]="asnGrade" name="asnGrade" required>
+        <input matInput value="{{assignment.asnGrade}}" name="asnGrade" required>
       </mat-form-field>
     </p>
-    <button mat-stroked-button type="submit">Edit Assignment</button>
+    <button mat-stroked-button type="submit">Edit</button>
   </form>
+  </div>
 
 <div *ngFor="let sub of submissions">
   <p>

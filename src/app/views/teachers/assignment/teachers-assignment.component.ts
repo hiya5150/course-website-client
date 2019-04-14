@@ -13,7 +13,9 @@ export class TeachersAssignmentComponent implements OnInit {
   submissions: Grade[];
   assignment: Assignment;
   asnID;
-  currentAsnTitle;
+  asnTitle;
+  asnBody;
+  asnDueDate;
 
   constructor(private teacherService: TeachersService, private activatedRoute: ActivatedRoute) {
     this.asnID = this.activatedRoute.snapshot.paramMap.get('asnID');
@@ -31,13 +33,16 @@ export class TeachersAssignmentComponent implements OnInit {
       }
     );
   }
-  editAsnForm(asnID, asnTitle, asnBody, asnDueDate, asnGrade) {
-    this.currentAsnTitle = asnTitle;
+  editAsnForm() {
     document.getElementById('editForm').style.display = 'block';
   }
 
-  editForm() {
-    console.log('hi');
+  editAsn() {
+    if (this.teacherService.editAssignment(this.asnID, this.asnTitle, this.asnBody, this.asnDueDate, this.assignment.asnGrade).subscribe(
+      () => this.viewOneAssignment()
+    )) {
+      document.getElementById('editForm').style.display = 'none';
+    }
   }
   viewSubmissions(): void {
     this.teacherService.viewSubmissions(this.asnID).subscribe(
