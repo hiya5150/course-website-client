@@ -1,5 +1,4 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {Assignment} from '../../../models/assignment';
 import {Announcement} from '../../../models/announcement';
 import {StudentsService} from '../../../models/services/students.service';
 import {MatPaginator} from '@angular/material';
@@ -21,8 +20,15 @@ export class StudentsAnnouncementsComponent implements OnInit {
     this.getAnnouncements();
   }
   getAnnouncements(): void {
-      this.studentsService.getAnnouncements().subscribe((res) => {this.announcements = res;
-      }
-      );
+    this.studentsService.getAnnouncements().subscribe((res) => {
+      this.announcements = [];
+
+      res.forEach((item) => {
+      item = new Announcement(item);
+      this.announcements.push(item);
+     });
+
+   });
   }
+
 }

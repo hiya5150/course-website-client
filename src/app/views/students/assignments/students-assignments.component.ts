@@ -10,7 +10,7 @@ import {MatPaginator} from '@angular/material';
 })
 export class StudentsAssignmentsComponent implements OnInit {
   assignments: Assignment[];
-  displayedColumns: string[] = ['asnSubject', 'asnTitle', 'asnBody', 'teacherName', 'asnDateCreated', 'asnDateDue'];
+  displayedColumns: string[] = ['asnSubject', 'asnTitle', 'asnBody', 'teacherName', 'asnDateCreated', 'asnDueDate', 'asnGrade'];
   constructor(private studentsService: StudentsService) { }
   asnTitle: string;
   asnBody: string;
@@ -21,7 +21,13 @@ export class StudentsAssignmentsComponent implements OnInit {
 
   getAssignments(): void {
     this.studentsService.getAssignments().subscribe((res) => {
-      this.assignments = res;
+      this.assignments = [];
+
+      res.forEach((item) => {
+        item = new Assignment(item);
+        this.assignments.push(item);
+      });
+      console.log(this.assignments);
     });
   }
 
