@@ -50,10 +50,8 @@ export class TeachersService {
     );
   }
 
-  viewOneAssignment(asnID: number): Observable<Assignment[]> {
-    return this.http.get<Assignment[]>(`${this.baseUrl}Assignments/viewOneAssignment/${asnID}`, this.httpOptions).pipe(
-      map(result => (result as any[]))
-    );
+  viewOneAssignment(asnID: number): Observable<Assignment> {
+    return this.http.get<Assignment>(`${this.baseUrl}Assignments/viewOneAssignment/${asnID}`, this.httpOptions);
   }
 
   createAssignment(asnTitle: string, asnBody: string, asnDueDate: any, asnGrade: number): Observable<any> {
