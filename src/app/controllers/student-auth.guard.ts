@@ -19,12 +19,17 @@ export class StudentAuthGuard implements CanActivate {
       if (data === true) {
         return of(true);
       } else if (data === false) {
-        AuthService.logout();
-        return of(false);
-      } else {
-        this.route.navigateByUrl('home');
-        return of(false);
+        return this.logout();
       }
     }));
   }
+  // deletes token on logout and redirects to home
+  private logout(): Observable<boolean> {
+    if (AuthService.isLoggedIn()) {
+      localStorage.removeItem('token');
+    }
+    this.route.navigate(['home']);
+    return of(false);
+  }
 }
+
