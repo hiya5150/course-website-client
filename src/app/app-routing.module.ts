@@ -16,6 +16,7 @@ import {StudentAuthGuard} from './controllers/student-auth.guard';
 import {TeachersAnnouncementsComponent} from './views/teachers/announcements/teachers-announcements.component';
 import {LoginComponent} from './views/main/login/login.component';
 import {StudentsHomepageComponent} from './views/students/student-homepage/students-homepage.component';
+import {TeachersAssignmentComponent} from './views/teachers/assignment/teachers-assignment.component';
 
 
 const routes: Routes = [
@@ -25,6 +26,7 @@ const routes: Routes = [
   {path: 'teachers/assignments', component: TeachersAssignmentsComponent, canActivate: [TeacherAuthGuard]},
   {path: 'teachers/announcements', component: TeachersAnnouncementsComponent, canActivate: [TeacherAuthGuard]},
   {path: 'teachers/grades', component: TeachersGradesComponent, canActivate: [TeacherAuthGuard]},
+  {path: 'teachers/assignment/:asnID', component: TeachersAssignmentComponent, canActivate: [TeacherAuthGuard]},
   {path: 'students/assignments', component: StudentsAssignmentsComponent, canActivate: [StudentAuthGuard]},
   {path: 'students/announcements', component: StudentsAnnouncementsComponent, canActivate: [StudentAuthGuard]},
   {path: 'students/grades', component: StudentsGradesComponent, canActivate: [StudentAuthGuard]},

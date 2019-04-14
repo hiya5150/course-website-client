@@ -14,7 +14,7 @@ export class TeachersAssignmentsComponent implements OnInit {
 
 
   // columns to be displayed in table
-  displayedColumns: string[] = ['asnTitle', 'asnBody', 'asnSubject', 'asnDateCreated', 'asnDueDate', 'asnGrade'];
+  displayedColumns: string[] = ['asnTitle', 'asnBody', 'asnSubject', 'asnDateCreated', 'asnDueDate', 'asnGrade', 'viewMore'];
 
   constructor(private teacherService: TeachersService) {
   }

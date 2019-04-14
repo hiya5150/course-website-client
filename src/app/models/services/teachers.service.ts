@@ -50,8 +50,7 @@ export class TeachersService {
     );
   }
 
-  viewOneAssignment(asnID): Observable<Assignment[]> {
-    const params = new HttpParams().set('asnID', asnID.toLocaleString());
+  viewOneAssignment(asnID: number): Observable<Assignment[]> {
     return this.http.get<Assignment[]>(`${this.baseUrl}Assignments/viewOneAssignment/${asnID}`, this.httpOptions).pipe(
       map(result => (result as any[]))
     );
