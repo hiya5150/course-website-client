@@ -44,7 +44,7 @@ currentAnnBody: string;
   }
   // this is used to show the total list of assignments
   getAnnouncements(): void {
-    this.teacherService.getAnnouncements().subscribe(
+    this.teacherService.getPrivateAnnouncements().subscribe(
       (res) => {
         this.announcements = res;
       }

@@ -6,8 +6,8 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
   MatButtonModule,
-  MatDialogModule, MatExpansionModule,
-  MatInputModule,
+  MatDialogModule,
+  MatInputModule, MatNativeDateModule, MatExpansionModule,
   MatPaginatorModule,
   MatProgressSpinnerModule, MatRadioModule,
   MatSelectModule,
@@ -16,6 +16,7 @@ import {
 } from '@angular/material';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {FormsModule} from '@angular/forms';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 import { StudentsGradesComponent } from './views/students/grades/students-grades.component';
 import { StudentsHomepageComponent } from './views/students/student-homepage/students-homepage.component';
 import { StudentsSubmissionsComponent } from './views/students/submissions/students-submissions.component';
@@ -75,9 +76,11 @@ import {StudentsAssignmentComponent} from './views/students/students-assignment/
     MatButtonModule,
     HttpClientModule,
     MatSnackBarModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     MatExpansionModule
   ],
-  providers: [],
+  providers: [MatDatepickerModule ],
   bootstrap: [AppComponent],
   entryComponents: [RegisterComponent, LoginComponent]
 })

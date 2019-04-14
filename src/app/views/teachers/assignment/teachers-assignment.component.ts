@@ -17,13 +17,15 @@ export class TeachersAssignmentComponent implements OnInit {
   asnBody;
   asnDueDate;
   asnGrade;
+
   // columns to be displayed in table
-  displayedColumns: string[] = ['studentName', 'submission', 'submissionDate', 'grade', 'addGrade'];
+  displayedColumns: string[] = ['studentID', 'studentName', 'submission', 'submissionDate', 'grade', 'addGrade'];
 
   constructor(private teacherService: TeachersService, private activatedRoute: ActivatedRoute) {
     this.asnID = this.activatedRoute.snapshot.paramMap.get('asnID');
   }
   // declares properties that go into submissions table
+  studentID: number;
   studentName: string;
   submission: string;
   submissionDate: any;
@@ -61,8 +63,15 @@ export class TeachersAssignmentComponent implements OnInit {
       }
     );
   }
-  addGrade() {
-    console.log('hi');
+  editGrade(studentID: number, grade: number): void {
+    this.teacherService.editGrade(studentID, this.asnID, grade).subscribe(
+      (res) => {
+        if (res.success === true) {
+          this.viewSubmissions();
+        } else {
+          console.log(res);
+        }
+      });
   }
 
 }
