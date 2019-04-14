@@ -38,7 +38,7 @@ export class RegisterComponent implements OnInit {
             }
           });
         break;
-      case 'students':
+      case 'student':
         this.userService.studentRegister(this.name, this.username, this.password)
           .subscribe((res) => {
             if (res.success === true) {
