@@ -1,59 +1,59 @@
 <mat-toolbar>
   <h2>Welcome to the CMHS Course Website</h2>
   <span class="toolbar-flex"></span>
-  <a routerLink='/main-homepage' >Home</a>
+  <a routerLink='/home' >Home</a>
   <span class="toolbar-flex"></span>
-  <a routerLink='/student-assignments'>Assignments</a>
+  <a routerLink='/students/assignments'>Assignments</a>
   <span class="toolbar-flex"></span>
-  <a routerLink='/student-announcements'>Announcements</a>
+  <a routerLink='/students/announcements'>Announcements</a>
   <span class="toolbar-flex"></span>
-  <a routerLink='/student-grades'>Grades</a>
+  <a routerLink='/students/grades'>Grades</a>
   <span class="toolbar-flex"></span>
 </mat-toolbar>
 
-<div id="assignmentsList" *ngIf="assignments">
+<div *ngIf="assignments">
 
   <table mat-table [dataSource]="assignments" class="mat-elevation-z8">
 
 
     <ng-container matColumnDef="asnTitle">
-      <th mat-header-cell *matHeaderCellDef> No. </th>
+      <th mat-header-cell *matHeaderCellDef>Assignment Title</th>
       <td mat-cell *matCellDef="let element"> {{element.asnTitle}} </td>
     </ng-container>
 
     <!-- Assignment body -->
     <ng-container matColumnDef="asnBody">
-      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <th mat-header-cell *matHeaderCellDef>Assignment content</th>
       <td mat-cell *matCellDef="let element"> {{element.asnBody}} </td>
     </ng-container>
 
     <!-- Assignment Date created -->
     <ng-container matColumnDef="asnDateCreated">
-      <th mat-header-cell *matHeaderCellDef> Weight </th>
-      <td mat-cell *matCellDef="let element"> {{element.asnDateCreated}} </td>
+      <th mat-header-cell *matHeaderCellDef>Date Created</th>
+      <td mat-cell *matCellDef="let element"> {{element.asnDateCreated | date}} </td>
     </ng-container>
 
     <!-- Assignment Due date -->
     <ng-container matColumnDef="asnDueDate">
-      <th mat-header-cell *matHeaderCellDef> Weight </th>
-      <td mat-cell *matCellDef="let element"> {{element.asnDateDue}} </td>
+      <th mat-header-cell *matHeaderCellDef>Due Date</th>
+      <td mat-cell *matCellDef="let element"> {{element.asnDueDate | date}} </td>
     </ng-container>
 
     <!-- Assignment grade -->
     <ng-container matColumnDef="asnGrade">
-      <th mat-header-cell *matHeaderCellDef> Weight </th>
+      <th mat-header-cell *matHeaderCellDef>Your grade</th>
       <td mat-cell *matCellDef="let element"> {{element.asnGrade}} </td>
     </ng-container>
 
     <!-- Teacher name -->
     <ng-container matColumnDef="teacherName">
-      <th mat-header-cell *matHeaderCellDef> Symbol </th>
+      <th mat-header-cell *matHeaderCellDef>Instructor</th>
       <td mat-cell *matCellDef="let element"> {{element.teacherName}} </td>
     </ng-container>
 
     <!-- Assignment subject-->
     <ng-container matColumnDef="asnSubject">
-      <th mat-header-cell *matHeaderCellDef> Symbol </th>
+      <th mat-header-cell *matHeaderCellDef>Subject</th>
       <td mat-cell *matCellDef="let element"> {{element.asnSubject}} </td>
     </ng-container>
 
@@ -63,5 +63,5 @@
 
   <div id="submitForm">
     <h2>The form</h2>
-
+  </div>
   </div>
