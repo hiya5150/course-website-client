@@ -1,12 +1,12 @@
-
+<app-teachers-nav></app-teachers-nav>
   <div *ngIf="assignment">
     {{assignment.asnTitle}}
     {{assignment.asnBody}}
     {{assignment.asnDateCreated}}
     {{assignment.asnDueDate}}
-    {{assignment.asnGrade}}
-    {{assignment.teacherName}}
     <button (click)="editAsnForm()">Edit Assignment</button>
+    {{assignment.teacherName}}
+    {{assignment.asnGrade}}
 
 
   <form id="editForm" (ngSubmit)="editAsn()" style="display:none;">
