@@ -1,8 +1,7 @@
 <app-teachers-nav></app-teachers-nav>
 
-<button mat-stroked-button (click)="showAsnForm()">Create New Assignment</button>
-
-<div class="mat-elevation-z8">
+<div *ngIf="assignments" class="table">
+  <button mat-stroked-button (click)="showAsnForm()" color="accent" [ngStyle]="{'float':'right'}">Create New Assignment</button>
   <h3 matColumnDef="title">Assignments</h3>
   <table mat-table [dataSource]="assignments">
     <ng-container matColumnDef="asnSubject">
@@ -39,15 +38,9 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
 
-  <mat-paginator [length]="length"
-                 [pageSize]="pageSize"
-                 [pageSizeOptions]="pageSizeOptions"
-                 (page)="pageEvent = $event">
-    
-  </mat-paginator>
+<!--  <mat-paginator [length]="length" [pageSizeOptions]="[1, 5, 10, 20]">-->
+<!--  </mat-paginator>-->
 </div>
-
-
 
 
 <div>

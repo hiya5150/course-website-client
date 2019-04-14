@@ -22,8 +22,8 @@ export class TeachersService {
   };
   constructor(private http: HttpClient) { }
 // Announcement http requests
-  getPrivateAnnouncements(): Observable<Announcement[]> {
-    return this.http.get<Announcement[]>(`${this.baseUrl}Announcements/viewPrivateAnnouncements`, this.httpOptions).pipe(
+  getAnnouncements(): Observable<Announcement[]> {
+    return this.http.get<Announcement[]>(`${this.baseUrl}Announcements/viewAnnouncements`, this.httpOptions).pipe(
       map(result => (result as any[]).map(item => new Announcement(item)))
      );
   }
