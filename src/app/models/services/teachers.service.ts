@@ -76,6 +76,7 @@ export class TeachersService {
   }
   editGrade(studentID: number, asnID: number, grade: number): Observable<any> {
     const body = `grade=${grade}`;
+    console.log(grade);
     return this.http.post(`${this.baseUrl}Grades/editGrade/${studentID}/${asnID}`, body, this.httpOptions);
   }
 }

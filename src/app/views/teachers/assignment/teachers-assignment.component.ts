@@ -63,10 +63,15 @@ export class TeachersAssignmentComponent implements OnInit {
       }
     );
   }
-  editGrade(studentID: number, grade: number) {
+  editGrade(studentID: number, grade: number): void {
     this.teacherService.editGrade(studentID, this.asnID, grade).subscribe(
-      () => this.viewSubmissions()
-    );
+      (res) => {
+        if (res.success === true) {
+          this.viewSubmissions();
+        } else {
+          console.log(res);
+        }
+      });
   }
 
 }
