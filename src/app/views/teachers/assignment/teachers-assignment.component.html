@@ -1,16 +1,73 @@
 
-  <p>
-    {{assignment}}
-  </p>
-  <p>
-    {{viewOneAssignment(11)}}
-  </p>
+  <div *ngIf="assignment">
+    {{assignment.asnTitle}}
+    {{assignment.asnBody}}
+    {{assignment.asnDateCreated}}
+    {{assignment.asnDueDate}}
+    {{assignment.asnGrade}}
+    {{assignment.teacherName}}
+    <button (click)="editAsnForm()">Edit Assignment</button>
 
-<div *ngFor="let sub of submissions">
-  <p>
-    {{sub.studentName}}<br>
-    {{sub.submission}}<br>
-    {{sub.submissionDate}}<br>
-    grade: {{sub.grade}}
-  </p>
-</div>
+
+  <form id="editForm" (ngSubmit)="editAsn()" style="display:none;">
+    <h2>Edit Assignment</h2>
+    <p>
+      <mat-form-field appearance="fill">
+        <mat-label>Title of assignment</mat-label>
+        <input matInput name="asnTitle" [(ngModel)]="asnTitle" required>
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field appearance="fill">
+        <mat-label>Assignment</mat-label>
+        <input matInput name="asnBody" [(ngModel)]="asnBody" required>
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field appearance="fill">
+        <mat-label>Due Date</mat-label>
+        <input matInput name="asnDueDate" [(ngModel)]="asnDueDate" required>
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field appearance="fill">
+        <mat-label>Grade</mat-label>
+        <input matInput name="asnGrade" [(ngModel)]="asnGrade" required>
+      </mat-form-field>
+    </p>
+    <button mat-stroked-button type="submit">Edit</button>
+    <button mat-stroked-button (click)="closeForm()">Cancel</button>
+  </form>
+  </div>
+
+
+  <div class="mat-elevation-z8">
+    <h3 matColumnDef="title">Submissions</h3>
+    <table mat-table [dataSource]="submissions">
+      <ng-container matColumnDef="studentName">
+        <th mat-header-cell *matHeaderCellDef>Student Name</th>
+        <td mat-cell *matCellDef="let sub">{{sub.studentName}}</td>
+      </ng-container>
+      <ng-container matColumnDef="submission">
+        <th mat-header-cell *matHeaderCellDef>Submission</th>
+        <td mat-cell *matCellDef="let sub">{{sub.submission}}</td>
+      </ng-container>
+      <ng-container matColumnDef="submissionDate">
+        <th mat-header-cell *matHeaderCellDef>Submission Date</th>
+        <td mat-cell *matCellDef="let sub">{{sub.submissionDate}}</td>
+      </ng-container>
+      <ng-container matColumnDef="grade">
+        <th mat-header-cell *matHeaderCellDef>Grade</th>
+        <td mat-cell *matCellDef="let sub"><input type="text" value="{{sub.grade}}"></td>
+      </ng-container>
+      <ng-container matColumnDef="addGrade">
+        <th mat-header-cell *matHeaderCellDef>edit/add Grade</th>
+        <td mat-cell *matCellDef="let sub">
+          <button mat-stroked-button (click)="addGrade()">add</button>
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+
