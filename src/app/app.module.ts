@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
   MatButtonModule,
-  MatDialogModule,
+  MatDialogModule, MatExpansionModule,
   MatInputModule,
   MatPaginatorModule,
   MatProgressSpinnerModule, MatRadioModule,
@@ -70,7 +70,8 @@ import { StudentsAssignmentComponent } from './views/students/students-assignmen
     MatDialogModule,
     MatButtonModule,
     HttpClientModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatExpansionModule
   ],
   providers: [],
   bootstrap: [AppComponent],
