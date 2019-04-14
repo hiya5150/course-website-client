@@ -7,7 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
   MatButtonModule,
   MatDialogModule,
-  MatInputModule, MatNativeDateModule,
+  MatInputModule, MatNativeDateModule, MatExpansionModule,
   MatPaginatorModule,
   MatProgressSpinnerModule, MatRadioModule,
   MatSelectModule,
@@ -77,7 +77,8 @@ import {StudentsAssignmentComponent} from './views/students/students-assignment/
     HttpClientModule,
     MatSnackBarModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatExpansionModule
   ],
   providers: [MatDatepickerModule ],
   bootstrap: [AppComponent],

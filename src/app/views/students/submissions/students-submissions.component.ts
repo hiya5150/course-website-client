@@ -1,7 +1,10 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {Assignment} from '../../../models/assignment';
 import {StudentsService} from '../../../models/services/students.service';
-import {MatPaginator} from '@angular/material';
+import {MatDialog, MatDialogRef, MatPaginator} from '@angular/material';
+import {Router} from '@angular/router';
+import {UserService} from '../../../models/services/user.service';
+import {RegisterComponent} from '../../main/register/register.component';
 
 @Component({
   selector: 'app-submissions',
@@ -9,12 +12,15 @@ import {MatPaginator} from '@angular/material';
   styleUrls: ['./students-submissions.component.scss']
 })
 export class StudentsSubmissionsComponent implements OnInit {
+  // Takes in the assignment title
+  teacherId: number;
  assignments: Assignment[];
-  error = '';
-  success = '';
+
   assignment = new Assignment();
 
-  constructor(private studentsService: StudentsService) { }
+  constructor(private studentsService: StudentsService, public dialogRef: MatDialogRef<RegisterComponent>,
+              private dialog: MatDialog,
+              private router: Router) { }
 
   asnTitle: string;
 
@@ -23,15 +29,11 @@ export class StudentsSubmissionsComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   ngOnInit() {
+
     this.submitAssignment();
 
   }
-
-
-
   onSubmit() {
-
-
   }
   submitAssignment(): void {
     this.studentsService.submit().subscribe(
