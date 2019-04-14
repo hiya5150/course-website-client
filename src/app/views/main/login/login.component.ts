@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
           if (res.token) {
             window.localStorage.setItem('token', res.token);
             this.dialogRef.close();
-            this.router.navigateByUrl('teachers/homepage');
+            this.router.navigateByUrl('teachers/home');
           }
         });
         break;
@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
           if (res.token) {
             localStorage.setItem('token', res.token);
             this.dialogRef.close();
-            this.router.navigateByUrl('students/homepage');
+            this.router.navigateByUrl('students/home');
           }
         });
         break;
