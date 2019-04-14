@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Announcement} from '../../../models/announcement';
 import {TeachersService} from '../../../models/services/teachers.service';
-import {MatPaginator, MatSnackBar, PageEvent} from '@angular/material';
+import {MatSnackBar} from '@angular/material';
 
 
 @Component({
@@ -11,9 +11,9 @@ import {MatPaginator, MatSnackBar, PageEvent} from '@angular/material';
 })
 export class TeachersAnnouncementsComponent implements OnInit {
   announcements: Announcement[];
-currentAnnID: number;
-currentAnnTitle: string;
-currentAnnBody: string;
+  currentAnnID: number;
+  currentAnnTitle: string;
+  currentAnnBody: string;
   // columns to be displayed in table
   displayedColumns: string[] = ['annTitle', 'annBody', 'teacherName', 'annDateCreated', 'annDelete', 'annEdit'];
 
@@ -28,17 +28,12 @@ currentAnnBody: string;
 
   // allows user to set number of items per "page", and to navigate between pages
   // this sets input MatPaginator Input properties
-  length = 100;
-  pageSize = 5;
-  pageSizeOptions: number[] = [5, 10, 25];
+  // length = 100;
+  // pageSize = 5;
+  // pageSizeOptions: number[] = [5, 10, 25];
 
   // MatPaginator Output
-  pageEvent: PageEvent;
-
-  setPageSizeOptions(setPageSizeOptionsInput: string) {
-    this.pageSizeOptions = setPageSizeOptionsInput.split(',').map(str => +str);
-  }
-
+  // pageEvent: PageEvent;
   ngOnInit() {
     this.getAnnouncements();
   }
@@ -46,7 +41,15 @@ currentAnnBody: string;
   getAnnouncements(): void {
     this.teacherService.getPrivateAnnouncements().subscribe(
       (res) => {
-        this.announcements = res;
+        if (res[0]) {
+          this.announcements = [];
+          res.forEach((item) => {
+            item = new Announcement(item);
+            this.announcements.push(item);
+          });
+        } else {
+          console.warn(res);
+        }
       }
     );
   }

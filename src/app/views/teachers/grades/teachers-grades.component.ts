@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Grade} from '../../../models/grade';
 import {TeachersService} from '../../../models/services/teachers.service';
+import {Announcement} from '../../../models/announcement';
 
 @Component({
   selector: 'app-grades',
@@ -17,7 +18,15 @@ submissions: Grade[];
   getSubmissions(): void {
     this.teacherService.viewSubmissions(11).subscribe(
       (res) => {
-        this.submissions = res;
+        if (res[0]) {
+          this.submissions = [];
+          res.forEach((item) => {
+            item = new Grade(item);
+            this.submissions.push(item);
+          });
+        } else {
+          console.warn(res);
+        }
       }
     );
   }

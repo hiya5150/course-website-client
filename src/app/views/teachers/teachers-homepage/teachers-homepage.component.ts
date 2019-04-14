@@ -11,8 +11,8 @@ import {Assignment} from '../../../models/assignment';
 export class TeachersHomepageComponent implements OnInit {
   announcements: Announcement[];
   assignments: Assignment[];
-  displayedColumns: string[] = ['annTitle', 'annBody', 'teacherName', 'annDateCreated'];
-  displayedColumns2: string[] = ['asnTitle', 'asnBody', 'asnSubject', 'asnDateCreated', 'asnDueDate', 'asnGrade'];
+  displayedColumnsAsn: string[] = ['annTitle', 'annBody', 'teacherName', 'annDateCreated'];
+  displayedColumnsAnn: string[] = ['asnTitle', 'asnBody', 'asnSubject', 'asnDateCreated', 'asnDueDate', 'asnGrade'];
 
   constructor(private teacherService: TeachersService) { }
 
@@ -20,18 +20,34 @@ export class TeachersHomepageComponent implements OnInit {
     this.getAnnouncements();
     this.getAssignments();
   }
-getAnnouncements(): void {
-    this.teacherService.getAnnouncements().subscribe(
-      (res) => {
-        this.announcements = res;
-      }
-    );
-}
-getAssignments(): void {
-    this.teacherService.viewAssignments().subscribe(
-      (res) => {
-        this.assignments = res;
-      }
-    );
-}
+  getAnnouncements(): void {
+      this.teacherService.getAnnouncements().subscribe(
+        (res) => {
+          if (res[0]) {
+            this.announcements = [];
+            res.forEach((item) => {
+              item = new Announcement(item);
+              this.announcements.push(item);
+            });
+          } else {
+            console.warn(res);
+          }
+        }
+      );
+  }
+  getAssignments(): void {
+      this.teacherService.viewAssignments().subscribe(
+        (res) => {
+          if (res[0]) {
+            this.assignments = [];
+            res.forEach((item) => {
+              item = new Assignment(item);
+              this.assignments.push(item);
+            });
+          } else {
+            console.warn(res);
+          }
+        }
+      );
+  }
 }

@@ -3,6 +3,7 @@ import {Grade} from '../../../models/grade';
 import {TeachersService} from '../../../models/services/teachers.service';
 import {Assignment} from '../../../models/assignment';
 import {ActivatedRoute} from '@angular/router';
+import {Announcement} from '../../../models/announcement';
 
 @Component({
   selector: 'app-teachers-assignment',
@@ -35,7 +36,6 @@ export class TeachersAssignmentComponent implements OnInit {
   ngOnInit() {
     this.viewOneAssignment();
     this.viewSubmissions();
-
   }
   viewOneAssignment(): void {
     this.teacherService.viewOneAssignment(this.asnID).subscribe(
@@ -58,7 +58,15 @@ export class TeachersAssignmentComponent implements OnInit {
   viewSubmissions(): void {
     this.teacherService.viewSubmissions(this.asnID).subscribe(
       (res) => {
-        this.submissions = res;
+        if (res[0]) {
+          this.submissions = [];
+          res.forEach((item) => {
+            item = new Grade(item);
+            this.submissions.push(item);
+          });
+        } else {
+          console.warn(res);
+        }
       }
     );
   }
@@ -68,7 +76,7 @@ export class TeachersAssignmentComponent implements OnInit {
         if (res.success === true) {
           this.viewSubmissions();
         } else {
-          console.log(res);
+          console.warn(res);
         }
       });
   }

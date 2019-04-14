@@ -32,7 +32,7 @@ import {TeachersAssignmentsComponent} from './views/teachers/assignments/teacher
 import {TeachersGradesComponent} from './views/teachers/grades/teachers-grades.component';
 import { TeachersAssignmentComponent } from './views/teachers/assignment/teachers-assignment.component';
 import {HttpClientModule} from '@angular/common/http';
-import {MatSnackBarModule} from '@angular/material';
+import {MatSnackBarModule, MatSortModule} from '@angular/material';
 import { TeachersNavComponent } from './views/teachers/teachers-nav/teachers-nav.component';
 import { StudentsNavComponent } from './views/students/students-nav/students-nav.component';
 import {StudentsAssignmentComponent} from './views/students/students-assignment/students-assignment.component';
@@ -78,7 +78,8 @@ import {StudentsAssignmentComponent} from './views/students/students-assignment/
     MatSnackBarModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatSortModule
   ],
   providers: [MatDatepickerModule ],
   bootstrap: [AppComponent],
