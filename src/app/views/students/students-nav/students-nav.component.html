@@ -1,0 +1,9 @@
+<mat-toolbar color="primary">
+  <h2>CMHS Course Website</h2>
+  <a mat-button routerLink='/students/home' >Home</a>
+  <a mat-button routerLink='/students/assignments'>Assignments</a>
+  <a mat-button routerLink='/students/announcements'>Announcements</a>
+  <a mat-button routerLink='/students/grades'>Grades</a>
+  <span [ngStyle]="{'flex': '1 1 auto'}"></span>
+  <button mat-flat-button color="warn" (click)="logout()">logout</button>
+</mat-toolbar>

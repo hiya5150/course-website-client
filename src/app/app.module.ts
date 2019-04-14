@@ -33,6 +33,8 @@ import { TeachersAssignmentComponent } from './views/teachers/assignment/teacher
 import {HttpClientModule} from '@angular/common/http';
 import {MatSnackBarModule} from '@angular/material';
 import { StudentsAssignmentComponent } from './views/students/students-assignment/students-assignment.component';
+import { TeachersNavComponent } from './views/teachers/teachers-nav/teachers-nav.component';
+import { StudentsNavComponent } from './views/students/students-nav/students-nav.component';
 
 
 @NgModule({
@@ -52,7 +54,9 @@ import { StudentsAssignmentComponent } from './views/students/students-assignmen
     TeachersAssignmentsComponent,
     TeachersGradesComponent,
     TeachersAssignmentComponent,
-    StudentsAssignmentComponent
+    StudentsAssignmentComponent,
+    TeachersNavComponent,
+    StudentsNavComponent
   ],
   imports: [
     BrowserModule,
