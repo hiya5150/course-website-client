@@ -2,11 +2,23 @@
   flex: 1 1 auto;
 }
 
-.toolbar-flex {
-  flex: 1 1 auto;
+.table {
+  width: 80%;
+  margin: 0 auto;
+}
+table{
+  width: 100%;
 }
 
-table {
-  width: 100%;
+form{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  width: 25%;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+mat-form-field{
+  width: 90%;
+  margin: 0 auto;
 }
 
