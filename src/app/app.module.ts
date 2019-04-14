@@ -32,6 +32,7 @@ import {TeachersGradesComponent} from './views/teachers/grades/teachers-grades.c
 import { TeachersAssignmentComponent } from './views/teachers/assignment/teachers-assignment.component';
 import {HttpClientModule} from '@angular/common/http';
 import {MatSnackBarModule} from '@angular/material';
+import { StudentsAssignmentComponent } from './views/students/students-assignment/students-assignment.component';
 
 
 @NgModule({
@@ -50,7 +51,8 @@ import {MatSnackBarModule} from '@angular/material';
     TeachersAnnouncementsComponent,
     TeachersAssignmentsComponent,
     TeachersGradesComponent,
-    TeachersAssignmentComponent
+    TeachersAssignmentComponent,
+    StudentsAssignmentComponent
   ],
   imports: [
     BrowserModule,
