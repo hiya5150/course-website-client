@@ -18,6 +18,7 @@ export class TeachersAssignmentComponent implements OnInit {
   asnDueDate;
   asnGrade;
 
+
   // columns to be displayed in table
   displayedColumns: string[] = ['studentID', 'studentName', 'submission', 'submissionDate', 'grade', 'addGrade'];
 
@@ -34,6 +35,7 @@ export class TeachersAssignmentComponent implements OnInit {
   ngOnInit() {
     this.viewOneAssignment();
     this.viewSubmissions();
+
   }
   viewOneAssignment(): void {
     this.teacherService.viewOneAssignment(this.asnID).subscribe(
@@ -45,12 +47,9 @@ export class TeachersAssignmentComponent implements OnInit {
   editAsnForm() {
     document.getElementById('editForm').style.display = 'block';
   }
-  closeForm() {
-    document.getElementById('editForm').style.display = 'none';
-  }
 
-  editAsn() {
-    if (this.teacherService.editAssignment(this.asnID, this.asnTitle, this.asnBody, this.asnDueDate, this.asnGrade).subscribe(
+  editAsn(asnTitle, asnBody, asnDueDate, asnGrade) {
+    if (this.teacherService.editAssignment(this.asnID, asnTitle, asnBody, asnDueDate, asnGrade).subscribe(
       () => this.viewOneAssignment()
     )) {
       document.getElementById('editForm').style.display = 'none';

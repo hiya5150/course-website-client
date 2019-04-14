@@ -9,23 +9,23 @@
     {{assignment.asnGrade}}
 
 
-  <form id="editForm" (ngSubmit)="editAsn()" style="display:none;">
+  <form id="editForm" (ngSubmit)="editAsn(assignment.asnTitle, assignment.asnBody, assignment.asnDueDate, assignment.asnGrade)" style="display:none;">
     <h2>Edit Assignment</h2>
     <p>
       <mat-form-field appearance="fill">
         <mat-label>Title of assignment</mat-label>
-        <input matInput name="asnTitle" [(ngModel)]="asnTitle" required>
+        <input matInput name="asnTitle" [(ngModel)]="assignment.asnTitle" required>
       </mat-form-field>
     </p>
     <p>
       <mat-form-field appearance="fill">
         <mat-label>Assignment</mat-label>
-        <input matInput name="asnBody" [(ngModel)]="asnBody" required>
+        <input matInput name="asnBody" [(ngModel)]="assignment.asnBody" required>
       </mat-form-field>
     </p>
     <p>
       <mat-form-field>
-        <input matInput [matDatepicker]="picker" placeholder="Choose a date"  matInput name="asnDueDate" [(ngModel)]="asnDueDate" required>
+        <input matInput [matDatepicker]="picker" placeholder="Choose a date"  matInput name="asnDueDate" [(ngModel)]="assignment.asnDueDate" required>
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
@@ -33,16 +33,15 @@
     <p>
       <mat-form-field appearance="fill">
         <mat-label>Grade</mat-label>
-        <input matInput name="asnGrade" [(ngModel)]="asnGrade" required>
+        <input matInput name="asnGrade" [(ngModel)]="assignment.asnGrade" required>
       </mat-form-field>
     </p>
     <button mat-stroked-button type="submit">Edit</button>
-    <button mat-stroked-button (click)="closeForm()">Cancel</button>
   </form>
   </div>
 
 
-  <div class="mat-elevation-z8">
+  <div class="mat-elevation-z8" *ngIf="submissions">
     <h3 matColumnDef="title">Submissions</h3>
     <table mat-table [dataSource]="submissions">
       <ng-container matColumnDef="studentID">

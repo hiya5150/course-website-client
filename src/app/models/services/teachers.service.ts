@@ -23,7 +23,13 @@ export class TeachersService {
   constructor(private http: HttpClient) { }
 // Announcement http requests
   getAnnouncements(): Observable<Announcement[]> {
+      map(result => (result as any[]).map(item => new Announcement(item)))
     return this.http.get<Announcement[]>(`${this.baseUrl}Announcements/viewAnnouncements`, this.httpOptions).pipe(
+    );
+  }
+  getPrivateAnnouncements(): Observable<Announcement[]> {
+    return this.http.get<Announcement[]>(`${this.baseUrl}Announcements/viewPrivateAnnouncements`, this.httpOptions).pipe(
+
       map(result => (result as any[]).map(item => new Announcement(item)))
      );
   }
@@ -44,8 +50,14 @@ export class TeachersService {
     return this.http.post(`${this.baseUrl}Announcements/editAnnouncement/${annID}`, body, this.httpOptions);
   }
 
-  viewPrivateAssignments(): Observable<Assignment[]> {
+  viewAssignments(): Observable<Assignment[]> {
     return this.http.get<Assignment[]>(`${this.baseUrl}Assignments/viewAssignments`, this.httpOptions).pipe(
+      map(result => (result as any[]).map(item => new Assignment(item)))
+    );
+  }
+
+  viewPrivateAssignments(): Observable<Assignment[]> {
+    return this.http.get<Assignment[]>(`${this.baseUrl}Assignments/viewPrivateAssignments`, this.httpOptions).pipe(
       map(result => (result as any[]).map(item => new Assignment(item)))
     );
   }
@@ -76,7 +88,6 @@ export class TeachersService {
   }
   editGrade(studentID: number, asnID: number, grade: number): Observable<any> {
     const body = `grade=${grade}`;
-    console.log(grade);
     return this.http.post(`${this.baseUrl}Grades/editGrade/${studentID}/${asnID}`, body, this.httpOptions);
   }
 }
