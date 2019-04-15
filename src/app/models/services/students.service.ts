@@ -18,7 +18,8 @@ export class StudentsService {
       .set('Content-Type', 'application/x-www-form-urlencoded')
   };
 
-
+  // these function make http call and gets back Observable of type assigned
+  // it includes verification token in header
   public getAnnouncements(): Observable<Announcement[]> {
     return this.http.get<Announcement[]>(this.baseUrl + 'announcements/loadAnnouncements', this.httpOptions);
   }

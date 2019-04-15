@@ -23,6 +23,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
   }
+  // on form submission checks type and verifies
+  // if verified and token received it redirect to relative homepage
   onSubmit() {
     switch (this.type) {
       case 'teacher':

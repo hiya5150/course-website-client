@@ -15,6 +15,7 @@ export class StudentAuthGuard implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+    // verifies if token valid and if student and returns observable boolean
     return this.auth.verifyStudent().pipe(switchMap((data) => {
       if (data === true) {
         return of(true);

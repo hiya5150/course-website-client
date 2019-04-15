@@ -15,7 +15,8 @@ export class TeacherAuthGuard implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      return this.auth.verifyTeacher().pipe(switchMap((data) => {
+    // verifies if token valid and if teacher and returns observable boolean
+    return this.auth.verifyTeacher().pipe(switchMap((data) => {
         if (data === true) {
           return of(true);
         } else if (data === false) {

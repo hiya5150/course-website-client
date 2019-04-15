@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
-
-
 import {Announcement} from '../announcement';
 import {Assignment} from '../assignment';
 import {Grade} from '../grade';
@@ -20,7 +18,8 @@ export class TeachersService {
       .set('Content-Type', 'application/x-www-form-urlencoded')
   };
   constructor(private http: HttpClient) { }
-// Announcement http requests
+  // these function make http call and gets back Observable of type assigned
+  // it includes verification token in header
   getAnnouncements(): Observable<Announcement[]> {
     return this.http.get<Announcement[]>(`${this.baseUrl}Announcements/viewAnnouncements`, this.httpOptions);
   }
