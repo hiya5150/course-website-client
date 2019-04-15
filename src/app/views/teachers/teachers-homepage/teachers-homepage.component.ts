@@ -11,8 +11,8 @@ import {Assignment} from '../../../models/assignment';
 export class TeachersHomepageComponent implements OnInit {
   announcements: Announcement[];
   assignments: Assignment[];
-  displayedColumnsAsn: string[] = ['annTitle', 'annBody', 'teacherName', 'annDateCreated'];
-  displayedColumnsAnn: string[] = ['asnTitle', 'asnBody', 'asnSubject', 'asnDateCreated', 'asnDueDate', 'asnGrade'];
+  displayedColumnsAnn: string[] = ['annTitle', 'annBody', 'teacherName', 'annDateCreated'];
+  displayedColumnsAsn: string[] = ['asnTitle', 'asnBody', 'asnSubject', 'asnDateCreated', 'asnDueDate', 'asnGrade'];
 
   constructor(private teacherService: TeachersService) { }
 
@@ -20,6 +20,7 @@ export class TeachersHomepageComponent implements OnInit {
     this.getAnnouncements();
     this.getAssignments();
   }
+  // display all the announcements from all teachers
   getAnnouncements(): void {
       this.teacherService.getAnnouncements().subscribe(
         (res) => {
@@ -35,6 +36,7 @@ export class TeachersHomepageComponent implements OnInit {
         }
       );
   }
+  // display all the assignments from all teachers
   getAssignments(): void {
       this.teacherService.viewAssignments().subscribe(
         (res) => {

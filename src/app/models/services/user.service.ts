@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
+import {Announcement} from '../announcement';
 
 @Injectable({
   providedIn: 'root'
@@ -31,5 +32,9 @@ export class UserService {
   studentRegister(name: string, username: string, password: string): Observable<any> {
     const body = `name=${name}&username=${username}&password=${password}`;
     return this.http.post(this.baseUrl + 'register/studentRegister', body, this.httpOptions);
+  }
+
+  getAnnouncements(): Observable<Announcement[]> {
+    return this.http.get<Announcement[]>(`${this.baseUrl}Home/loadAnnouncements`, this.httpOptions);
   }
 }
