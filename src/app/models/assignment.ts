@@ -9,6 +9,7 @@ export class Assignment {
   asnGrade: number;
   teacherName: string;
   asnSubject: string;
+  teacherID: number;
 
 
   constructor(args?) {

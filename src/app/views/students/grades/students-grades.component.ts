@@ -13,8 +13,20 @@ export class StudentsGradesComponent implements OnInit {
   constructor(private studentsService: StudentsService) { }
 
   ngOnInit() {
+    this.getGrades();
   }
   getGrades(): void {
-    this.studentsService.getAssignments().subscribe((res) => console.log(res) );
+    this.studentsService.getGrades().subscribe((res) => {
+      console.log(res);
+      if (res[0]) {
+        this.grades = [];
+        res.forEach((item) => {
+          item = new Grade(item);
+          this.grades.push(item);
+        });
+      } else {
+        console.warn(res);
+      }
+    });
   }
 }
