@@ -29,7 +29,7 @@ export class TeachersAnnouncementsComponent implements OnInit {
   ngOnInit() {
     this.getAnnouncements();
   }
-  // this is used to show the total list of assignments
+  // this is used to show the total list of announcements created by this teacher
   getAnnouncements(): void {
     this.teacherService.getPrivateAnnouncements().subscribe(
       (res) => {
@@ -69,9 +69,13 @@ export class TeachersAnnouncementsComponent implements OnInit {
   }
 // this will delete an announcement and redisplay the page
   deleteAnn(annID): void {
-    this.teacherService.deleteAnnouncement(annID).subscribe(() => this.getAnnouncements());
+    if (this.teacherService.deleteAnnouncement(annID).subscribe(() => this.getAnnouncements())) {
+      this.openSnackBar('announcement deleted', 'close');
+    } else {
+      this.openSnackBar('announcement could not be deleted', 'close');
+    }
   }
-// this will edit an announcement reload the page and want to make a pop up appear that says edited
+// this will edit an announcement reload the page and make a pop up appear that says edited
   editAnn() {
     this.teacherService.editAnnouncement(this.currentAnnID, this.currentAnnTitle, this.currentAnnBody)
       .subscribe((res) => {
@@ -101,7 +105,7 @@ export class TeachersAnnouncementsComponent implements OnInit {
     this.currentAnnBody = annBody;
     this.editForm.display = 'block';
   }
-
+// this is the function that will open the snackbar
   openSnackBar(message: string, action: string) {
     this.snackBar.open(message, action, {
       duration: 2000,

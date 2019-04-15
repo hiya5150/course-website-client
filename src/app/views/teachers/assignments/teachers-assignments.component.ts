@@ -27,7 +27,7 @@ export class TeachersAssignmentsComponent implements OnInit {
   ngOnInit() {
     this.viewAssignments();
   }
-
+// view all the assignments from this teacher
   viewAssignments(): void {
     this.teacherService.viewPrivateAssignments().subscribe(
       (res) => {
@@ -43,7 +43,7 @@ export class TeachersAssignmentsComponent implements OnInit {
       }
     );
   }
-
+// create a new assignment and make sure every field was filled out before running
   createAsn() {
     if (this.asnTitle && this.asnBody && this.asnDueDate && this.asnGrade) {
       this.teacherService.createAssignment(this.asnTitle, this.asnBody, this.asnDueDate, this.asnGrade)
@@ -70,6 +70,7 @@ export class TeachersAssignmentsComponent implements OnInit {
       this.openSnackBar('Please fill in all fields', 'close');
     }
   }
+  // show the create assignment form
   showAsnForm() {
     this.createForm.display = 'block';
   }

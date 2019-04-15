@@ -26,8 +26,8 @@ export class TeachersAssignmentComponent implements OnInit {
     private teacherService: TeachersService,
     private activatedRoute: ActivatedRoute,
     private snackBar: MatSnackBar,
-    private route: Router
     ) {
+    private route: Router
     this.asnID = this.activatedRoute.snapshot.paramMap.get('asnID');
   }
   // declares properties that go into submissions table
@@ -41,6 +41,7 @@ export class TeachersAssignmentComponent implements OnInit {
     this.viewOneAssignment();
     this.viewSubmissions();
   }
+  // view the assignment that was clicked on in assignments component
   viewOneAssignment(): void {
     this.teacherService.viewOneAssignment(this.asnID).subscribe(
       (res) => {
@@ -48,10 +49,12 @@ export class TeachersAssignmentComponent implements OnInit {
       }
     );
   }
+  // if edit was clicked then edit form appears
   editAsnForm() {
     this.editForm.display = 'block';
   }
 
+  // this will edit the assignment
   editAsn(asnTitle, asnBody, asnDueDate, asnGrade) {
     this.teacherService.editAssignment(this.asnID, asnTitle, asnBody, asnDueDate, asnGrade)
       .subscribe(() => {
@@ -60,7 +63,7 @@ export class TeachersAssignmentComponent implements OnInit {
         this.editForm.display = 'none';
       });
   }
-  // need to fix this
+  // if there are no submissions then this will delete the assignment and reroute the user to assignments page
   delete(): void {
     this.teacherService.deleteAssignment(this.asnID).subscribe((res) => {
       if (res.success === true) {
@@ -71,6 +74,7 @@ export class TeachersAssignmentComponent implements OnInit {
       }
     });
   }
+  // view all submissions from students for this assignment
   viewSubmissions(): void {
     this.teacherService.viewSubmissions(this.asnID).subscribe(
       (res) => {
@@ -86,6 +90,7 @@ export class TeachersAssignmentComponent implements OnInit {
       }
     );
   }
+  // give each student their grade
   editGrade(studentID: number, grade: number): void {
     this.teacherService.editGrade(studentID, this.asnID, grade).subscribe(
       (res) => {
