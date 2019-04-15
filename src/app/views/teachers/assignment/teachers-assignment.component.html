@@ -1,50 +1,54 @@
 <app-teachers-nav></app-teachers-nav>
-<a mat-button routerLink="/teachers/assignments">Back</a>
-  <div *ngIf="assignment">
-    Title: {{assignment.asnTitle}} <br>
-    Body: {{assignment.asnBody}}<br>
-    Date Created: {{assignment.asnDateCreated}}<br>
-    Due Date: {{assignment.asnDueDate}} <br>
-    Teachers Name: {{assignment.teacherName}}<br>
-    Grade: {{assignment.asnGrade}} <br>
-    <button mat-stroked-button (click)="editAsnForm()">Edit Assignment</button>
-    <button mat-stroked-button (click)="delete()" *ngIf="!submissions">Delete</button>
+<a mat-stroked-button routerLink="/teachers/assignments" color="primary" [ngStyle]="{'margin':'1rem 2rem'}">Back</a>
+<div *ngIf="assignment">
+    <mat-card class="card" *ngIf="assignment">
+      <mat-card-header>
+        <mat-card-title>Title: {{assignment.asnTitle}}</mat-card-title>
+        <mat-card-subtitle>Teachers Name: {{assignment.teacherName}}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <h3><em>Due Date: {{assignment.asnDueDate | date}}</em></h3>
+        <h5><strong>Date Created: {{assignment.asnDateCreated | date}}</strong></h5>
+        <p>Body: {{assignment.asnBody}}</p>
+        <h4><code>Grade: {{assignment.asnGrade}}</code></h4>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button (click)="editAsnForm()" color="accent">Edit Assignment</button>
+        <button mat-raised-button (click)="delete()" *ngIf="!submissions" color="warn">Delete</button>
+      </mat-card-actions>
+    </mat-card>
 
-
-
-
-
-  <form id="editForm" (ngSubmit)="editAsn(assignment.asnTitle, assignment.asnBody, assignment.asnDueDate, assignment.asnGrade)" style="display:none;">
+  <form (ngSubmit)="editAsn(assignment.asnTitle, assignment.asnBody, assignment.asnDueDate, assignment.asnGrade)" [ngStyle]="editForm">
     <h2>Edit Assignment</h2>
     <p>
-      <mat-form-field appearance="fill">
+      <mat-form-field appearance="legacy">
         <mat-label>Title of assignment</mat-label>
         <input matInput name="asnTitle" [(ngModel)]="assignment.asnTitle" required>
       </mat-form-field>
     </p>
     <p>
-      <mat-form-field appearance="fill">
+      <mat-form-field appearance="legacy">
         <mat-label>Assignment</mat-label>
         <input matInput name="asnBody" [(ngModel)]="assignment.asnBody" required>
       </mat-form-field>
     </p>
     <p>
       <mat-form-field>
+        <mat-label>Due Date</mat-label>
         <input matInput placeholder="Choose a date yyyy/mm/dd"  matInput name="asnDueDate" [(ngModel)]="assignment.asnDueDate" required>
       </mat-form-field>
     </p>
     <p>
-      <mat-form-field appearance="fill">
+      <mat-form-field appearance="legacy">
         <mat-label>Grade</mat-label>
         <input matInput name="asnGrade" [(ngModel)]="assignment.asnGrade" required>
       </mat-form-field>
     </p>
-    <button mat-stroked-button type="submit">Edit</button>
+    <button mat-raised-button type="submit" color="primary">Submit Edit</button>
   </form>
-  </div>
 
 
-  <div class="mat-elevation-z8" *ngIf="submissions">
+  <div class="table" *ngIf="submissions">
     <h3 matColumnDef="title">Submissions</h3>
     <table mat-table [dataSource]="submissions">
       <ng-container matColumnDef="studentID">
@@ -61,11 +65,16 @@
       </ng-container>
       <ng-container matColumnDef="submissionDate">
         <th mat-header-cell *matHeaderCellDef>Submission Date</th>
-        <td mat-cell *matCellDef="let sub">{{sub.submissionDate}}</td>
+        <td mat-cell *matCellDef="let sub">{{sub.submissionDate | date}}</td>
       </ng-container>
       <ng-container matColumnDef="grade">
         <th mat-header-cell *matHeaderCellDef>Grade</th>
-        <td mat-cell *matCellDef="let sub"><input type="text" [(ngModel)]="sub.grade"></td>
+        <td mat-cell *matCellDef="let sub">
+            <mat-form-field appearance="outline">
+              <mat-label>Grade</mat-label>
+              <input type="text" placeholder="grade" [(ngModel)]="sub.grade">
+            </mat-form-field>
+        </td>
       </ng-container>
       <ng-container matColumnDef="addGrade">
         <th mat-header-cell *matHeaderCellDef>edit/add Grade</th>
@@ -77,4 +86,4 @@
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
   </div>
-
+</div>

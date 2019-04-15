@@ -29,18 +29,18 @@ export class TeachersService {
     return this.http.get<Announcement[]>(`${this.baseUrl}Announcements/viewPrivateAnnouncements`, this.httpOptions);
   }
 
-  createAnnouncement(annTitle: string, annBody: string): Observable<any> {
+  createAnnouncement(annTitle: string, annBody: string): Observable<Announcement[]> {
     const body = `annTitle=${annTitle}&annBody=${annBody}`;
-    return this.http.post(`${this.baseUrl}Announcements/createAnnouncement`, body, this.httpOptions);
+    return this.http.post<Announcement[]>(`${this.baseUrl}Announcements/createAnnouncement`, body, this.httpOptions);
   }
 
   deleteAnnouncement(annID: number): Observable<any> {
     return this.http.delete(`${this.baseUrl}Announcements/deleteAnnouncement/${annID}`, this.httpOptions);
   }
 
-  editAnnouncement(annID: number, annTitle: string, annBody: string): Observable<any> {
+  editAnnouncement(annID: number, annTitle: string, annBody: string): Observable<Announcement[]> {
     const body = `annTitle=${annTitle}&annBody=${annBody}`;
-    return this.http.post(`${this.baseUrl}Announcements/editAnnouncement/${annID}`, body, this.httpOptions);
+    return this.http.post<Announcement[]>(`${this.baseUrl}Announcements/editAnnouncement/${annID}`, body, this.httpOptions);
   }
 
   viewAssignments(): Observable<Assignment[]> {
@@ -55,9 +55,9 @@ export class TeachersService {
     return this.http.get<Assignment>(`${this.baseUrl}Assignments/viewOneAssignment/${asnID}`, this.httpOptions);
   }
 
-  createAssignment(asnTitle: string, asnBody: string, asnDueDate: any, asnGrade: number): Observable<any> {
+  createAssignment(asnTitle: string, asnBody: string, asnDueDate: any, asnGrade: number): Observable<Assignment[]> {
     const body = `asnTitle=${asnTitle}&asnBody=${asnBody}&asnDueDate=${asnDueDate}&asnGrade=${asnGrade}`;
-    return this.http.post(`${this.baseUrl}Assignments/createAssignment`, body, this.httpOptions);
+    return this.http.post<Assignment[]>(`${this.baseUrl}Assignments/createAssignment`, body, this.httpOptions);
   }
 
   deleteAssignment(asnID: number): Observable<any> {

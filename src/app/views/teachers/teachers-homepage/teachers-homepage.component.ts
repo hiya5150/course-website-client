@@ -12,7 +12,7 @@ export class TeachersHomepageComponent implements OnInit {
   announcements: Announcement[];
   assignments: Assignment[];
   displayedColumnsAnn: string[] = ['annTitle', 'annBody', 'teacherName', 'annDateCreated'];
-  displayedColumnsAsn: string[] = ['asnTitle', 'asnBody', 'asnSubject', 'asnDateCreated', 'asnDueDate', 'asnGrade'];
+  displayedColumnsAsn: string[] = ['asnTitle', 'asnBody', 'asnDateCreated', 'asnDueDate', 'asnGrade'];
 
   constructor(private teacherService: TeachersService) { }
 

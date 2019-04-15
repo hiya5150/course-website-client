@@ -11,7 +11,7 @@ import {StudentsSubmissionsComponent} from '../submissions/students-submissions.
 })
 export class StudentsAssignmentsComponent implements OnInit {
   assignments: Assignment[];
-  displayedColumns: string[] = ['asnSubject', 'asnTitle', 'asnBody', 'teacherName', 'asnDateCreated', 'asnDueDate', 'asnGrade', 'submit'];
+  displayedColumns: string[] = ['asnTitle', 'asnBody', 'teacherName', 'asnDateCreated', 'asnDueDate', 'asnGrade', 'submit'];
   constructor(
     private studentsService: StudentsService,
     private dialog: MatDialog

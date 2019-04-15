@@ -2,7 +2,7 @@
 
 <div class="table" *ngIf="announcements">
   <h3 matColumnDef="title">Announcements</h3>
-  <table mat-table [dataSource]="announcements" >
+  <table mat-table [dataSource]="announcements">
   <ng-container matColumnDef="annTitle">
     <th mat-header-cell *matHeaderCellDef> Title </th>
     <td mat-cell *matCellDef="let ann"> {{ann.annTitle}} </td>
@@ -17,7 +17,7 @@
   </ng-container>
   <ng-container matColumnDef="annDateCreated">
     <th mat-header-cell *matHeaderCellDef> Created On </th>
-    <td mat-cell *matCellDef="let ann"> {{ann.annDateCreated}} </td>
+    <td mat-cell *matCellDef="let ann"> {{ann.annDateCreated | date}} </td>
   </ng-container>
   <tr mat-header-row *matHeaderRowDef="displayedColumnsAnn"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumnsAnn;"></tr>
@@ -27,10 +27,6 @@
 <div class="table" *ngIf="assignments">
   <h3 matColumnDef="title">Assignments</h3>
   <table mat-table [dataSource]="assignments">
-    <ng-container matColumnDef="asnSubject">
-      <th mat-header-cell *matHeaderCellDef> Subject </th>
-      <td mat-cell *matCellDef="let asn"> {{asn.asnSubject}} </td>
-    </ng-container>
     <ng-container matColumnDef="asnTitle">
       <th mat-header-cell *matHeaderCellDef> Title </th>
       <td mat-cell *matCellDef="let asn"> {{asn.asnTitle}} </td>
@@ -41,11 +37,11 @@
     </ng-container>
     <ng-container matColumnDef="asnDateCreated">
       <th mat-header-cell *matHeaderCellDef> Date Created </th>
-      <td mat-cell *matCellDef="let asn"> {{asn.asnDateCreated}} </td>
+      <td mat-cell *matCellDef="let asn"> {{asn.asnDateCreated | date}} </td>
     </ng-container>
     <ng-container matColumnDef="asnDueDate">
       <th mat-header-cell *matHeaderCellDef> Date Due </th>
-      <td mat-cell *matCellDef="let asn"> {{asn.asnDueDate}} </td>
+      <td mat-cell *matCellDef="let asn"> {{asn.asnDueDate | date}} </td>
     </ng-container>
     <ng-container matColumnDef="asnGrade">
       <th mat-header-cell *matHeaderCellDef> Grade </th>
