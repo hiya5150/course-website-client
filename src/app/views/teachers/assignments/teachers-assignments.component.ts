@@ -39,7 +39,7 @@ export class TeachersAssignmentsComponent implements OnInit {
     this.viewAssignments();
     // this.dataSource.paginator = this.paginator;
   }
-
+// view all the assignments from this teacher
   viewAssignments(): void {
     this.teacherService.viewPrivateAssignments().subscribe(
       (res) => {
@@ -57,7 +57,7 @@ export class TeachersAssignmentsComponent implements OnInit {
       }
     );
   }
-
+// create a new assignment and make sure every field was filled out before running
   createAsn() {
     if (this.asnTitle && this.asnBody && this.asnDueDate && this.asnGrade) {
       if (this.teacherService.createAssignment(this.asnTitle, this.asnBody, this.asnDueDate, this.asnGrade).subscribe(
@@ -72,6 +72,7 @@ export class TeachersAssignmentsComponent implements OnInit {
       this.openSnackBar('Please fill in all fields', 'close');
     }
   }
+  // show the create assignment form
   showAsnForm() {
     document.getElementById('createForm').style.display = 'block';
   }
