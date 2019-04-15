@@ -22,6 +22,7 @@ export class Assignment {
       this.asnGrade = args.asn_grade;
       this.teacherName = args.teacher_name;
       this.asnSubject = args.asnSubject;
+      this.teacherID = args.teacher_id;
     }
   }
 }

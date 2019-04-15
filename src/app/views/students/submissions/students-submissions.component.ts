@@ -39,7 +39,6 @@ export class StudentsSubmissionsComponent implements OnInit {
     this.studentsService.viewOneAssignment(this.data.asnId).subscribe((res) => {
       console.log(res);
       this.assignment = new Assignment(res);
-      this.assignment.teacherID = res.teacherID;
     });
   }
 }
