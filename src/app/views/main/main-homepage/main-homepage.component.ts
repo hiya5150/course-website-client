@@ -55,6 +55,6 @@ announcements: Announcement[];
           console.warn(res);
         }
       }
-    )
+    );
   }
 }

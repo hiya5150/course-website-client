@@ -13,7 +13,8 @@ export class UserService {
       .set('Content-Type', 'application/x-www-form-urlencoded')
   };
   constructor(private http: HttpClient) { }
-
+  // login and register functions sends username and password and validates it
+  // login returns token for session verification
   teacherLogin(username: string, password: string): Observable<any> {
     const body = `username=${username}&password=${password}`;
     return this.http.post(this.baseUrl + 'login/teacherLogin', body, this.httpOptions);

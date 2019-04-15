@@ -26,7 +26,8 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  // on form submission checks type and registers
+  // if registered successful it opens login dialog
   onSubmit() {
     switch (this.type) {
       case 'teacher':

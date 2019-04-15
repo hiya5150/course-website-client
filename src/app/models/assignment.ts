@@ -8,7 +8,6 @@ export class Assignment {
   asnDueDate: string;
   asnGrade: number;
   teacherName: string;
-  asnSubject: string;
   teacherID: number;
 
 
@@ -21,7 +20,6 @@ export class Assignment {
       this.asnDueDate = args.asn_due_date;
       this.asnGrade = args.asn_grade;
       this.teacherName = args.teacher_name;
-      this.asnSubject = args.asnSubject;
       this.teacherID = args.teacher_id;
     }
   }
