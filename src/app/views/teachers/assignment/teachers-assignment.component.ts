@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Grade} from '../../../models/grade';
 import {TeachersService} from '../../../models/services/teachers.service';
 import {Assignment} from '../../../models/assignment';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {MatSnackBar} from '@angular/material';
 
 @Component({
@@ -18,14 +18,16 @@ export class TeachersAssignmentComponent implements OnInit {
   asnBody;
   asnDueDate;
   asnGrade;
-
+  editForm = {display : 'none'};
 
   // columns to be displayed in submissions table
   displayedColumns: string[] = ['studentID', 'studentName', 'submission', 'submissionDate', 'grade', 'addGrade'];
-  // columns to be displayed in assignment table
-  displayedColumns2: string[] = ['asnTitle', 'asnBody', 'asnDateCreated', 'asnDueDate', 'asnGrade', 'edit'];
-
-  constructor(private teacherService: TeachersService, private activatedRoute: ActivatedRoute, private snackBar: MatSnackBar) {
+  constructor(
+    private teacherService: TeachersService,
+    private activatedRoute: ActivatedRoute,
+    private snackBar: MatSnackBar,
+    private route: Router
+    ) {
     this.asnID = this.activatedRoute.snapshot.paramMap.get('asnID');
   }
   // declares properties that go into submissions table
@@ -47,21 +49,27 @@ export class TeachersAssignmentComponent implements OnInit {
     );
   }
   editAsnForm() {
-    document.getElementById('editForm').style.display = 'block';
+    this.editForm.display = 'block';
   }
 
   editAsn(asnTitle, asnBody, asnDueDate, asnGrade) {
-    if (this.teacherService.editAssignment(this.asnID, asnTitle, asnBody, asnDueDate, asnGrade).subscribe(
-      () => this.viewOneAssignment()
-    )) {
-      this.openSnackBar('Assignment edited', 'close');
-      document.getElementById('editForm').style.display = 'none';
-    }
+    this.teacherService.editAssignment(this.asnID, asnTitle, asnBody, asnDueDate, asnGrade)
+      .subscribe(() => {
+        this.viewOneAssignment();
+        this.openSnackBar('Assignment edited', 'close');
+        this.editForm.display = 'none';
+      });
   }
   // need to fix this
   delete(): void {
-    this.teacherService.deleteAssignment(this.asnID);
-
+    this.teacherService.deleteAssignment(this.asnID).subscribe((res) => {
+      if (res.success === true) {
+        this.openSnackBar('Assignment deleted', 'close');
+        this.route.navigateByUrl('teachers/assignments');
+      } else {
+        console.warn(res);
+      }
+    });
   }
   viewSubmissions(): void {
     this.teacherService.viewSubmissions(this.asnID).subscribe(

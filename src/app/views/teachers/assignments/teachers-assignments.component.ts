@@ -11,33 +11,21 @@ import { MatSnackBar} from '@angular/material';
 })
 export class TeachersAssignmentsComponent implements OnInit {
   assignments: Assignment[];
-
-  // columns to be displayed in table
-  displayedColumns: string[] = ['asnTitle', 'asnBody', 'asnSubject', 'asnDateCreated', 'asnDueDate', 'asnGrade', 'viewMore'];
-  // @ViewChild(MatPaginator) paginator: MatPaginator;
-  constructor(private teacherService: TeachersService, private snackBar: MatSnackBar) {
-  }
-
+  createForm = { display: 'none' };
   // declares properties that go into assignments table
   asnTitle: string;
   asnBody: string;
   asnDateCreated: any;
   asnDueDate: any;
-  asnSubject: string;
   asnGrade: number;
+  // columns to be displayed in table
+  displayedColumns: string[] = ['asnTitle', 'asnBody', 'asnDateCreated', 'asnDueDate', 'asnGrade', 'viewMore'];
+  // @ViewChild(MatPaginator) paginator: MatPaginator;
+  constructor(private teacherService: TeachersService, private snackBar: MatSnackBar) {
+  }
 
-  // allows user to set number of items per "page", and to navigate between pages
-  // this sets input MatPaginator Input properties
-  // length: number;
-  // pageSize = 1;
-  // pageSizeOptions: number[] = [1, 5, 10, 25];
-
-  // MatPaginator Output
-  // pageEvent: PageEvent;
-  // dataSource: MatTableDataSource<any>;
   ngOnInit() {
     this.viewAssignments();
-    // this.dataSource.paginator = this.paginator;
   }
 
   viewAssignments(): void {
@@ -52,35 +40,44 @@ export class TeachersAssignmentsComponent implements OnInit {
         } else {
           console.warn(res);
         }
-        // this.dataSource = new MatTableDataSource<Assignment>(this.assignments);
-        // this.length = this.assignments.length;
       }
     );
   }
 
   createAsn() {
     if (this.asnTitle && this.asnBody && this.asnDueDate && this.asnGrade) {
-      if (this.teacherService.createAssignment(this.asnTitle, this.asnBody, this.asnDueDate, this.asnGrade).subscribe(
-        () => this.viewAssignments()
-      )) {
-        this.openSnackBar('Assignment created', 'close');
-        document.getElementById('createForm').style.display = 'none';
-      } else {
-        this.openSnackBar('Assignment could not be created', 'close');
-      }
+      this.teacherService.createAssignment(this.asnTitle, this.asnBody, this.asnDueDate, this.asnGrade)
+        .subscribe((res) => {
+          if (res[0]) {
+            this.assignments = [];
+            res.forEach((item) => {
+              item = new Assignment(item);
+              this.assignments.push(item);
+            });
+            this.openSnackBar('Assignment created', 'close');
+            this.createForm.display = 'none';
+            this.asnTitle = '';
+            this.asnBody = '';
+            this.asnDueDate = '';
+            this.asnGrade = null;
+          } else {
+            console.warn(res);
+            this.openSnackBar('Assignment could not be created', 'close');
+          }
+        }
+      );
     } else {
       this.openSnackBar('Please fill in all fields', 'close');
     }
   }
   showAsnForm() {
-    document.getElementById('createForm').style.display = 'block';
+    this.createForm.display = 'block';
   }
   openSnackBar(message: string, action: string) {
     this.snackBar.open(message, action, {
       duration: 2000,
     });
   }
-
 }
 
 

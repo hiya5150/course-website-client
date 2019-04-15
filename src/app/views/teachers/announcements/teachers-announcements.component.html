@@ -1,9 +1,9 @@
 <app-teachers-nav></app-teachers-nav>
 
-  <div *ngIf="announcements" class="table">
+  <div class="table">
     <button mat-stroked-button (click)="showAnnForm()" color="accent" [ngStyle]="{'float':'right'}">Create New Announcement</button>
     <h3 matColumnDef="title">Announcements</h3>
-    <table mat-table [dataSource]="announcements">
+    <table mat-table [dataSource]="announcements" *ngIf="announcements">
       <ng-container matColumnDef="annTitle">
         <th mat-header-cell *matHeaderCellDef> Title </th>
         <td mat-cell *matCellDef="let ann"> {{ann.annTitle}} </td>
@@ -18,7 +18,7 @@
       </ng-container>
       <ng-container matColumnDef="annDateCreated">
         <th mat-header-cell *matHeaderCellDef> Created On </th>
-        <td mat-cell *matCellDef="let ann"> {{ann.annDateCreated}} </td>
+        <td mat-cell *matCellDef="let ann"> {{ann.annDateCreated | date}} </td>
       </ng-container>
       <ng-container matColumnDef="annDelete">
         <th mat-header-cell *matHeaderCellDef>Delete</th>
@@ -32,29 +32,22 @@
           <button mat-stroked-button (click)="showEditForm(ann.annID, ann.annTitle, ann.annBody)">Edit</button>
         </td>
       </ng-container>
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
-
-
-<!--    <mat-paginator [length]="length"-->
-<!--                   [pageSize]="pageSize"-->
-<!--                   [pageSizeOptions]="pageSizeOptions"-->
-<!--                   (page)="pageEvent = $event">-->
-<!--    </mat-paginator>-->
   </div>
 
 
-  <form  id="createForm" (ngSubmit)="createAnn()" style="display: none">
+  <form (ngSubmit)="createAnn()" [ngStyle]="createForm">
     <h2>Create Announcement</h2>
     <p>
-      <mat-form-field appearance="fill">
+      <mat-form-field appearance="legacy">
         <mat-label>Name of Announcement</mat-label>
         <input matInput [(ngModel)]="annTitle" name="annTitle" required>
       </mat-form-field>
     </p>
     <p>
-      <mat-form-field appearance="fill">
+      <mat-form-field appearance="legacy">
         <mat-label>Announcement</mat-label>
         <input matInput [(ngModel)]="annBody" name="annBody" required>
       </mat-form-field>
@@ -62,16 +55,16 @@
     <button mat-flat-button color="primary">Submit Assignment</button>
   </form>
 
-<form  id="editForm" (ngSubmit)="editAnn()" style="display: none">
+<form (ngSubmit)="editAnn()" [ngStyle]="editForm">
   <h2>Edit Announcement</h2>
   <p>
-    <mat-form-field appearance="fill">
+    <mat-form-field appearance="legacy">
       <mat-label>Name of Announcement</mat-label>
       <input matInput [(ngModel)]="currentAnnTitle" name="annTitle" required>
     </mat-form-field>
   </p>
   <p>
-    <mat-form-field appearance="fill">
+    <mat-form-field appearance="legacy">
       <mat-label>Announcement</mat-label>
       <input matInput [(ngModel)]="currentAnnBody" name="annBody" required>
     </mat-form-field>

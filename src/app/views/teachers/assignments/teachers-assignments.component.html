@@ -1,13 +1,9 @@
 <app-teachers-nav></app-teachers-nav>
 
-<div *ngIf="assignments" class="table">
+<div class="table">
   <button mat-stroked-button (click)="showAsnForm()" color="accent" [ngStyle]="{'float':'right'}">Create New Assignment</button>
   <h3 matColumnDef="title">Assignments</h3>
-  <table mat-table [dataSource]="assignments">
-    <ng-container matColumnDef="asnSubject">
-      <th mat-header-cell *matHeaderCellDef> Subject </th>
-      <td mat-cell *matCellDef="let asn"> {{asn.asnSubject}} </td>
-    </ng-container>
+  <table mat-table [dataSource]="assignments" *ngIf="assignments">
     <ng-container matColumnDef="asnTitle">
       <th mat-header-cell *matHeaderCellDef> Title </th>
       <td mat-cell *matCellDef="let asn"> {{asn.asnTitle}} </td>
@@ -22,7 +18,7 @@
     </ng-container>
     <ng-container matColumnDef="asnDueDate">
       <th mat-header-cell *matHeaderCellDef> Date Due </th>
-      <td mat-cell *matCellDef="let asn"> {{asn.asnDueDate}} </td>
+      <td mat-cell *matCellDef="let asn"> {{asn.asnDueDate | date}} </td>
     </ng-container>
     <ng-container matColumnDef="asnGrade">
       <th mat-header-cell *matHeaderCellDef> Grade </th>
@@ -37,50 +33,36 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
-
-<!--  <mat-paginator [length]="length" [pageSizeOptions]="[1, 5, 10, 20]">-->
-<!--  </mat-paginator>-->
 </div>
 
 
-<div>
-  <form id="createForm" (ngSubmit)="createAsn()" style="display: none">
+  <form (ngSubmit)="createAsn()" [ngStyle]="createForm">
     <h2>Create Assignment</h2>
-    <!--<p>-->
-      <!--<mat-form-field appearance="fill">-->
-        <!--<mat-label>Name of Subject</mat-label>-->
-        <!--<input matInput [(ngModel)]="asnSubject" name="asnSubject" required>-->
-      <!--</mat-form-field>-->
-    <!--</p>-->
     <p>
-      <mat-form-field appearance="fill">
+      <mat-form-field appearance="legacy">
         <mat-label>Name of Assignment</mat-label>
         <input matInput [(ngModel)]="asnTitle" name="asnTitle" required>
       </mat-form-field>
     </p>
     <p>
-      <mat-form-field appearance="fill">
+      <mat-form-field appearance="legacy">
         <mat-label>Assignment</mat-label>
         <input matInput [(ngModel)]="asnBody" name="asnBody" required>
       </mat-form-field>
     </p>
     <p>
-      <mat-form-field appearance="fill">
+      <mat-form-field appearance="legacy">
         <mat-label>Due Date yyyy/mm/dd</mat-label>
         <input matInput [(ngModel)]="asnDueDate" name="asnDueDate" required>
       </mat-form-field>
     </p>
     <p>
-      <mat-form-field appearance="fill">
+      <mat-form-field appearance="legacy">
         <mat-label>Grade</mat-label>
         <input matInput [(ngModel)]="asnGrade" name="asnGrade" required>
       </mat-form-field>
     </p>
-
     <button mat-stroked-button>Submit Assignment</button>
-
-
   </form>
-</div>
 
 

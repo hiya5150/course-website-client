@@ -14,26 +14,18 @@ export class TeachersAnnouncementsComponent implements OnInit {
   currentAnnID: number;
   currentAnnTitle: string;
   currentAnnBody: string;
+  createForm = { display: 'none' };
+  editForm = { display: 'none' };
+  // declares properties that go into announcements table
+  annTitle: string;
+  annBody: string;
+  teacherName: string;
   // columns to be displayed in table
   displayedColumns: string[] = ['annTitle', 'annBody', 'teacherName', 'annDateCreated', 'annDelete', 'annEdit'];
 
 
   constructor(private teacherService: TeachersService, private snackBar: MatSnackBar) { }
 
-  // declares properties that go into announcements table
-  annTitle: string;
-  annBody: string;
-  teacherName: string;
-  // allows user to set number of items per "page", and to navigate between pages
-
-  // allows user to set number of items per "page", and to navigate between pages
-  // this sets input MatPaginator Input properties
-  // length = 100;
-  // pageSize = 5;
-  // pageSizeOptions: number[] = [5, 10, 25];
-
-  // MatPaginator Output
-  // pageEvent: PageEvent;
   ngOnInit() {
     this.getAnnouncements();
   }
@@ -56,14 +48,23 @@ export class TeachersAnnouncementsComponent implements OnInit {
 // this will create an announcement redisplay the list and make the create account form disappear, with pop up
   createAnn() {
     if (this.annTitle && this.annBody) {
-      if (this.teacherService.createAnnouncement(this.annTitle, this.annBody).subscribe(
-        () => this.getAnnouncements()
-      )) {
-        this.openSnackBar('announcement created', 'close');
-        document.getElementById('createForm').style.display = 'none';
-      } else {
-        this.openSnackBar('announcement could not be created', 'close');
-      }
+      this.teacherService.createAnnouncement(this.annTitle, this.annBody)
+        .subscribe((res) => {
+          if (res[0]) {
+            this.announcements = [];
+            res.forEach((item) => {
+              item = new Announcement(item);
+              this.announcements.push(item);
+            });
+            this.openSnackBar('announcement created', 'close');
+            this.createForm.display = 'none';
+            this.annTitle = '';
+            this.annBody = '';
+          } else {
+            this.openSnackBar('announcement could not be created', 'close');
+            console.warn(res);
+          }
+        });
     }
   }
 // this will delete an announcement and redisplay the page
@@ -72,25 +73,33 @@ export class TeachersAnnouncementsComponent implements OnInit {
   }
 // this will edit an announcement reload the page and want to make a pop up appear that says edited
   editAnn() {
-    if (this.teacherService.editAnnouncement(this.currentAnnID, this.currentAnnTitle, this.currentAnnBody).subscribe(
-      () => this.getAnnouncements()
-    )) {
-      this.openSnackBar('announcement edited', 'close');
-      document.getElementById('editForm').style.display = 'none';
-    } else {
-      this.openSnackBar('announcement could not be edited', 'close');
-    }
+    this.teacherService.editAnnouncement(this.currentAnnID, this.currentAnnTitle, this.currentAnnBody)
+      .subscribe((res) => {
+        if (res[0]) {
+          this.announcements = [];
+          res.forEach((item) => {
+            item = new Announcement(item);
+            this.announcements.push(item);
+          });
+          this.openSnackBar('announcement edited', 'close');
+          this.editForm.display = 'none';
+        } else {
+          this.openSnackBar('announcement could not be edited', 'close');
+          console.warn(res);
+        }
+      }
+    );
   }
 
   // this is used to display the forms
   showAnnForm() {
-    document.getElementById('createForm').style.display = 'block';
+    this.createForm.display = 'block';
   }
   showEditForm(annID, annTitle, annBody) {
     this.currentAnnID = annID;
     this.currentAnnTitle = annTitle;
     this.currentAnnBody = annBody;
-    document.getElementById('editForm').style.display = 'block';
+    this.editForm.display = 'block';
   }
 
   openSnackBar(message: string, action: string) {
