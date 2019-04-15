@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Assignment} from '../../../models/assignment';
 import {TeachersService} from '../../../models/services/teachers.service';
+import { MatSnackBar} from '@angular/material';
 
 
 @Component({
@@ -14,7 +15,7 @@ export class TeachersAssignmentsComponent implements OnInit {
   // columns to be displayed in table
   displayedColumns: string[] = ['asnTitle', 'asnBody', 'asnSubject', 'asnDateCreated', 'asnDueDate', 'asnGrade', 'viewMore'];
   // @ViewChild(MatPaginator) paginator: MatPaginator;
-  constructor(private teacherService: TeachersService) {
+  constructor(private teacherService: TeachersService, private snackBar: MatSnackBar) {
   }
 
   // declares properties that go into assignments table
@@ -58,16 +59,26 @@ export class TeachersAssignmentsComponent implements OnInit {
   }
 
   createAsn() {
-    if (this.asnTitle && this.asnBody && this.asnDueDate && this.asnGrade){
+    if (this.asnTitle && this.asnBody && this.asnDueDate && this.asnGrade) {
       if (this.teacherService.createAssignment(this.asnTitle, this.asnBody, this.asnDueDate, this.asnGrade).subscribe(
         () => this.viewAssignments()
       )) {
+        this.openSnackBar('Assignment created', 'close');
         document.getElementById('createForm').style.display = 'none';
+      } else {
+        this.openSnackBar('Assignment could not be created', 'close');
       }
+    } else {
+      this.openSnackBar('Please fill in all fields', 'close');
     }
   }
   showAsnForm() {
     document.getElementById('createForm').style.display = 'block';
+  }
+  openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      duration: 2000,
+    });
   }
 
 }

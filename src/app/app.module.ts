@@ -37,6 +37,7 @@ import { TeachersNavComponent } from './views/teachers/teachers-nav/teachers-nav
 import { StudentsNavComponent } from './views/students/students-nav/students-nav.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -80,6 +81,7 @@ import { StudentsNavComponent } from './views/students/students-nav/students-nav
     MatSortModule,
     MatListModule,
     MatCardModule
+
   ],
   providers: [MatDatepickerModule ],
   bootstrap: [AppComponent],

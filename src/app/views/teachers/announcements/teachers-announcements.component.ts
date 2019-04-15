@@ -53,7 +53,7 @@ export class TeachersAnnouncementsComponent implements OnInit {
       }
     );
   }
-// this will create an announcement redisplay the list and make the create account form disappear, want to make a pop up to say added
+// this will create an announcement redisplay the list and make the create account form disappear, with pop up
   createAnn() {
     if (this.annTitle && this.annBody) {
       if (this.teacherService.createAnnouncement(this.annTitle, this.annBody).subscribe(

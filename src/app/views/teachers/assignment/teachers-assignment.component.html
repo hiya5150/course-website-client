@@ -1,12 +1,17 @@
 <app-teachers-nav></app-teachers-nav>
+<a mat-button routerLink="/teachers/assignments">Back</a>
   <div *ngIf="assignment">
-    {{assignment.asnTitle}}
-    {{assignment.asnBody}}
-    {{assignment.asnDateCreated}}
-    {{assignment.asnDueDate}}
-    <button (click)="editAsnForm()">Edit Assignment</button>
-    {{assignment.teacherName}}
-    {{assignment.asnGrade}}
+    Title: {{assignment.asnTitle}} <br>
+    Body: {{assignment.asnBody}}<br>
+    Date Created: {{assignment.asnDateCreated}}<br>
+    Due Date: {{assignment.asnDueDate}} <br>
+    Teachers Name: {{assignment.teacherName}}<br>
+    Grade: {{assignment.asnGrade}} <br>
+    <button mat-stroked-button (click)="editAsnForm()">Edit Assignment</button>
+    <button mat-stroked-button (click)="delete()" *ngIf="!submissions">Delete</button>
+
+
+
 
 
   <form id="editForm" (ngSubmit)="editAsn(assignment.asnTitle, assignment.asnBody, assignment.asnDueDate, assignment.asnGrade)" style="display:none;">
@@ -25,9 +30,7 @@
     </p>
     <p>
       <mat-form-field>
-        <input matInput [matDatepicker]="picker" placeholder="Choose a date"  matInput name="asnDueDate" [(ngModel)]="assignment.asnDueDate" required>
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
+        <input matInput placeholder="Choose a date yyyy/mm/dd"  matInput name="asnDueDate" [(ngModel)]="assignment.asnDueDate" required>
       </mat-form-field>
     </p>
     <p>
