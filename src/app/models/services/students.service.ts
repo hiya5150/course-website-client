@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Announcement} from '../announcement';
 import {Assignment} from '../assignment';
+import {Grade} from '../grade';
 
 @Injectable({
   providedIn: 'root'
@@ -26,16 +27,16 @@ export class StudentsService {
     return this.http.get<Assignment[]>(this.baseUrl + 'assignments/viewAssignments', this.httpOptions);
   }
 
-  public getGrades(): Observable<any> {
-    return this.http.get<any>(this.baseUrl + 'assignments/viewGrades', this.httpOptions);
+  public getGrades(): Observable<Grade[]> {
+    return this.http.get<Grade[]>(`${this.baseUrl}grades/viewGrades`, this.httpOptions);
   }
 
-  public submit(submission: string): Observable<any> {
+  public submit(submission: string, teacherID: number, asnID: number): Observable<any> {
     const body = `submission=${submission}`;
-    return this.http.post(this.baseUrl + 'students/assignments/submitAssignment', body, this.httpOptions);
+    return this.http.post(`${this.baseUrl}assignments/submitAssignment/${teacherID}/${asnID}`, body, this.httpOptions);
   }
 
-  viewOneAssignment(asnID: number): Observable<Assignment[]> {
-    return this.http.get<Assignment[]>(`${this.baseUrl}Assignments/viewOneAssignment/${asnID}`, this.httpOptions);
+  viewOneAssignment(asnID: number): Observable<Assignment> {
+    return this.http.get<Assignment>(`${this.baseUrl}Assignments/viewOneAssignment/${asnID}`, this.httpOptions);
   }
 }

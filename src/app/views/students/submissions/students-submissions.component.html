@@ -2,24 +2,17 @@
   <mat-dialog-content>
     <h2 mat-dialog-title>Submit assignment</h2>
 
-    <p>
-      <mat-form-field appearance="outline">
-        <mat-label>Assignment</mat-label>
-        <input type="text" matInput [(ngModel)]="body" name="title" required>
-      </mat-form-field>
-    </p>
+    <mat-list role="list" *ngIf="assignment">
+      <mat-list-item role="listitem"><h3>{{assignment.asnTitle}}</h3></mat-list-item>
+      <mat-list-item role="listitem" *ngIf="assignment.asnSubject">{{assignment.asnSubject}}</mat-list-item>
+      <mat-list-item role="listitem"><p>{{assignment.asnBody}}</p></mat-list-item>
+      <mat-list-item role="listitem"><small>{{assignment.asnDueDate | date}}</small></mat-list-item>
+    </mat-list>
 
     <p>
       <mat-form-field appearance="outline">
         <mat-label>Assignment</mat-label>
-        <input type="text" matInput [(ngModel)]="body" name="title" required>
-      </mat-form-field>
-    </p>
-
-    <p>
-      <mat-form-field appearance="outline">
-        <mat-label>Assignment</mat-label>
-        <input type="text" matInput [(ngModel)]="asnTitle" name="title" required>
+        <input type="text" matInput [(ngModel)]="body" name="body" required>
       </mat-form-field>
     </p>
 

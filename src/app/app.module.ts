@@ -12,7 +12,7 @@ import {
   MatProgressSpinnerModule, MatRadioModule,
   MatSelectModule,
   MatStepperModule,
-  MatTableModule
+  MatTableModule, MatListModule, MatCardModule
 } from '@angular/material';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {FormsModule} from '@angular/forms';
@@ -77,7 +77,9 @@ import { StudentsNavComponent } from './views/students/students-nav/students-nav
     MatDatepickerModule,
     MatNativeDateModule,
     MatExpansionModule,
-    MatSortModule
+    MatSortModule,
+    MatListModule,
+    MatCardModule
   ],
   providers: [MatDatepickerModule ],
   bootstrap: [AppComponent],
