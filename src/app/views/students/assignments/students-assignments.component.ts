@@ -1,7 +1,8 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {Assignment} from '../../../models/assignment';
 import {StudentsService} from '../../../models/services/students.service';
-import {MatPaginator} from '@angular/material';
+import {MatDialog, MatDialogConfig, MatPaginator} from '@angular/material';
+import {StudentsSubmissionsComponent} from '../submissions/students-submissions.component';
 
 @Component({
   selector: 'app-assignments',
@@ -10,8 +11,11 @@ import {MatPaginator} from '@angular/material';
 })
 export class StudentsAssignmentsComponent implements OnInit {
   assignments: Assignment[];
-  displayedColumns: string[] = ['asnSubject', 'asnTitle', 'asnBody', 'teacherName', 'asnDateCreated', 'asnDueDate', 'asnGrade'];
-  constructor(private studentsService: StudentsService) { }
+  displayedColumns: string[] = ['asnSubject', 'asnTitle', 'asnBody', 'teacherName', 'asnDateCreated', 'asnDueDate', 'asnGrade', 'submit'];
+  constructor(
+    private studentsService: StudentsService,
+    private dialog: MatDialog
+    ) { }
   asnTitle: string;
   asnBody: string;
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -30,5 +34,14 @@ export class StudentsAssignmentsComponent implements OnInit {
       console.log(this.assignments);
     });
   }
+  openSubmission(id: number): void {
+    const dialogConfig = new MatDialogConfig();
 
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = '600px';
+    dialogConfig.data = { asnId: id };
+
+    this.dialog.open(StudentsSubmissionsComponent, dialogConfig);
+  }
 }

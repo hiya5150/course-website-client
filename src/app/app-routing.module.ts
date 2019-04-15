@@ -6,7 +6,6 @@ import {StudentsGradesComponent} from './views/students/grades/students-grades.c
 import {TeachersHomepageComponent} from './views/teachers/teachers-homepage/teachers-homepage.component';
 import {MainHomepageComponent} from './views/main/main-homepage/main-homepage.component';
 import {StudentsSubmissionsComponent} from './views/students/submissions/students-submissions.component';
-import {from} from 'rxjs';
 import {TeachersAssignmentsComponent} from './views/teachers/assignments/teachers-assignments.component';
 import {RegisterComponent} from './views/main/register/register.component';
 import {NotFoundComponent} from './views/main/not-found/not-found.component';
@@ -16,7 +15,6 @@ import {StudentAuthGuard} from './controllers/student-auth.guard';
 import {TeachersAnnouncementsComponent} from './views/teachers/announcements/teachers-announcements.component';
 import {LoginComponent} from './views/main/login/login.component';
 import {TeachersAssignmentComponent} from './views/teachers/assignment/teachers-assignment.component';
-import {StudentsAssignmentComponent} from './views/students/students-assignment/students-assignment.component';
 import {StudentsHomepageComponent} from './views/students/student-homepage/students-homepage.component';
 
 
@@ -30,7 +28,6 @@ const routes: Routes = [
   {path: 'teachers/assignment/:asnID', component: TeachersAssignmentComponent, canActivate: [TeacherAuthGuard]},
   {path: 'students/home', component: StudentsHomepageComponent, canActivate: [StudentAuthGuard]},
   {path: 'students/assignments', component: StudentsAssignmentsComponent, canActivate: [StudentAuthGuard]},
-  {path: 'students/assignment/:asnID', component: StudentsAssignmentComponent, canActivate: [StudentAuthGuard]},
   {path: 'students/announcements', component: StudentsAnnouncementsComponent, canActivate: [StudentAuthGuard]},
   {path: 'students/grades', component: StudentsGradesComponent, canActivate: [StudentAuthGuard]},
   {path: 'students/submissions', component: StudentsSubmissionsComponent, canActivate: [StudentAuthGuard]},

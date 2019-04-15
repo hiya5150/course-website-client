@@ -22,7 +22,6 @@ export class StudentsService {
     return this.http.get<Announcement[]>(this.baseUrl + 'announcements/loadAnnouncements', this.httpOptions);
   }
 
-
   public getAssignments(): Observable<Assignment[]> {
     return this.http.get<Assignment[]>(this.baseUrl + 'assignments/viewAssignments', this.httpOptions);
   }
@@ -31,8 +30,8 @@ export class StudentsService {
     return this.http.get<any>(this.baseUrl + 'assignments/viewGrades', this.httpOptions);
   }
 
-  public submit(): Observable<any> {
-    const body = '';
+  public submit(submission: string): Observable<any> {
+    const body = `submission=${submission}`;
     return this.http.post(this.baseUrl + 'students/assignments/submitAssignment', body, this.httpOptions);
   }
 

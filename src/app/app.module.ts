@@ -35,7 +35,6 @@ import {HttpClientModule} from '@angular/common/http';
 import {MatSnackBarModule, MatSortModule} from '@angular/material';
 import { TeachersNavComponent } from './views/teachers/teachers-nav/teachers-nav.component';
 import { StudentsNavComponent } from './views/students/students-nav/students-nav.component';
-import {StudentsAssignmentComponent} from './views/students/students-assignment/students-assignment.component';
 
 
 @NgModule({
@@ -55,7 +54,6 @@ import {StudentsAssignmentComponent} from './views/students/students-assignment/
     TeachersAssignmentsComponent,
     TeachersGradesComponent,
     TeachersAssignmentComponent,
-    StudentsAssignmentComponent,
     TeachersNavComponent,
     StudentsNavComponent
   ],
@@ -83,6 +81,6 @@ import {StudentsAssignmentComponent} from './views/students/students-assignment/
   ],
   providers: [MatDatepickerModule ],
   bootstrap: [AppComponent],
-  entryComponents: [RegisterComponent, LoginComponent]
+  entryComponents: [RegisterComponent, LoginComponent, StudentsSubmissionsComponent]
 })
 export class AppModule { }
