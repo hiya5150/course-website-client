@@ -1,7 +1,7 @@
 <app-students-nav></app-students-nav>
 
 <div class="table" *ngIf="announcements">
-  <h3 matColumnDef="title">Announcements</h3>
+  <h3>Announcements</h3>
   <table mat-table [dataSource]="announcements">
     <ng-container matColumnDef="annTitle">
       <th mat-header-cell *matHeaderCellDef> Title </th>
@@ -25,7 +25,7 @@
 </div>
 
 <div class="table" *ngIf="assignments">
-  <h3 matColumnDef="title">Assignments</h3>
+  <h3>Assignments</h3>
   <table mat-table [dataSource]="assignments">
     <ng-container matColumnDef="asnSubject">
       <th mat-header-cell *matHeaderCellDef> Subject </th>
