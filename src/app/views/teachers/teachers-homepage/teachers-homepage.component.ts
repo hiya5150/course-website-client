@@ -11,8 +11,8 @@ import {Assignment} from '../../../models/assignment';
 export class TeachersHomepageComponent implements OnInit {
   announcements: Announcement[];
   assignments: Assignment[];
-  displayedColumnsAsn: string[] = ['annTitle', 'annBody', 'teacherName', 'annDateCreated'];
-  displayedColumnsAnn: string[] = ['asnTitle', 'asnBody', 'asnDateCreated', 'asnDueDate', 'asnGrade'];
+  displayedColumnsAnn: string[] = ['annTitle', 'annBody', 'teacherName', 'annDateCreated'];
+  displayedColumnsAsn: string[] = ['asnTitle', 'asnBody', 'asnDateCreated', 'asnDueDate', 'asnGrade'];
 
   constructor(private teacherService: TeachersService) { }
 

@@ -13,29 +13,29 @@ import {MatSnackBar} from '@angular/material';
 export class TeachersAssignmentComponent implements OnInit {
   submissions: Grade[];
   assignment: Assignment;
-  asnID;
-  asnTitle;
-  asnBody;
-  asnDueDate;
-  asnGrade;
+  asnID: number;
+  asnTitle: string;
+  asnBody: string;
+  asnDueDate: any;
+  asnGrade: number;
   editForm = {display : 'none'};
-
-  // columns to be displayed in submissions table
-  displayedColumns: string[] = ['studentID', 'studentName', 'submission', 'submissionDate', 'grade', 'addGrade'];
-  constructor(
-    private teacherService: TeachersService,
-    private activatedRoute: ActivatedRoute,
-    private snackBar: MatSnackBar,
-    ) {
-    private route: Router
-    this.asnID = this.activatedRoute.snapshot.paramMap.get('asnID');
-  }
   // declares properties that go into submissions table
   studentID: number;
   studentName: string;
   submission: string;
   submissionDate: any;
   grade: number;
+  // columns to be displayed in submissions table
+  displayedColumns: string[] = ['studentID', 'studentName', 'submission', 'submissionDate', 'grade', 'addGrade'];
+  constructor(
+    private teacherService: TeachersService,
+    private activatedRoute: ActivatedRoute,
+    private snackBar: MatSnackBar,
+    private route: Router
+  ) {
+    this.asnID = +this.activatedRoute.snapshot.paramMap.get('asnID');
+  }
+
 
   ngOnInit() {
     this.viewOneAssignment();

@@ -30,7 +30,7 @@
 
     <!-- Assignment grade -->
     <ng-container matColumnDef="asnGrade">
-      <th mat-header-cell *matHeaderCellDef>Your grade</th>
+      <th mat-header-cell *matHeaderCellDef>Grades worth</th>
       <td mat-cell *matCellDef="let element"> {{element.asnGrade}} </td>
     </ng-container>
 
@@ -40,11 +40,7 @@
       <td mat-cell *matCellDef="let element"> {{element.teacherName}} </td>
     </ng-container>
 
-    <!-- Assignment subject-->
-    <ng-container matColumnDef="asnSubject">
-      <th mat-header-cell *matHeaderCellDef>Subject</th>
-      <td mat-cell *matCellDef="let element"> {{element.asnSubject}} </td>
-    </ng-container>
+    <!-- Assignment submit-->
 
     <ng-container matColumnDef="submit">
       <th mat-header-cell *matHeaderCellDef>Sumbit</th>

@@ -65,17 +65,15 @@
       </ng-container>
       <ng-container matColumnDef="submissionDate">
         <th mat-header-cell *matHeaderCellDef>Submission Date</th>
-        <td mat-cell *matCellDef="let sub">{{sub.submissionDate}}</td>
+        <td mat-cell *matCellDef="let sub">{{sub.submissionDate | date}}</td>
       </ng-container>
       <ng-container matColumnDef="grade">
         <th mat-header-cell *matHeaderCellDef>Grade</th>
         <td mat-cell *matCellDef="let sub">
-          <p>
             <mat-form-field appearance="outline">
               <mat-label>Grade</mat-label>
               <input type="text" placeholder="grade" [(ngModel)]="sub.grade">
             </mat-form-field>
-          </p>
         </td>
       </ng-container>
       <ng-container matColumnDef="addGrade">

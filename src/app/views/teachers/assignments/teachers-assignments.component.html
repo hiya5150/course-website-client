@@ -14,7 +14,7 @@
     </ng-container>
     <ng-container matColumnDef="asnDateCreated">
       <th mat-header-cell *matHeaderCellDef> Date Created </th>
-      <td mat-cell *matCellDef="let asn"> {{asn.asnDateCreated}} </td>
+      <td mat-cell *matCellDef="let asn"> {{asn.asnDateCreated | date}} </td>
     </ng-container>
     <ng-container matColumnDef="asnDueDate">
       <th mat-header-cell *matHeaderCellDef> Date Due </th>

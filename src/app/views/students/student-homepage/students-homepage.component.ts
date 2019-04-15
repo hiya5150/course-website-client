@@ -11,8 +11,8 @@ import {StudentsService} from '../../../models/services/students.service';
 export class StudentsHomepageComponent implements OnInit {
   assignments: Assignment[];
   announcements: Announcement[];
-  displayedColumnsAsn: string[] = ['annTitle', 'annBody', 'teacherName', 'annDateCreated'];
-  displayedColumnsAnn: string[] = ['asnTitle', 'asnBody', 'asnSubject', 'asnDateCreated', 'asnDueDate', 'asnGrade'];
+  displayedColumnsAnn: string[] = ['annTitle', 'annBody', 'teacherName', 'annDateCreated'];
+  displayedColumnsAsn: string[] = ['asnTitle', 'asnBody', 'asnDateCreated', 'asnDueDate', 'asnGrade'];
   constructor(private studentService: StudentsService) { }
 
   ngOnInit() {
