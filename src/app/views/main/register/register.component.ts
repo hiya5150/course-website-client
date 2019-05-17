@@ -29,26 +29,13 @@ export class RegisterComponent implements OnInit {
   // on form submission checks type and registers
   // if registered successful it opens login dialog
   onSubmit() {
-    switch (this.type) {
-      case 'teacher':
-        this.userService.teacherRegister(this.name, this.username, this.password)
-          .subscribe((res) => {
-            if (res.success === true) {
-              this.dialogRef.close();
-              this.openLogin();
-            }
-          });
-        break;
-      case 'student':
-        this.userService.studentRegister(this.name, this.username, this.password)
-          .subscribe((res) => {
-            if (res.success === true) {
-              this.dialogRef.close();
-              this.openLogin();
-            }
-          });
-        break;
-    }
+    this.userService.register(this.name, this.username, this.password, this.type)
+      .subscribe((res) => {
+        if (res.success === true) {
+          this.dialogRef.close();
+          this.openLogin();
+        }
+      });
   }
   openLogin(): void {
     const dialogConfig = new MatDialogConfig();
