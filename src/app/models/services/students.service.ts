@@ -13,7 +13,7 @@ export class StudentsService {
   constructor(private http: HttpClient) { }
   private httpOptions = {
     headers: new HttpHeaders({
-      Authorization:  localStorage.getItem('token')
+      Authorization: 'Bearer ' + localStorage.getItem('token')
     })
       .set('Content-Type', 'application/x-www-form-urlencoded')
   };
