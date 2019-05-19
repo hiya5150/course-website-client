@@ -11,7 +11,7 @@ export class AuthService {
   private httpOptions = {
     headers: new HttpHeaders({
       // sending auth token in header
-      Authorization: localStorage.getItem('token')
+      Authorization: 'Bearer ' + localStorage.getItem('token')
     })
   };
   // checks if there's a token available
