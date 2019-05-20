@@ -17,7 +17,7 @@ export class StudentsGradesComponent implements OnInit {
   }
   getGrades(): void {
     this.studentsService.getGrades().subscribe((res) => {
-      console.log(res);
+      // console.log(res);
       if (res[0]) {
         this.grades = [];
         res.forEach((item) => {

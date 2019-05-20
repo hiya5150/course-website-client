@@ -31,7 +31,7 @@ export class StudentsAssignmentsComponent implements OnInit {
         item = new Assignment(item);
         this.assignments.push(item);
       });
-      console.log(this.assignments);
+      // console.log(this.assignments);
     });
   }
   openSubmission(id: number): void {
