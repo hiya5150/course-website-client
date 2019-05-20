@@ -1,8 +1,15 @@
 <mat-toolbar color="primary">
-  <h2>Welcome to the CMHS Course Website</h2>
+  <h2>Course Website</h2>
+  <button mat-button [matMenuTriggerFor]="menu">created by<mat-icon>expand_more</mat-icon></button>
   <span class="fill-space"></span>
   <button mat-raised-button (click)="openLogin()" color="accent">Login</button>
   <button mat-raised-button (click)="openRegister()" color="accent">Register</button>
+  <mat-menu #menu="matMenu">
+      <a mat-button href="https://github.com/hiya5150/" target="_blank"><i class="github"></i>Heidi Eigner</a>
+      <a mat-button href="https://github.com/malkieg/" target="_blank"><i class="github"></i>Malkie Goldberger</a>
+      <a mat-button href="https://github.com/Lesches/" target="_blank"><i class="github"></i>Sholom Lesches</a>
+      <a mat-button href="https://github.com/cheskyposen/" target="_blank"><i class="github"></i>Chesky Posen</a>
+  </mat-menu>
 </mat-toolbar>
 
 <div class="table" *ngIf="announcements">

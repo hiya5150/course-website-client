@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Grade} from '../../../models/grade';
 import {TeachersService} from '../../../models/services/teachers.service';
-import {Announcement} from '../../../models/announcement';
 
 @Component({
   selector: 'app-grades',
