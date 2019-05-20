@@ -7,11 +7,11 @@ import {Observable, of} from 'rxjs';
 })
 export class AuthService {
   constructor(private http: HttpClient) { }
-  private baseUrl = 'http://localhost/course-website-server/main/home/';
+  private baseUrl = 'https://course-website-api.herokuapp.com/main/home/';
   private httpOptions = {
     headers: new HttpHeaders({
       // sending auth token in header
-      Authorization: localStorage.getItem('token')
+      Authorization: 'Bearer ' + localStorage.getItem('token')
     })
   };
   // checks if there's a token available

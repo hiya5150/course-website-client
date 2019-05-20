@@ -9,11 +9,11 @@ import {Grade} from '../grade';
   providedIn: 'root'
 })
 export class StudentsService {
-  private baseUrl = 'http://localhost/course-website-server/students/';
+  private baseUrl = 'https://course-website-api.herokuapp.com/students/';
   constructor(private http: HttpClient) { }
   private httpOptions = {
     headers: new HttpHeaders({
-      Authorization:  localStorage.getItem('token')
+      Authorization: 'Bearer ' + localStorage.getItem('token')
     })
       .set('Content-Type', 'application/x-www-form-urlencoded')
   };

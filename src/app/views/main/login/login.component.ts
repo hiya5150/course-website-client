@@ -26,25 +26,12 @@ export class LoginComponent implements OnInit {
   // on form submission checks type and verifies
   // if verified and token received it redirect to relative homepage
   onSubmit() {
-    switch (this.type) {
-      case 'teacher':
-        this.userService.teacherLogin(this.username, this.password).subscribe((res) => {
-          if (res.token) {
-            window.localStorage.setItem('token', res.token);
-            this.dialogRef.close();
-            this.router.navigateByUrl('teachers/home');
-          }
-        });
-        break;
-      case 'student':
-        this.userService.studentLogin(this.username, this.password).subscribe((res) => {
-          if (res.token) {
-            localStorage.setItem('token', res.token);
-            this.dialogRef.close();
-            this.router.navigateByUrl('students/home');
-          }
-        });
-        break;
-    }
+    this.userService.login(this.username, this.password, this.type).subscribe((res) => {
+      if (res.token) {
+        window.localStorage.setItem('token', res.token);
+        this.dialogRef.close();
+        this.router.navigateByUrl(`${this.type}s/home`).then();
+      }
+    });
   }
 }
